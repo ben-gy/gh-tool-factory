@@ -1,0 +1,25 @@
+{
+  "last_updated": "2026-04-21",
+  "tools": [
+    {
+      "name": "PDF Crush",
+      "slug": "pdf-crush",
+      "description": "Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.",
+      "url": "https://pdf-crush.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/pdf-crush",
+      "tags": ["document-tools", "pdf", "compression", "wasm", "privacy"],
+      "type": "tool",
+      "date": "2026-04-21"
+    },
+    {
+      "name": "Dropwell",
+      "slug": "dropwell",
+      "description": "End-to-end encrypted peer-to-peer file sharing in the browser.",
+      "url": "https://dropwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/dropwell",
+      "tags": ["utility", "encryption", "p2p", "file-sharing"],
+      "type": "tool",
+      "date": "2026-04-12"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+=== Tools ===
+
+PDF Crush
+  https://pdf-crush.benrichardson.dev
+  Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.
+  Tags: document-tools, pdf, compression, wasm, privacy
+  Repo: https://github.com/ben-gy/pdf-crush
+  Date: 2026-04-21
+
+Dropwell
+  https://dropwell.benrichardson.dev
+  End-to-end encrypted peer-to-peer file sharing in the browser.
+  Tags: utility, encryption, p2p, file-sharing
+  Repo: https://github.com/ben-gy/dropwell
+  Date: 2026-04-12

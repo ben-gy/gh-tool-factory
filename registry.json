@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "last_updated": "2026-04-21",
+  "tools": [
+    {
+      "name": "pdf-crush",
+      "repo": "ben-gy/pdf-crush",
+      "date": "2026-04-21",
+      "description": "Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.",
+      "category": "document-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": ["Web Workers", "Canvas 2D", "File API", "Web Share API", "WebAssembly (MozJPEG)"],
+      "status": "deployed",
+      "url": "https://pdf-crush.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/pdf-crush/pull/1"
+    },
+    {
+      "name": "dropwell",
+      "repo": "ben-gy/dropwell",
+      "date": "2026-04-12",
+      "description": "End-to-end encrypted peer-to-peer file sharing in the browser. No backend, no installs.",
+      "category": "p2p-transfer",
+      "stack": "vanilla-ts",
+      "browser_apis": ["WebTorrent", "WebRTC", "Web Crypto (AES-GCM-256)", "Web Share"],
+      "status": "deployed",
+      "url": "https://dropwell.benrichardson.dev",
+      "pr_url": null
+    }
+  ]
+}
