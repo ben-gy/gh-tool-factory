@@ -12,6 +12,56 @@
       "date": "2026-06-26"
     },
     {
+      "name": "zipsafe",
+      "slug": "zipsafe",
+      "description": "Create and extract ZIP archives entirely in your browser. Nothing is uploaded; works offline.",
+      "url": "https://zipsafe.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/zipsafe",
+      "tags": ["file-tools", "zip", "archive", "compression", "privacy"],
+      "type": "tool",
+      "date": "2026-06-25"
+    },
+    {
+      "name": "veilpix",
+      "slug": "veilpix",
+      "description": "Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.",
+      "url": "https://veilpix.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/veilpix",
+      "tags": ["encryption-privacy", "steganography", "web-crypto", "image", "privacy"],
+      "type": "tool",
+      "date": "2026-06-24"
+    },
+    {
+      "name": "sealbox",
+      "slug": "sealbox",
+      "description": "Lock any file with a password in your browser using AES-256. Nothing is uploaded; works offline.",
+      "url": "https://sealbox.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/sealbox",
+      "tags": ["encryption-privacy", "encryption", "web-crypto", "files", "privacy"],
+      "type": "tool",
+      "date": "2026-06-23"
+    },
+    {
+      "name": "metascrub",
+      "slug": "metascrub",
+      "description": "Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.",
+      "url": "https://metascrub.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/metascrub",
+      "tags": ["encryption-privacy", "exif", "metadata", "image", "privacy"],
+      "type": "tool",
+      "date": "2026-06-22"
+    },
+    {
+      "name": "bgwipe",
+      "slug": "bgwipe",
+      "description": "Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.",
+      "url": "https://bgwipe.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/bgwipe",
+      "tags": ["image-tools", "background-removal", "machine-learning", "webgpu", "privacy"],
+      "type": "tool",
+      "date": "2026-06-21"
+    },
+    {
       "name": "PDF Crush",
       "slug": "pdf-crush",
       "description": "Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.",

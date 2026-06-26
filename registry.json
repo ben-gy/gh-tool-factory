@@ -22,10 +22,9 @@
       "category": "file-tools",
       "stack": "vanilla-ts",
       "browser_apis": ["Web Workers", "Transferable ArrayBuffer", "File System Access API", "File & Blob API", "Drag and Drop", "Web Share API", "Service Worker (PWA)"],
-      "status": "deploy_failed",
-      "status_reason": "Built on 2026-06-25. 35 tests pass, production build succeeds, and a full create→extract round-trip was verified in-browser via the Claude Preview MCP: a 2-file archive was built (73% smaller, valid PK magic), re-ingested, listed from the central directory, extracted, and the decompressed content matched byte-for-byte. Error path (corrupt zip), threat-model/how-it-works/about modals, glossary tooltips, Escape-to-close, and mobile + dark-mode layouts were all verified; a hidden-banner CSS bug found via screenshot was fixed. NOT deployed: gh CLI auth token is still invalid (gh api user → HTTP 401) and no other GitHub credential is available, so repo creation/push/Pages/DNS/PR could not run. Local git repo is committed on main and ready to push once `gh auth login` is re-run.",
+      "status": "deployed",
       "url": "https://zipsafe.benrichardson.dev",
-      "pr_url": null
+      "pr_url": "https://github.com/ben-gy/zipsafe/pull/3"
     },
     {
       "name": "veilpix",
@@ -35,10 +34,9 @@
       "category": "encryption-privacy",
       "stack": "vanilla-ts",
       "browser_apis": ["Web Crypto (AES-GCM-256)", "Web Crypto (PBKDF2)", "Canvas 2D / ImageData", "createImageBitmap", "Web Workers", "Transferable ArrayBuffer", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
-      "status": "deploy_failed",
-      "status_reason": "Built on 2026-06-24. 29 tests pass, production build succeeds, and a full hide→reveal round-trip (text + wrong-passphrase rejection), modals, glossary, error path, and mobile layout were all verified in-browser via the Claude Preview MCP. NOT deployed: gh CLI auth token is still invalid (gh api user → HTTP 401) and no other GitHub credential is available, so repo creation/push/Pages/DNS/PR could not run. Local git repo is committed on main and ready to push once `gh auth login` is re-run.",
+      "status": "deployed",
       "url": "https://veilpix.benrichardson.dev",
-      "pr_url": null
+      "pr_url": "https://github.com/ben-gy/veilpix/pull/3"
     },
     {
       "name": "sealbox",
@@ -48,10 +46,9 @@
       "category": "encryption-privacy",
       "stack": "vanilla-ts",
       "browser_apis": ["Web Crypto (AES-GCM-256)", "Web Crypto (PBKDF2)", "Compression Streams (gzip)", "Web Workers", "File API", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
-      "status": "deploy_failed",
-      "status_reason": "Built on 2026-06-23. 42 tests pass, production build succeeds, and a full lock→unlock round-trip (incl. wrong-password rejection) was verified in-browser via the Preview MCP. NOT deployed: gh CLI auth token is still invalid (gh api user → HTTP 401) and no other GitHub credential is available, so repo creation/push/Pages/DNS/PR could not run. Local git repo is committed on main and ready to push once `gh auth login` is re-run.",
+      "status": "deployed",
       "url": "https://sealbox.benrichardson.dev",
-      "pr_url": null
+      "pr_url": "https://github.com/ben-gy/sealbox/pull/3"
     },
     {
       "name": "metascrub",
@@ -61,10 +58,9 @@
       "category": "encryption-privacy",
       "stack": "vanilla-ts",
       "browser_apis": ["File API", "ArrayBuffer/DataView", "Web Workers", "Transferable objects", "OffscreenCanvas", "Clipboard API", "Web Share API", "Service Worker (PWA)"],
-      "status": "deploy_failed",
-      "status_reason": "Built, 25 tests pass, production build + full browser dry-run verified locally. NOT deployed: gh CLI auth token is invalid and no other GitHub credential is available, so repo creation/push/Pages could not run. Local git repo is committed on main and ready to push once `gh auth login` is re-run.",
+      "status": "deployed",
       "url": "https://metascrub.benrichardson.dev",
-      "pr_url": null
+      "pr_url": "https://github.com/ben-gy/metascrub/pull/3"
     },
     {
       "name": "bgwipe",
@@ -74,10 +70,9 @@
       "category": "image-tools",
       "stack": "vanilla-ts",
       "browser_apis": ["@huggingface/transformers", "WebGPU", "WebAssembly (ONNX)", "Web Workers", "OffscreenCanvas", "Cache API", "Web Share API", "Clipboard API"],
-      "status": "deploy_failed",
-      "status_reason": "Built on 2026-06-21, tests pass. Orphaned by a prior interrupted run — never deployed or registered. Same blocker: gh CLI auth is invalid. Ready to deploy once auth is restored.",
+      "status": "deployed",
       "url": "https://bgwipe.benrichardson.dev",
-      "pr_url": null
+      "pr_url": "https://github.com/ben-gy/bgwipe/pull/3"
     },
     {
       "name": "pdf-crush",

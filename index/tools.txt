@@ -7,6 +7,41 @@ gifsmith
   Repo: https://github.com/ben-gy/gifsmith
   Date: 2026-06-26
 
+zipsafe
+  https://zipsafe.benrichardson.dev
+  Create and extract ZIP archives entirely in your browser. Nothing is uploaded; works offline.
+  Tags: file-tools, zip, archive, compression, privacy
+  Repo: https://github.com/ben-gy/zipsafe
+  Date: 2026-06-25
+
+veilpix
+  https://veilpix.benrichardson.dev
+  Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.
+  Tags: encryption-privacy, steganography, web-crypto, image, privacy
+  Repo: https://github.com/ben-gy/veilpix
+  Date: 2026-06-24
+
+sealbox
+  https://sealbox.benrichardson.dev
+  Lock any file with a password in your browser using AES-256. Nothing is uploaded; works offline.
+  Tags: encryption-privacy, encryption, web-crypto, files, privacy
+  Repo: https://github.com/ben-gy/sealbox
+  Date: 2026-06-23
+
+metascrub
+  https://metascrub.benrichardson.dev
+  Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.
+  Tags: encryption-privacy, exif, metadata, image, privacy
+  Repo: https://github.com/ben-gy/metascrub
+  Date: 2026-06-22
+
+bgwipe
+  https://bgwipe.benrichardson.dev
+  Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.
+  Tags: image-tools, background-removal, machine-learning, webgpu, privacy
+  Repo: https://github.com/ben-gy/bgwipe
+  Date: 2026-06-21
+
 PDF Crush
   https://pdf-crush.benrichardson.dev
   Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.
