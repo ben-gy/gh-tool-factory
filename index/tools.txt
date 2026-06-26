@@ -1,5 +1,12 @@
 === Tools ===
 
+gifsmith
+  https://gifsmith.benrichardson.dev
+  Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.
+  Tags: media-tools, video, gif, web-workers, privacy
+  Repo: https://github.com/ben-gy/gifsmith
+  Date: 2026-06-26
+
 PDF Crush
   https://pdf-crush.benrichardson.dev
   Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.
