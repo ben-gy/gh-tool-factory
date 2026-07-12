@@ -2,6 +2,16 @@
   "last_updated": "2026-07-12",
   "tools": [
     {
+      "name": "inkwell",
+      "slug": "inkwell",
+      "description": "Sign and fill PDFs entirely in your browser — draw, type or upload a signature, add text, dates and checkmarks. Nothing is uploaded; works offline.",
+      "url": "https://inkwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/inkwell",
+      "tags": ["document-tools", "pdf", "signature", "esign", "privacy"],
+      "type": "tool",
+      "date": "2026-07-12"
+    },
+    {
       "name": "Pagesmith",
       "slug": "pagesmith",
       "description": "Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.",

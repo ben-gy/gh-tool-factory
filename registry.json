@@ -3,6 +3,18 @@
   "last_updated": "2026-07-12",
   "tools": [
     {
+      "name": "inkwell",
+      "repo": "ben-gy/inkwell",
+      "date": "2026-07-12",
+      "description": "Sign and fill PDFs entirely in your browser — draw/type/upload a signature, place text, dates, initials and checkmarks, download a flattened PDF. Nothing is uploaded.",
+      "category": "document-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": ["pdf.js (pdfjs-dist) + Web Worker", "pdf-lib", "Pointer Events (pressure)", "Canvas 2D", "File & Blob API", "HTML5 Drag and Drop", "Web Share API", "Service Worker (PWA)"],
+      "status": "deployed",
+      "url": "https://inkwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/inkwell/pull/2"
+    },
+    {
       "name": "pagesmith",
       "repo": "ben-gy/pagesmith",
       "date": "2026-07-12",

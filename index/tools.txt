@@ -1,5 +1,12 @@
 === Tools ===
 
+inkwell
+  https://inkwell.benrichardson.dev
+  Sign and fill PDFs entirely in your browser — draw, type or upload a signature, add text, dates and checkmarks. Nothing is uploaded; works offline.
+  Tags: document-tools, pdf, signature, esign, privacy
+  Repo: https://github.com/ben-gy/inkwell
+  Date: 2026-07-12
+
 Pagesmith
   https://pagesmith.benrichardson.dev
   Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.
