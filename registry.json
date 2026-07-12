@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-12",
+  "last_updated": "2026-07-13",
   "tools": [
     {
       "name": "inkwell",
@@ -286,6 +286,28 @@
       "status": "deployed",
       "url": "https://qrforge.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/qrforge/pull/1"
+    },
+    {
+      "name": "textlift",
+      "repo": "ben-gy/textlift",
+      "date": "2026-07-13",
+      "description": "Extract text from images, screenshots and scanned PDFs entirely in your browser with Tesseract WASM — plain text or searchable PDF out. No uploads; English works offline.",
+      "category": "document-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "tesseract.js (WASM, SIMD-detected)",
+        "Web Workers",
+        "pdf.js (pdfjs-dist) + Web Worker",
+        "pdf-lib",
+        "Canvas 2D / createImageBitmap",
+        "Clipboard API (paste-to-ingest)",
+        "IndexedDB (language model cache)",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://textlift.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/textlift/pull/1"
     }
   ]
 }

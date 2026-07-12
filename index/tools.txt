@@ -1,5 +1,12 @@
 === Tools ===
 
+Textlift
+  https://textlift.benrichardson.dev
+  Extract text from images, screenshots and scanned PDFs entirely in your browser — plain text or searchable PDF out. Nothing is uploaded; English works offline.
+  Tags: document-tools, ocr, image-to-text, pdf, privacy
+  Repo: https://github.com/ben-gy/textlift
+  Date: 2026-07-13
+
 inkwell
   https://inkwell.benrichardson.dev
   Sign and fill PDFs entirely in your browser — draw, type or upload a signature, add text, dates and checkmarks. Nothing is uploaded; works offline.

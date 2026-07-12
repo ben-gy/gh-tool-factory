@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-07-12",
+  "last_updated": "2026-07-13",
   "tools": [
+    {
+      "name": "Textlift",
+      "slug": "textlift",
+      "icon": "scan-text",
+      "category": "documents",
+      "description": "Extract text from images, screenshots and scanned PDFs entirely in your browser — plain text or searchable PDF out. Nothing is uploaded; English works offline.",
+      "url": "https://textlift.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/textlift",
+      "tags": [
+        "document-tools",
+        "ocr",
+        "image-to-text",
+        "pdf",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-13"
+    },
     {
       "name": "Inkwell",
       "slug": "inkwell",
