@@ -29,16 +29,15 @@
     },
     {
       "name": "scribewell",
-      "repo": null,
-      "date": "2026-07-02",
-      "description": "Private in-browser transcription — turn audio & video into text, subtitles, and searchable transcripts without uploading a thing.",
+      "repo": "ben-gy/scribewell",
+      "date": "2026-07-12",
+      "description": "Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. No uploads, no accounts; works offline.",
       "category": "media-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["transformers.js / onnxruntime-web (Whisper)", "WebGPU/WASM", "Web Audio", "Web Workers"],
-      "status": "built_not_deployed",
-      "url": null,
-      "pr_url": null,
-      "note": "Built locally three times (tools/2026-06-29, 07-01, 07-02) but never deployed. Registered here to stop the recurring rebuild; needs finishing + deploy."
+      "browser_apis": ["@huggingface/transformers (Whisper)", "WebGPU", "WebAssembly (ONNX Runtime)", "Web Audio API (decodeAudioData)", "Web Workers", "Transferable ArrayBuffer", "Cache API", "Clipboard API", "Web Share API", "Service Worker (PWA)"],
+      "status": "deployed",
+      "url": "https://scribewell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/scribewell/pull/2"
     },
     {
       "name": "gifsmith",

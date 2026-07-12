@@ -1,5 +1,12 @@
 === Tools ===
 
+Scribewell
+  https://scribewell.benrichardson.dev
+  Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. Nothing is uploaded; works offline.
+  Tags: media-tools, transcription, whisper, webgpu, privacy
+  Repo: https://github.com/ben-gy/scribewell
+  Date: 2026-07-12
+
 unHEIC
   https://unheic.benrichardson.dev
   Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser. Nothing is uploaded; works offline.

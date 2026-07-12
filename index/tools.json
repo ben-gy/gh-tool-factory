@@ -2,6 +2,16 @@
   "last_updated": "2026-07-12",
   "tools": [
     {
+      "name": "Scribewell",
+      "slug": "scribewell",
+      "description": "Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. Nothing is uploaded; works offline.",
+      "url": "https://scribewell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/scribewell",
+      "tags": ["media-tools", "transcription", "whisper", "webgpu", "privacy"],
+      "type": "tool",
+      "date": "2026-07-12"
+    },
+    {
       "name": "unHEIC",
       "slug": "unheic",
       "description": "Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser. Nothing is uploaded; works offline.",
