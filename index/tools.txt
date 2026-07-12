@@ -1,5 +1,12 @@
 === Tools ===
 
+unHEIC
+  https://unheic.benrichardson.dev
+  Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser. Nothing is uploaded; works offline.
+  Tags: image-tools, heic, converter, wasm, privacy
+  Repo: https://github.com/ben-gy/unheic
+  Date: 2026-07-12
+
 gifsmith
   https://gifsmith.benrichardson.dev
   Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.

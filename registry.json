@@ -1,7 +1,45 @@
 {
   "version": 1,
-  "last_updated": "2026-06-26",
+  "last_updated": "2026-07-12",
   "tools": [
+    {
+      "name": "unheic",
+      "repo": "ben-gy/unheic",
+      "date": "2026-07-12",
+      "description": "Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser with libheif (WASM). No uploads; works offline.",
+      "category": "image-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": ["libheif-js (WASM)", "Web Workers", "OffscreenCanvas (convertToBlob)", "Transferable ArrayBuffer", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
+      "status": "deployed",
+      "url": "https://unheic.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/unheic/pull/1"
+    },
+    {
+      "name": "tokenpeek",
+      "repo": null,
+      "date": "2026-06-28",
+      "description": "Decode, inspect, verify, crack and forge JSON Web Tokens entirely in your browser — nothing is uploaded.",
+      "category": "developer-utilities",
+      "stack": "vanilla-ts",
+      "browser_apis": ["Web Crypto (HMAC/RSA/ECDSA verify)", "Web Workers"],
+      "status": "built_not_deployed",
+      "url": null,
+      "pr_url": null,
+      "note": "Built locally at tools/2026-06-28-tokenpeek but never deployed (prior run stopped before deploy). Registered here to prevent duplicate rebuilds; needs finishing + deploy."
+    },
+    {
+      "name": "scribewell",
+      "repo": null,
+      "date": "2026-07-02",
+      "description": "Private in-browser transcription — turn audio & video into text, subtitles, and searchable transcripts without uploading a thing.",
+      "category": "media-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": ["transformers.js / onnxruntime-web (Whisper)", "WebGPU/WASM", "Web Audio", "Web Workers"],
+      "status": "built_not_deployed",
+      "url": null,
+      "pr_url": null,
+      "note": "Built locally three times (tools/2026-06-29, 07-01, 07-02) but never deployed. Registered here to stop the recurring rebuild; needs finishing + deploy."
+    },
     {
       "name": "gifsmith",
       "repo": "ben-gy/gifsmith",

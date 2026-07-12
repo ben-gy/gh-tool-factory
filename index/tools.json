@@ -1,6 +1,16 @@
 {
-  "last_updated": "2026-06-26",
+  "last_updated": "2026-07-12",
   "tools": [
+    {
+      "name": "unHEIC",
+      "slug": "unheic",
+      "description": "Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser. Nothing is uploaded; works offline.",
+      "url": "https://unheic.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/unheic",
+      "tags": ["image-tools", "heic", "converter", "wasm", "privacy"],
+      "type": "tool",
+      "date": "2026-07-12"
+    },
     {
       "name": "gifsmith",
       "slug": "gifsmith",
