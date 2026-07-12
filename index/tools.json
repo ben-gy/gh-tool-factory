@@ -2,6 +2,16 @@
   "last_updated": "2026-07-12",
   "tools": [
     {
+      "name": "Pagesmith",
+      "slug": "pagesmith",
+      "description": "Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.",
+      "url": "https://pagesmith.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/pagesmith",
+      "tags": ["document-tools", "pdf", "merge", "organize", "privacy"],
+      "type": "tool",
+      "date": "2026-07-12"
+    },
+    {
       "name": "Scribewell",
       "slug": "scribewell",
       "description": "Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. Nothing is uploaded; works offline.",

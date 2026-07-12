@@ -1,5 +1,12 @@
 === Tools ===
 
+Pagesmith
+  https://pagesmith.benrichardson.dev
+  Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.
+  Tags: document-tools, pdf, merge, organize, privacy
+  Repo: https://github.com/ben-gy/pagesmith
+  Date: 2026-07-12
+
 Scribewell
   https://scribewell.benrichardson.dev
   Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. Nothing is uploaded; works offline.

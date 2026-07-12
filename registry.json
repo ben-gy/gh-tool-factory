@@ -3,6 +3,18 @@
   "last_updated": "2026-07-12",
   "tools": [
     {
+      "name": "pagesmith",
+      "repo": "ben-gy/pagesmith",
+      "date": "2026-07-12",
+      "description": "Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.",
+      "category": "document-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": ["pdf.js (pdfjs-dist) + Web Worker", "Canvas 2D", "IntersectionObserver", "pdf-lib (Web Worker)", "Transferable ArrayBuffer", "HTML5 Drag and Drop", "File & Blob API", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
+      "status": "deployed",
+      "url": "https://pagesmith.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/pagesmith/pull/1"
+    },
+    {
       "name": "unheic",
       "repo": "ben-gy/unheic",
       "date": "2026-07-12",
