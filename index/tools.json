@@ -2,7 +2,7 @@
   "last_updated": "2026-07-12",
   "tools": [
     {
-      "name": "inkwell",
+      "name": "Inkwell",
       "slug": "inkwell",
       "icon": "signature",
       "category": "documents",
@@ -74,7 +74,7 @@
       "date": "2026-07-12"
     },
     {
-      "name": "tokenpeek",
+      "name": "Tokenpeek",
       "slug": "tokenpeek",
       "icon": "key-round",
       "category": "privacy",
@@ -92,7 +92,7 @@
       "date": "2026-06-28"
     },
     {
-      "name": "gifsmith",
+      "name": "Gifsmith",
       "slug": "gifsmith",
       "icon": "film",
       "category": "media",
@@ -110,7 +110,7 @@
       "date": "2026-06-26"
     },
     {
-      "name": "zipsafe",
+      "name": "Zipsafe",
       "slug": "zipsafe",
       "icon": "folder-archive",
       "category": "files",
@@ -128,7 +128,7 @@
       "date": "2026-06-25"
     },
     {
-      "name": "veilpix",
+      "name": "Veilpix",
       "slug": "veilpix",
       "icon": "eye-off",
       "category": "privacy",
@@ -146,7 +146,7 @@
       "date": "2026-06-24"
     },
     {
-      "name": "sealbox",
+      "name": "Sealbox",
       "slug": "sealbox",
       "icon": "lock-keyhole",
       "category": "privacy",
@@ -164,7 +164,7 @@
       "date": "2026-06-23"
     },
     {
-      "name": "metascrub",
+      "name": "Metascrub",
       "slug": "metascrub",
       "icon": "eraser",
       "category": "privacy",
@@ -182,7 +182,7 @@
       "date": "2026-06-22"
     },
     {
-      "name": "bgwipe",
+      "name": "BGWipe",
       "slug": "bgwipe",
       "icon": "wand-sparkles",
       "category": "images",
