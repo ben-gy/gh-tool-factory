@@ -22,6 +22,16 @@
       "date": "2026-07-12"
     },
     {
+      "name": "tokenpeek",
+      "slug": "tokenpeek",
+      "description": "Decode, inspect, verify, crack weak HMAC secrets and forge JSON Web Tokens entirely in your browser. Nothing is uploaded; works offline.",
+      "url": "https://tokenpeek.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/tokenpeek",
+      "tags": ["encryption-privacy", "jwt", "web-crypto", "developer-tools", "privacy"],
+      "type": "tool",
+      "date": "2026-06-28"
+    },
+    {
       "name": "gifsmith",
       "slug": "gifsmith",
       "description": "Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.",

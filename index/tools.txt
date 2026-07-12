@@ -14,6 +14,13 @@ unHEIC
   Repo: https://github.com/ben-gy/unheic
   Date: 2026-07-12
 
+tokenpeek
+  https://tokenpeek.benrichardson.dev
+  Decode, inspect, verify, crack weak HMAC secrets and forge JSON Web Tokens entirely in your browser. Nothing is uploaded; works offline.
+  Tags: encryption-privacy, jwt, web-crypto, developer-tools, privacy
+  Repo: https://github.com/ben-gy/tokenpeek
+  Date: 2026-06-28
+
 gifsmith
   https://gifsmith.benrichardson.dev
   Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.
