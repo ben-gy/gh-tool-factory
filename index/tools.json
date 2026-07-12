@@ -4,6 +4,8 @@
     {
       "name": "inkwell",
       "slug": "inkwell",
+      "icon": "✍️",
+      "category": "documents",
       "description": "Sign and fill PDFs entirely in your browser — draw, type or upload a signature, add text, dates and checkmarks. Nothing is uploaded; works offline.",
       "url": "https://inkwell.benrichardson.dev",
       "repo": "https://github.com/ben-gy/inkwell",
@@ -20,6 +22,8 @@
     {
       "name": "Pagesmith",
       "slug": "pagesmith",
+      "icon": "📄",
+      "category": "documents",
       "description": "Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://pagesmith.benrichardson.dev",
       "repo": "https://github.com/ben-gy/pagesmith",
@@ -36,6 +40,8 @@
     {
       "name": "Scribewell",
       "slug": "scribewell",
+      "icon": "🎙️",
+      "category": "media",
       "description": "Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. Nothing is uploaded; works offline.",
       "url": "https://scribewell.benrichardson.dev",
       "repo": "https://github.com/ben-gy/scribewell",
@@ -52,6 +58,8 @@
     {
       "name": "unHEIC",
       "slug": "unheic",
+      "icon": "🖼️",
+      "category": "images",
       "description": "Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser. Nothing is uploaded; works offline.",
       "url": "https://unheic.benrichardson.dev",
       "repo": "https://github.com/ben-gy/unheic",
@@ -68,6 +76,8 @@
     {
       "name": "tokenpeek",
       "slug": "tokenpeek",
+      "icon": "🎫",
+      "category": "privacy",
       "description": "Decode, inspect, verify, crack weak HMAC secrets and forge JSON Web Tokens entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://tokenpeek.benrichardson.dev",
       "repo": "https://github.com/ben-gy/tokenpeek",
@@ -84,6 +94,8 @@
     {
       "name": "gifsmith",
       "slug": "gifsmith",
+      "icon": "🎞️",
+      "category": "media",
       "description": "Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.",
       "url": "https://gifsmith.benrichardson.dev",
       "repo": "https://github.com/ben-gy/gifsmith",
@@ -100,6 +112,8 @@
     {
       "name": "zipsafe",
       "slug": "zipsafe",
+      "icon": "🤐",
+      "category": "files",
       "description": "Create and extract ZIP archives entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://zipsafe.benrichardson.dev",
       "repo": "https://github.com/ben-gy/zipsafe",
@@ -116,6 +130,8 @@
     {
       "name": "veilpix",
       "slug": "veilpix",
+      "icon": "🕵️",
+      "category": "privacy",
       "description": "Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.",
       "url": "https://veilpix.benrichardson.dev",
       "repo": "https://github.com/ben-gy/veilpix",
@@ -132,6 +148,8 @@
     {
       "name": "sealbox",
       "slug": "sealbox",
+      "icon": "🔏",
+      "category": "privacy",
       "description": "Lock any file with a password in your browser using AES-256. Nothing is uploaded; works offline.",
       "url": "https://sealbox.benrichardson.dev",
       "repo": "https://github.com/ben-gy/sealbox",
@@ -148,6 +166,8 @@
     {
       "name": "metascrub",
       "slug": "metascrub",
+      "icon": "🧽",
+      "category": "privacy",
       "description": "Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.",
       "url": "https://metascrub.benrichardson.dev",
       "repo": "https://github.com/ben-gy/metascrub",
@@ -164,6 +184,8 @@
     {
       "name": "bgwipe",
       "slug": "bgwipe",
+      "icon": "🪄",
+      "category": "images",
       "description": "Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.",
       "url": "https://bgwipe.benrichardson.dev",
       "repo": "https://github.com/ben-gy/bgwipe",
@@ -180,6 +202,8 @@
     {
       "name": "PDF Crush",
       "slug": "pdf-crush",
+      "icon": "🗜️",
+      "category": "documents",
       "description": "Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.",
       "url": "https://pdf-crush.benrichardson.dev",
       "repo": "https://github.com/ben-gy/pdf-crush",
@@ -196,6 +220,8 @@
     {
       "name": "Dropwell",
       "slug": "dropwell",
+      "icon": "💧",
+      "category": "files",
       "description": "End-to-end encrypted peer-to-peer file sharing in the browser.",
       "url": "https://dropwell.benrichardson.dev",
       "repo": "https://github.com/ben-gy/dropwell",
@@ -211,6 +237,8 @@
     {
       "name": "QRForge",
       "slug": "qrforge",
+      "icon": "🔳",
+      "category": "fun",
       "description": "Generate tracking-free QR codes and scan them, entirely in your browser.",
       "url": "https://qrforge.benrichardson.dev",
       "repo": "https://github.com/ben-gy/qrforge",
