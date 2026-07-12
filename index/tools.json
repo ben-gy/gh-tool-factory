@@ -4,7 +4,7 @@
     {
       "name": "inkwell",
       "slug": "inkwell",
-      "icon": "✍️",
+      "icon": "signature",
       "category": "documents",
       "description": "Sign and fill PDFs entirely in your browser — draw, type or upload a signature, add text, dates and checkmarks. Nothing is uploaded; works offline.",
       "url": "https://inkwell.benrichardson.dev",
@@ -22,7 +22,7 @@
     {
       "name": "Pagesmith",
       "slug": "pagesmith",
-      "icon": "📄",
+      "icon": "file-stack",
       "category": "documents",
       "description": "Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://pagesmith.benrichardson.dev",
@@ -40,7 +40,7 @@
     {
       "name": "Scribewell",
       "slug": "scribewell",
-      "icon": "🎙️",
+      "icon": "mic",
       "category": "media",
       "description": "Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. Nothing is uploaded; works offline.",
       "url": "https://scribewell.benrichardson.dev",
@@ -58,7 +58,7 @@
     {
       "name": "unHEIC",
       "slug": "unheic",
-      "icon": "🖼️",
+      "icon": "image-down",
       "category": "images",
       "description": "Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser. Nothing is uploaded; works offline.",
       "url": "https://unheic.benrichardson.dev",
@@ -76,7 +76,7 @@
     {
       "name": "tokenpeek",
       "slug": "tokenpeek",
-      "icon": "🎫",
+      "icon": "key-round",
       "category": "privacy",
       "description": "Decode, inspect, verify, crack weak HMAC secrets and forge JSON Web Tokens entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://tokenpeek.benrichardson.dev",
@@ -94,7 +94,7 @@
     {
       "name": "gifsmith",
       "slug": "gifsmith",
-      "icon": "🎞️",
+      "icon": "film",
       "category": "media",
       "description": "Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.",
       "url": "https://gifsmith.benrichardson.dev",
@@ -112,7 +112,7 @@
     {
       "name": "zipsafe",
       "slug": "zipsafe",
-      "icon": "🤐",
+      "icon": "folder-archive",
       "category": "files",
       "description": "Create and extract ZIP archives entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://zipsafe.benrichardson.dev",
@@ -130,7 +130,7 @@
     {
       "name": "veilpix",
       "slug": "veilpix",
-      "icon": "🕵️",
+      "icon": "eye-off",
       "category": "privacy",
       "description": "Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.",
       "url": "https://veilpix.benrichardson.dev",
@@ -148,7 +148,7 @@
     {
       "name": "sealbox",
       "slug": "sealbox",
-      "icon": "🔏",
+      "icon": "lock-keyhole",
       "category": "privacy",
       "description": "Lock any file with a password in your browser using AES-256. Nothing is uploaded; works offline.",
       "url": "https://sealbox.benrichardson.dev",
@@ -166,7 +166,7 @@
     {
       "name": "metascrub",
       "slug": "metascrub",
-      "icon": "🧽",
+      "icon": "eraser",
       "category": "privacy",
       "description": "Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.",
       "url": "https://metascrub.benrichardson.dev",
@@ -184,7 +184,7 @@
     {
       "name": "bgwipe",
       "slug": "bgwipe",
-      "icon": "🪄",
+      "icon": "wand-sparkles",
       "category": "images",
       "description": "Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.",
       "url": "https://bgwipe.benrichardson.dev",
@@ -202,7 +202,7 @@
     {
       "name": "PDF Crush",
       "slug": "pdf-crush",
-      "icon": "🗜️",
+      "icon": "file-down",
       "category": "documents",
       "description": "Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.",
       "url": "https://pdf-crush.benrichardson.dev",
@@ -220,7 +220,7 @@
     {
       "name": "Dropwell",
       "slug": "dropwell",
-      "icon": "💧",
+      "icon": "droplet",
       "category": "files",
       "description": "End-to-end encrypted peer-to-peer file sharing in the browser.",
       "url": "https://dropwell.benrichardson.dev",
@@ -237,7 +237,7 @@
     {
       "name": "QRForge",
       "slug": "qrforge",
-      "icon": "🔳",
+      "icon": "qr-code",
       "category": "fun",
       "description": "Generate tracking-free QR codes and scan them, entirely in your browser.",
       "url": "https://qrforge.benrichardson.dev",
