@@ -115,3 +115,33 @@ work lost) and is what now serves at https://scribewell.benrichardson.dev. New r
 https://github.com/ben-gy/scribewell/pull/4 (the earlier PR #2 was closed).
 
 - Tests: 47/47 pass. Build: clean. Live: HTTP 200, correct `<title>`. Deploy workflow: success.
+
+## Critical post-deploy fix — fp16 → fp32 on WebGPU (real-speech dry-run)
+
+A further run re-verified the **deployed** build with a **real speech** clip (macOS `say`
+→ 16 kHz mono WAV) instead of a synthetic tone. This surfaced a shipping defect the
+tone-based dry-run could not: the tone produced `0 words · 0 segments` whether or not
+transcription actually worked, so it never exercised real decoding.
+
+**Bug:** the worker used `dtype: device === 'webgpu' ? 'fp16' : 'q8'`. fp16 Whisper
+decoding is numerically unstable on many GPUs and **degenerated into repeated punctuation**
+(`" " " " …`) instead of words — every WebGPU transcript was garbage. (This is the class of
+bug the earlier cancelled "don't pass task/language to English-only models" commit was
+circling but never fixed.)
+
+**Fix (`src/worker.ts`, `src/models.ts`):**
+- WebGPU dtype `fp16` → **`fp32`** (reference precision; transcribes correctly). CPU path
+  stays `q8`.
+- Default model → **`Xenova/whisper-tiny.en`** (lighter/faster correct first run; Base and
+  multilingual remain one click away).
+
+**Verified end-to-end after the fix:** same 5 s clip now transcribes exactly —
+*"Hello there! This is a short test of Scribe Well, transcribing audio entirely in your
+browser."* — at ~5.5× realtime on WebGPU, with working `.txt/.srt/.vtt` export, timestamped
+/ plain-text toggle, and a clean 375 px mobile layout. `npm test` 47/47, build clean.
+Committed as `3bf99ba`, CI **success**, and the live production bundle
+(`index-BFFRZddt.js` + `worker-DUy4IyrA.js`) confirmed to match the fixed build byte-for-byte.
+
+**Lesson for future runs:** a transcription tool's dry-run MUST use real speech and assert on
+the actual words, not just that the pipeline reaches a "done" state. A silent/tone input hides
+decoding defects.
