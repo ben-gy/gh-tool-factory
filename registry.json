@@ -9,7 +9,16 @@
       "description": "Sign and fill PDFs entirely in your browser — draw/type/upload a signature, place text, dates, initials and checkmarks, download a flattened PDF. Nothing is uploaded.",
       "category": "document-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["pdf.js (pdfjs-dist) + Web Worker", "pdf-lib", "Pointer Events (pressure)", "Canvas 2D", "File & Blob API", "HTML5 Drag and Drop", "Web Share API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "pdf.js (pdfjs-dist) + Web Worker",
+        "pdf-lib",
+        "Pointer Events (pressure)",
+        "Canvas 2D",
+        "File & Blob API",
+        "HTML5 Drag and Drop",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://inkwell.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/inkwell/pull/2"
@@ -21,7 +30,18 @@
       "description": "Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.",
       "category": "document-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["pdf.js (pdfjs-dist) + Web Worker", "Canvas 2D", "IntersectionObserver", "pdf-lib (Web Worker)", "Transferable ArrayBuffer", "HTML5 Drag and Drop", "File & Blob API", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "pdf.js (pdfjs-dist) + Web Worker",
+        "Canvas 2D",
+        "IntersectionObserver",
+        "pdf-lib (Web Worker)",
+        "Transferable ArrayBuffer",
+        "HTML5 Drag and Drop",
+        "File & Blob API",
+        "Web Share API",
+        "Clipboard API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://pagesmith.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/pagesmith/pull/1"
@@ -33,7 +53,15 @@
       "description": "Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser with libheif (WASM). No uploads; works offline.",
       "category": "image-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["libheif-js (WASM)", "Web Workers", "OffscreenCanvas (convertToBlob)", "Transferable ArrayBuffer", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "libheif-js (WASM)",
+        "Web Workers",
+        "OffscreenCanvas (convertToBlob)",
+        "Transferable ArrayBuffer",
+        "Web Share API",
+        "Clipboard API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://unheic.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/unheic/pull/1"
@@ -45,7 +73,14 @@
       "description": "Decode, inspect, verify, crack weak HMAC secrets and forge JSON Web Tokens entirely in your browser. Nothing is uploaded; works offline.",
       "category": "encryption-privacy",
       "stack": "vanilla-ts",
-      "browser_apis": ["Web Crypto (verify/sign/importKey/exportKey/generateKey)", "HMAC/RSASSA-PKCS1-v1_5/RSA-PSS/ECDSA/Ed25519", "Web Workers", "Clipboard API", "Drag and Drop / File API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "Web Crypto (verify/sign/importKey/exportKey/generateKey)",
+        "HMAC/RSASSA-PKCS1-v1_5/RSA-PSS/ECDSA/Ed25519",
+        "Web Workers",
+        "Clipboard API",
+        "Drag and Drop / File API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://tokenpeek.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/tokenpeek/pull/1"
@@ -57,7 +92,18 @@
       "description": "Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. No uploads, no accounts; works offline.",
       "category": "media-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["@huggingface/transformers (Whisper)", "WebGPU", "WebAssembly (ONNX Runtime)", "Web Audio API (decodeAudioData)", "Web Workers", "Transferable ArrayBuffer", "Cache API", "Clipboard API", "Web Share API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "@huggingface/transformers (Whisper)",
+        "WebGPU",
+        "WebAssembly (ONNX Runtime)",
+        "Web Audio API (decodeAudioData)",
+        "Web Workers",
+        "Transferable ArrayBuffer",
+        "Cache API",
+        "Clipboard API",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://scribewell.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/scribewell/pull/4"
@@ -69,7 +115,15 @@
       "description": "Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.",
       "category": "media-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["HTMLVideoElement (frame seeking)", "Canvas 2D (drawImage/getImageData)", "Web Workers", "Transferable ArrayBuffer", "Clipboard API (ClipboardItem)", "Web Share API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "HTMLVideoElement (frame seeking)",
+        "Canvas 2D (drawImage/getImageData)",
+        "Web Workers",
+        "Transferable ArrayBuffer",
+        "Clipboard API (ClipboardItem)",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://gifsmith.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/gifsmith/pull/2"
@@ -81,7 +135,15 @@
       "description": "Create and extract ZIP archives entirely in your browser. Nothing is uploaded; works offline.",
       "category": "file-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["Web Workers", "Transferable ArrayBuffer", "File System Access API", "File & Blob API", "Drag and Drop", "Web Share API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "Web Workers",
+        "Transferable ArrayBuffer",
+        "File System Access API",
+        "File & Blob API",
+        "Drag and Drop",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://zipsafe.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/zipsafe/pull/3"
@@ -93,7 +155,17 @@
       "description": "Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser. No uploads.",
       "category": "encryption-privacy",
       "stack": "vanilla-ts",
-      "browser_apis": ["Web Crypto (AES-GCM-256)", "Web Crypto (PBKDF2)", "Canvas 2D / ImageData", "createImageBitmap", "Web Workers", "Transferable ArrayBuffer", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "Web Crypto (AES-GCM-256)",
+        "Web Crypto (PBKDF2)",
+        "Canvas 2D / ImageData",
+        "createImageBitmap",
+        "Web Workers",
+        "Transferable ArrayBuffer",
+        "Web Share API",
+        "Clipboard API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://veilpix.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/veilpix/pull/3"
@@ -105,7 +177,16 @@
       "description": "Lock any file with a password in your browser using AES-256. Nothing is uploaded; works offline.",
       "category": "encryption-privacy",
       "stack": "vanilla-ts",
-      "browser_apis": ["Web Crypto (AES-GCM-256)", "Web Crypto (PBKDF2)", "Compression Streams (gzip)", "Web Workers", "File API", "Web Share API", "Clipboard API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "Web Crypto (AES-GCM-256)",
+        "Web Crypto (PBKDF2)",
+        "Compression Streams (gzip)",
+        "Web Workers",
+        "File API",
+        "Web Share API",
+        "Clipboard API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://sealbox.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/sealbox/pull/3"
@@ -117,7 +198,16 @@
       "description": "Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.",
       "category": "encryption-privacy",
       "stack": "vanilla-ts",
-      "browser_apis": ["File API", "ArrayBuffer/DataView", "Web Workers", "Transferable objects", "OffscreenCanvas", "Clipboard API", "Web Share API", "Service Worker (PWA)"],
+      "browser_apis": [
+        "File API",
+        "ArrayBuffer/DataView",
+        "Web Workers",
+        "Transferable objects",
+        "OffscreenCanvas",
+        "Clipboard API",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
       "status": "deployed",
       "url": "https://metascrub.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/metascrub/pull/3"
@@ -129,7 +219,16 @@
       "description": "Erase image backgrounds in your browser with an in-browser ML model (RMBG-1.4). Photos never leave your device.",
       "category": "image-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["@huggingface/transformers", "WebGPU", "WebAssembly (ONNX)", "Web Workers", "OffscreenCanvas", "Cache API", "Web Share API", "Clipboard API"],
+      "browser_apis": [
+        "@huggingface/transformers",
+        "WebGPU",
+        "WebAssembly (ONNX)",
+        "Web Workers",
+        "OffscreenCanvas",
+        "Cache API",
+        "Web Share API",
+        "Clipboard API"
+      ],
       "status": "deployed",
       "url": "https://bgwipe.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/bgwipe/pull/3"
@@ -141,7 +240,13 @@
       "description": "Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.",
       "category": "document-tools",
       "stack": "vanilla-ts",
-      "browser_apis": ["Web Workers", "Canvas 2D", "File API", "Web Share API", "WebAssembly (MozJPEG)"],
+      "browser_apis": [
+        "Web Workers",
+        "Canvas 2D",
+        "File API",
+        "Web Share API",
+        "WebAssembly (MozJPEG)"
+      ],
       "status": "deployed",
       "url": "https://pdf-crush.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/pdf-crush/pull/1"
@@ -153,10 +258,34 @@
       "description": "End-to-end encrypted peer-to-peer file sharing in the browser. No backend, no installs.",
       "category": "p2p-transfer",
       "stack": "vanilla-ts",
-      "browser_apis": ["WebTorrent", "WebRTC", "Web Crypto (AES-GCM-256)", "Web Share"],
+      "browser_apis": [
+        "WebTorrent",
+        "WebRTC",
+        "Web Crypto (AES-GCM-256)",
+        "Web Share"
+      ],
       "status": "deployed",
       "url": "https://dropwell.benrichardson.dev",
       "pr_url": null
+    },
+    {
+      "name": "qrforge",
+      "repo": "ben-gy/qrforge",
+      "date": "2026-07-12",
+      "description": "Generate tracking-free QR codes and scan them, entirely in your browser. No uploads.",
+      "category": "developer-utilities",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "BarcodeDetector API",
+        "getUserMedia",
+        "Canvas 2D",
+        "Clipboard API",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://qrforge.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/qrforge/pull/1"
     }
   ]
 }

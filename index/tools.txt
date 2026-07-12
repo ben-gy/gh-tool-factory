@@ -90,3 +90,10 @@ Dropwell
   Tags: utility, encryption, p2p, file-sharing
   Repo: https://github.com/ben-gy/dropwell
   Date: 2026-04-12
+
+QRForge
+  https://qrforge.benrichardson.dev
+  Generate tracking-free QR codes (links, WiFi, contacts and more) and scan them entirely in your browser. Nothing is uploaded; works offline.
+  Tags: developer-utilities, qr, barcodedetector, generator, privacy
+  Repo: https://github.com/ben-gy/qrforge
+  Date: 2026-07-12

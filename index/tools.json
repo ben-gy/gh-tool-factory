@@ -7,7 +7,13 @@
       "description": "Sign and fill PDFs entirely in your browser — draw, type or upload a signature, add text, dates and checkmarks. Nothing is uploaded; works offline.",
       "url": "https://inkwell.benrichardson.dev",
       "repo": "https://github.com/ben-gy/inkwell",
-      "tags": ["document-tools", "pdf", "signature", "esign", "privacy"],
+      "tags": [
+        "document-tools",
+        "pdf",
+        "signature",
+        "esign",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-07-12"
     },
@@ -17,7 +23,13 @@
       "description": "Merge, split, reorder, rotate and delete PDF pages entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://pagesmith.benrichardson.dev",
       "repo": "https://github.com/ben-gy/pagesmith",
-      "tags": ["document-tools", "pdf", "merge", "organize", "privacy"],
+      "tags": [
+        "document-tools",
+        "pdf",
+        "merge",
+        "organize",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-07-12"
     },
@@ -27,7 +39,13 @@
       "description": "Transcribe audio & video to text and subtitles (.srt/.vtt) entirely in your browser with OpenAI Whisper. Nothing is uploaded; works offline.",
       "url": "https://scribewell.benrichardson.dev",
       "repo": "https://github.com/ben-gy/scribewell",
-      "tags": ["media-tools", "transcription", "whisper", "webgpu", "privacy"],
+      "tags": [
+        "media-tools",
+        "transcription",
+        "whisper",
+        "webgpu",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-07-12"
     },
@@ -37,7 +55,13 @@
       "description": "Convert iPhone HEIC & HEIF photos to JPG, PNG or WebP in your browser. Nothing is uploaded; works offline.",
       "url": "https://unheic.benrichardson.dev",
       "repo": "https://github.com/ben-gy/unheic",
-      "tags": ["image-tools", "heic", "converter", "wasm", "privacy"],
+      "tags": [
+        "image-tools",
+        "heic",
+        "converter",
+        "wasm",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-07-12"
     },
@@ -47,7 +71,13 @@
       "description": "Decode, inspect, verify, crack weak HMAC secrets and forge JSON Web Tokens entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://tokenpeek.benrichardson.dev",
       "repo": "https://github.com/ben-gy/tokenpeek",
-      "tags": ["encryption-privacy", "jwt", "web-crypto", "developer-tools", "privacy"],
+      "tags": [
+        "encryption-privacy",
+        "jwt",
+        "web-crypto",
+        "developer-tools",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-06-28"
     },
@@ -57,7 +87,13 @@
       "description": "Turn any video into an animated GIF entirely in your browser. No uploads, no watermark; works offline.",
       "url": "https://gifsmith.benrichardson.dev",
       "repo": "https://github.com/ben-gy/gifsmith",
-      "tags": ["media-tools", "video", "gif", "web-workers", "privacy"],
+      "tags": [
+        "media-tools",
+        "video",
+        "gif",
+        "web-workers",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-06-26"
     },
@@ -67,7 +103,13 @@
       "description": "Create and extract ZIP archives entirely in your browser. Nothing is uploaded; works offline.",
       "url": "https://zipsafe.benrichardson.dev",
       "repo": "https://github.com/ben-gy/zipsafe",
-      "tags": ["file-tools", "zip", "archive", "compression", "privacy"],
+      "tags": [
+        "file-tools",
+        "zip",
+        "archive",
+        "compression",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-06-25"
     },
@@ -77,7 +119,13 @@
       "description": "Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.",
       "url": "https://veilpix.benrichardson.dev",
       "repo": "https://github.com/ben-gy/veilpix",
-      "tags": ["encryption-privacy", "steganography", "web-crypto", "image", "privacy"],
+      "tags": [
+        "encryption-privacy",
+        "steganography",
+        "web-crypto",
+        "image",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-06-24"
     },
@@ -87,7 +135,13 @@
       "description": "Lock any file with a password in your browser using AES-256. Nothing is uploaded; works offline.",
       "url": "https://sealbox.benrichardson.dev",
       "repo": "https://github.com/ben-gy/sealbox",
-      "tags": ["encryption-privacy", "encryption", "web-crypto", "files", "privacy"],
+      "tags": [
+        "encryption-privacy",
+        "encryption",
+        "web-crypto",
+        "files",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-06-23"
     },
@@ -97,7 +151,13 @@
       "description": "Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.",
       "url": "https://metascrub.benrichardson.dev",
       "repo": "https://github.com/ben-gy/metascrub",
-      "tags": ["encryption-privacy", "exif", "metadata", "image", "privacy"],
+      "tags": [
+        "encryption-privacy",
+        "exif",
+        "metadata",
+        "image",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-06-22"
     },
@@ -107,7 +167,13 @@
       "description": "Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.",
       "url": "https://bgwipe.benrichardson.dev",
       "repo": "https://github.com/ben-gy/bgwipe",
-      "tags": ["image-tools", "background-removal", "machine-learning", "webgpu", "privacy"],
+      "tags": [
+        "image-tools",
+        "background-removal",
+        "machine-learning",
+        "webgpu",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-06-21"
     },
@@ -117,7 +183,13 @@
       "description": "Compress PDFs in your browser using MozJPEG WASM. No uploads, no accounts, no server.",
       "url": "https://pdf-crush.benrichardson.dev",
       "repo": "https://github.com/ben-gy/pdf-crush",
-      "tags": ["document-tools", "pdf", "compression", "wasm", "privacy"],
+      "tags": [
+        "document-tools",
+        "pdf",
+        "compression",
+        "wasm",
+        "privacy"
+      ],
       "type": "tool",
       "date": "2026-04-21"
     },
@@ -127,9 +199,30 @@
       "description": "End-to-end encrypted peer-to-peer file sharing in the browser.",
       "url": "https://dropwell.benrichardson.dev",
       "repo": "https://github.com/ben-gy/dropwell",
-      "tags": ["utility", "encryption", "p2p", "file-sharing"],
+      "tags": [
+        "utility",
+        "encryption",
+        "p2p",
+        "file-sharing"
+      ],
       "type": "tool",
       "date": "2026-04-12"
+    },
+    {
+      "name": "QRForge",
+      "slug": "qrforge",
+      "description": "Generate tracking-free QR codes and scan them, entirely in your browser.",
+      "url": "https://qrforge.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/qrforge",
+      "tags": [
+        "developer-utilities",
+        "qr",
+        "barcodedetector",
+        "generator",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-12"
     }
   ]
 }
