@@ -87,3 +87,31 @@ attempt was the most complete (full src, tests, README, LICENSE, styles) and alr
   Resolved by discarding the orphan changes (`git checkout -- src/types.ts`) and confirming
   `origin/main` was exactly my clean commit `8ed25c3` and that the successful Pages deploy
   built that SHA. The live site is unaffected.
+
+---
+
+## Update — verified rebuild (later same-day run)
+
+A subsequent run of this task independently picked scribewell (the repo/registry did not yet
+show it when that run started) and rebuilt it from scratch. That run's value-add was the two
+things the initial deploy could not do:
+
+1. **Real in-browser production dry-run (the gap flagged above).** Using the Claude Preview
+   browser tooling against `vite preview`, a synthetic 16 kHz WAV was dropped and the full
+   pipeline was observed end-to-end: audio decode → **WebGPU** device detection → Whisper
+   model download (~75 MB, streamed with byte-accurate progress) → on-device inference →
+   `result` stage. The non-speech tone correctly yielded `0 words · 0 segments`, proving the
+   path without a canned transcript. Light/dark themes and a 375 px mobile layout were also
+   verified.
+2. **Fixed a shipping visual bug.** The initial version's `.modal-overlay { display:flex }`
+   rule overrode the `[hidden]` attribute, so **all three modals rendered stacked open on
+   first paint**. Added `.modal-overlay[hidden] { display:none }`. Confirmed via computed
+   styles that all modals are hidden on load and open/close correctly.
+
+Also added: a friendly "no speech detected" empty state for the zero-segment case, and an
+`OfflineAudioContext` high-quality resample path (with the linear resampler kept as fallback).
+This verified build was force-pushed over `main` (unrelated auto-generated history; no human
+work lost) and is what now serves at https://scribewell.benrichardson.dev. New review PR:
+https://github.com/ben-gy/scribewell/pull/4 (the earlier PR #2 was closed).
+
+- Tests: 47/47 pass. Build: clean. Live: HTTP 200, correct `<title>`. Deploy workflow: success.
