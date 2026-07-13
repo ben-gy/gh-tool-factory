@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-07-13",
+  "last_updated": "2026-07-14",
   "tools": [
+    {
+      "name": "Pixpress",
+      "slug": "pixpress",
+      "icon": "image-minus",
+      "category": "images",
+      "description": "Compress and convert images to WebP, JPEG, AVIF or PNG entirely in your browser, with a before/after compare slider. Nothing is uploaded; works offline.",
+      "url": "https://pixpress.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/pixpress",
+      "tags": [
+        "image-tools",
+        "compress",
+        "convert",
+        "webp",
+        "avif",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-14"
+    },
     {
       "name": "Textlift",
       "slug": "textlift",

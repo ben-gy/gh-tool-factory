@@ -1,5 +1,12 @@
 === Tools ===
 
+Pixpress
+  https://pixpress.benrichardson.dev
+  Compress and convert images to WebP, JPEG, AVIF or PNG entirely in your browser, with a before/after compare slider. Nothing is uploaded; works offline.
+  Tags: image-tools, compress, convert, webp, avif, privacy
+  Repo: https://github.com/ben-gy/pixpress
+  Date: 2026-07-14
+
 Textlift
   https://textlift.benrichardson.dev
   Extract text from images, screenshots and scanned PDFs entirely in your browser — plain text or searchable PDF out. Nothing is uploaded; English works offline.
