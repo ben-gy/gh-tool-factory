@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-07-14",
+  "last_updated": "2026-07-15",
   "tools": [
+    {
+      "name": "Screenwell",
+      "slug": "screenwell",
+      "icon": "monitor-dot",
+      "category": "media",
+      "description": "Record your screen — with mic, system audio and an optional webcam bubble — entirely in your browser. Nothing is uploaded; works offline.",
+      "url": "https://screenwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/screenwell",
+      "tags": [
+        "media",
+        "screen-recorder",
+        "webcam",
+        "mediarecorder",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-15"
+    },
     {
       "name": "Pixpress",
       "slug": "pixpress",

@@ -1,5 +1,12 @@
 === Tools ===
 
+Screenwell
+  https://screenwell.benrichardson.dev
+  Record your screen — with mic, system audio and an optional webcam bubble — entirely in your browser. Nothing is uploaded; works offline.
+  Tags: media, screen-recorder, webcam, mediarecorder, privacy
+  Repo: https://github.com/ben-gy/screenwell
+  Date: 2026-07-15
+
 Pixpress
   https://pixpress.benrichardson.dev
   Compress and convert images to WebP, JPEG, AVIF or PNG entirely in your browser, with a before/after compare slider. Nothing is uploaded; works offline.

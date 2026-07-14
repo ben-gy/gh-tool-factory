@@ -1,7 +1,27 @@
 {
   "version": 1,
-  "last_updated": "2026-07-14",
+  "last_updated": "2026-07-15",
   "tools": [
+    {
+      "name": "screenwell",
+      "repo": "ben-gy/screenwell",
+      "date": "2026-07-15",
+      "description": "Record your screen — with mic, system audio and an optional webcam bubble — entirely in your browser. MediaRecorder encodes locally; nothing is uploaded. Works offline.",
+      "category": "media-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "Screen Capture API (getDisplayMedia)",
+        "MediaRecorder + isTypeSupported",
+        "Web Audio API (MediaStreamAudioDestinationNode mixing)",
+        "getUserMedia (mic + webcam)",
+        "Canvas 2D + captureStream (webcam compositor)",
+        "Web Share API (files)",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://screenwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/screenwell/pull/1"
+    },
     {
       "name": "pixpress",
       "repo": "ben-gy/pixpress",
