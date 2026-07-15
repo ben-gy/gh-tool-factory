@@ -217,7 +217,7 @@
         "Service Worker (PWA)"
       ],
       "status": "deployed",
-      "url": "https://veilpix.benrichardson.dev",
+      "url": "https://veilpix-app.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/veilpix/pull/3"
     },
     {
@@ -259,7 +259,7 @@
         "Service Worker (PWA)"
       ],
       "status": "deployed",
-      "url": "https://metascrub.benrichardson.dev",
+      "url": "https://metascrub-app.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/metascrub/pull/3"
     },
     {
@@ -280,7 +280,7 @@
         "Clipboard API"
       ],
       "status": "deployed",
-      "url": "https://bgwipe.benrichardson.dev",
+      "url": "https://bgwipe-app.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/bgwipe/pull/3"
     },
     {

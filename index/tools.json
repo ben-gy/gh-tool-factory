@@ -206,7 +206,7 @@
       "icon": "eye-off",
       "category": "privacy",
       "description": "Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.",
-      "url": "https://veilpix.benrichardson.dev",
+      "url": "https://veilpix-app.benrichardson.dev",
       "repo": "https://github.com/ben-gy/veilpix",
       "tags": [
         "encryption-privacy",
@@ -242,7 +242,7 @@
       "icon": "eraser",
       "category": "privacy",
       "description": "Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.",
-      "url": "https://metascrub.benrichardson.dev",
+      "url": "https://metascrub-app.benrichardson.dev",
       "repo": "https://github.com/ben-gy/metascrub",
       "tags": [
         "encryption-privacy",
@@ -260,7 +260,7 @@
       "icon": "wand-sparkles",
       "category": "images",
       "description": "Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.",
-      "url": "https://bgwipe.benrichardson.dev",
+      "url": "https://bgwipe-app.benrichardson.dev",
       "repo": "https://github.com/ben-gy/bgwipe",
       "tags": [
         "image-tools",
