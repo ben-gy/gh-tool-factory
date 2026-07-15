@@ -2,6 +2,24 @@
   "last_updated": "2026-07-15",
   "tools": [
     {
+      "name": "Provenova",
+      "slug": "provenova",
+      "icon": "atom",
+      "category": "developer",
+      "description": "The vendor-neutral system of record for quantum computing — capture, reproduce, benchmark, and attest quantum runs across any QPU or vendor.",
+      "url": "https://provenova.net",
+      "repo": "https://github.com/ben-gy/provenova",
+      "tags": [
+        "quantum",
+        "sdk",
+        "cli",
+        "reproducibility",
+        "compliance"
+      ],
+      "type": "tool",
+      "date": "2026-07-15"
+    },
+    {
       "name": "Screenwell",
       "slug": "screenwell",
       "icon": "monitor-dot",

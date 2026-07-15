@@ -1,5 +1,12 @@
 === Tools ===
 
+Provenova
+  https://provenova.net
+  The vendor-neutral system of record for quantum computing — capture, reproduce, benchmark, and attest quantum runs across any QPU or vendor.
+  Tags: quantum, sdk, cli, reproducibility, compliance
+  Repo: https://github.com/ben-gy/provenova
+  Date: 2026-07-15
+
 Screenwell
   https://screenwell.benrichardson.dev
   Record your screen — with mic, system audio and an optional webcam bubble — entirely in your browser. Nothing is uploaded; works offline.

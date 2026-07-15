@@ -3,6 +3,16 @@
   "last_updated": "2026-07-15",
   "tools": [
     {
+      "name": "provenova",
+      "repo": "ben-gy/provenova",
+      "date": "2026-07-15",
+      "description": "The vendor-neutral system of record for quantum computing — capture, reproduce, benchmark, and attest quantum runs across any QPU or vendor.",
+      "category": "developer-tools",
+      "stack": "python + fastapi",
+      "status": "deployed",
+      "url": "https://provenova.net"
+    },
+    {
       "name": "screenwell",
       "repo": "ben-gy/screenwell",
       "date": "2026-07-15",
