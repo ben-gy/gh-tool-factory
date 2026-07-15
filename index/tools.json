@@ -5,7 +5,7 @@
       "name": "Provenova",
       "slug": "provenova",
       "icon": "circuit-board",
-      "category": "data-explorers",
+      "category": "science",
       "description": "The vendor-neutral system of record for quantum computing — capture, reproduce, benchmark, and attest quantum runs across any QPU or vendor.",
       "url": "https://provenova.net",
       "repo": "https://github.com/ben-gy/provenova",

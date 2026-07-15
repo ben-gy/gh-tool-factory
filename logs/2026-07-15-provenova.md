@@ -8,7 +8,7 @@ Not a gh-tool-factory build. Provenova is Ben's existing project (repo `ben-gy/q
 ## Entry
 - Name: Provenova
 - Slug: provenova
-- Category: data-explorers
+- Category: science
 - Icon: circuit-board
 - URL: https://provenova.net
 - Repo: https://github.com/ben-gy/provenova
