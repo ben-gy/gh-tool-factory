@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-07-15",
+  "last_updated": "2026-07-16",
   "tools": [
+    {
+      "name": "Clipwell",
+      "slug": "clipwell",
+      "icon": "scissors",
+      "category": "media",
+      "description": "Trim audio into clips and ringtones in your browser — drag across the waveform, fade, normalise, export MP3 or WAV. Nothing is uploaded.",
+      "url": "https://clipwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/clipwell",
+      "tags": [
+        "media",
+        "audio",
+        "ringtone",
+        "mp3",
+        "trim"
+      ],
+      "type": "tool",
+      "date": "2026-07-16"
+    },
     {
       "name": "Provenova",
       "slug": "provenova",

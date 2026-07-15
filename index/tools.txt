@@ -1,5 +1,11 @@
 === Tools ===
 
+Clipwell
+  https://clipwell.benrichardson.dev
+  Trim audio into clips and ringtones in your browser — drag across the waveform, fade, normalise, export MP3 or WAV. Nothing is uploaded.
+  Tags: media, audio, ringtone, mp3, trim
+  Repo: https://github.com/ben-gy/clipwell
+
 Provenova
   https://provenova.net
   The vendor-neutral system of record for quantum computing — capture, reproduce, benchmark, and attest quantum runs across any QPU or vendor.
