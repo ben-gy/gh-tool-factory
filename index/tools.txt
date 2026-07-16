@@ -1,5 +1,9 @@
 === Tools ===
 
+Verisum
+  https://verisum.benrichardson.dev
+  Compute and verify file checksums (SHA-256, SHA-512, MD5, BLAKE3…) in your browser and match a file against a published checksum — nothing is uploaded.
+
 Clipwell
   https://clipwell.benrichardson.dev
   Trim audio into clips and ringtones in your browser — drag across the waveform, fade, normalise, export MP3 or WAV. Nothing is uploaded.

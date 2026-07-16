@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-07-16",
+  "last_updated": "2026-07-17",
   "tools": [
+    {
+      "name": "Verisum",
+      "slug": "verisum",
+      "icon": "shield-check",
+      "category": "privacy",
+      "description": "Compute and verify file checksums (SHA-256, SHA-512, MD5, BLAKE3…) in your browser and match a file against a published checksum — nothing is uploaded.",
+      "url": "https://verisum.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/verisum",
+      "tags": [
+        "privacy",
+        "checksum",
+        "sha256",
+        "hash",
+        "verify"
+      ],
+      "type": "tool",
+      "date": "2026-07-17"
+    },
     {
       "name": "Clipwell",
       "slug": "clipwell",
