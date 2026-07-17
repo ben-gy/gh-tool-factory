@@ -1,5 +1,11 @@
 === Tools ===
 
+Vidwell
+  https://vidwell.benrichardson.dev
+  Compress and trim video in your browser — shrink a big MP4 or MOV, cap the resolution, cut a clip, export a smaller MP4 with WebCodecs. Nothing is uploaded.
+  Tags: media, video, compress, trim, mp4
+  Repo: https://github.com/ben-gy/vidwell
+
 Verisum
   https://verisum.benrichardson.dev
   Compute and verify file checksums (SHA-256, SHA-512, MD5, BLAKE3…) in your browser and match a file against a published checksum — nothing is uploaded.

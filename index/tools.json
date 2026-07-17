@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-07-17",
+  "last_updated": "2026-07-18",
   "tools": [
+    {
+      "name": "Vidwell",
+      "slug": "vidwell",
+      "icon": "film",
+      "category": "media",
+      "description": "Compress and trim video in your browser — shrink a big MP4 or MOV, cap the resolution, cut a clip, export a smaller MP4 with WebCodecs. Nothing is uploaded.",
+      "url": "https://vidwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/vidwell",
+      "tags": [
+        "media",
+        "video",
+        "compress",
+        "trim",
+        "mp4"
+      ],
+      "type": "tool",
+      "date": "2026-07-18"
+    },
     {
       "name": "Verisum",
       "slug": "verisum",
