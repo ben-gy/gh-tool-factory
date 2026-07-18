@@ -3,6 +3,29 @@
   "last_updated": "2026-07-18",
   "tools": [
     {
+      "name": "blurwell",
+      "repo": "ben-gy/blurwell",
+      "date": "2026-07-18",
+      "description": "Blur faces in photos and video in your browser — automatic on-device face detection plus manual boxes for plates and badges, with the blur burned into the exported pixels. Nothing is uploaded; works offline.",
+      "category": "encryption-privacy",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "@mediapipe/tasks-vision (BlazeFace FaceDetector, WASM — model + runtime vendored same-origin)",
+        "WebCodecs (VideoDecoder / VideoEncoder via mediabunny)",
+        "mediabunny (CanvasSink → CanvasSource, EncodedPacketSink → EncodedAudioPacketSource)",
+        "OffscreenCanvas + Canvas 2D (filter: blur, block-average pixelation)",
+        "Web Workers (classic — MediaPipe needs importScripts)",
+        "createImageBitmap",
+        "Pointer Events (drag-to-add redaction boxes)",
+        "Web Share API",
+        "Clipboard API (ClipboardItem)",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://blurwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/blurwell/pull/1"
+    },
+    {
       "name": "vidwell",
       "repo": "ben-gy/vidwell",
       "date": "2026-07-18",

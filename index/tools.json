@@ -2,6 +2,24 @@
   "last_updated": "2026-07-18",
   "tools": [
     {
+      "name": "Blurwell",
+      "slug": "blurwell",
+      "icon": "scan-line",
+      "category": "privacy",
+      "description": "Blur faces in photos and video in your browser — faces found automatically, plus your own boxes for plates and badges. Nothing is uploaded; works offline.",
+      "url": "https://blurwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/blurwell",
+      "tags": [
+        "privacy",
+        "face-blur",
+        "anonymise",
+        "video",
+        "redaction"
+      ],
+      "type": "tool",
+      "date": "2026-07-18"
+    },
+    {
       "name": "Vidwell",
       "slug": "vidwell",
       "icon": "film",
