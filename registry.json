@@ -1,7 +1,31 @@
 {
   "version": 1,
-  "last_updated": "2026-07-18",
+  "last_updated": "2026-07-19",
   "tools": [
+    {
+      "name": "papershot",
+      "repo": "ben-gy/papershot",
+      "date": "2026-07-19",
+      "description": "Turn a phone photo of a document into a flat, readable PDF scan — corners found automatically, perspective flattened, shadows removed. Nothing is uploaded; works offline.",
+      "category": "document-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "getUserMedia (rear camera) + torch track constraint",
+        "First-party computer vision (Scharr gradient, convex hull, max-area quad, 4-point homography, bilinear inverse warp, integral-image adaptive threshold) — no OpenCV",
+        "Web Workers (whole CV pipeline; raw RGBA in and out)",
+        "Transferable ArrayBuffer",
+        "createImageBitmap + Canvas 2D",
+        "Pointer Events (draggable corner handles)",
+        "pdf-lib (multi-page PDF assembly)",
+        "File System Access API (Save as…)",
+        "Web Share API",
+        "Clipboard API (ClipboardItem)",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://papershot.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/papershot/pull/1"
+    },
     {
       "name": "blurwell",
       "repo": "ben-gy/blurwell",

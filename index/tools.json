@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-07-18",
+  "last_updated": "2026-07-19",
   "tools": [
+    {
+      "name": "Papershot",
+      "slug": "papershot",
+      "icon": "scan-text",
+      "category": "documents",
+      "description": "Turn a phone photo of a document into a flat, readable PDF scan — corners found automatically, shadows lifted. Nothing is uploaded; works offline.",
+      "url": "https://papershot.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/papershot",
+      "tags": [
+        "documents",
+        "scanner",
+        "pdf",
+        "camera",
+        "perspective"
+      ],
+      "type": "tool",
+      "date": "2026-07-19"
+    },
     {
       "name": "Blurwell",
       "slug": "blurwell",

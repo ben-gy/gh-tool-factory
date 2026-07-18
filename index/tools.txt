@@ -1,5 +1,11 @@
 === Tools ===
 
+Papershot
+  https://papershot.benrichardson.dev
+  Turn a phone photo of a document into a flat, readable PDF scan — corners found automatically, perspective flattened, shadows lifted. Nothing is uploaded; works offline.
+  Tags: documents, scanner, pdf, camera, perspective
+  Repo: https://github.com/ben-gy/papershot
+
 Blurwell
   https://blurwell.benrichardson.dev
   Blur faces in photos and video in your browser — faces found automatically, plus your own boxes for plates and badges. Nothing is uploaded; works offline.
