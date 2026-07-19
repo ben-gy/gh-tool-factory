@@ -1,5 +1,11 @@
 === Tools ===
 
+Gridwell
+  https://gridwell.benrichardson.dev
+  Open, query and convert CSV files too big for Excel — millions of rows, filtered and exported in seconds. Nothing is uploaded; works offline.
+  Tags: data-explorers, csv, sql, parquet, duckdb
+  Repo: https://github.com/ben-gy/gridwell
+
 Papershot
   https://papershot.benrichardson.dev
   Turn a phone photo of a document into a flat, readable PDF scan — corners found automatically, perspective flattened, shadows lifted. Nothing is uploaded; works offline.

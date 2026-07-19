@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-07-19",
+  "last_updated": "2026-07-20",
   "tools": [
+    {
+      "name": "Gridwell",
+      "slug": "gridwell",
+      "icon": "table",
+      "category": "data-explorers",
+      "description": "Open, query and convert CSV files too big for Excel — millions of rows, filtered and exported in seconds. Nothing is uploaded; works offline.",
+      "url": "https://gridwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/gridwell",
+      "tags": [
+        "data-explorers",
+        "csv",
+        "sql",
+        "parquet",
+        "duckdb"
+      ],
+      "type": "tool",
+      "date": "2026-07-20"
+    },
     {
       "name": "Papershot",
       "slug": "papershot",

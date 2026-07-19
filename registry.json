@@ -1,7 +1,28 @@
 {
   "version": 1,
-  "last_updated": "2026-07-19",
+  "last_updated": "2026-07-20",
   "tools": [
+    {
+      "name": "gridwell",
+      "repo": "ben-gy/gridwell",
+      "date": "2026-07-20",
+      "description": "Open, query and convert huge CSV files in your browser — millions of rows filtered and exported with a real SQL engine (DuckDB) compiled to WebAssembly. Nothing is uploaded; works offline.",
+      "category": "data-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "@duckdb/duckdb-wasm (DuckDB analytical SQL engine, eh build — vendored same-origin, no CDN)",
+        "WebAssembly (exception-handling build; no cross-origin isolation required)",
+        "Web Workers (DuckDB's own worker — all queries off the main thread)",
+        "apache-arrow (columnar zero-copy result sets)",
+        "File API + registerFileHandle (BROWSER_FILEREADER ranged reads — file never buffered into JS memory)",
+        "Clipboard API (copy cell / SQL, paste-to-ingest CSV)",
+        "Web Share API",
+        "Service Worker (PWA; network-first shell, runtime-cached WASM)"
+      ],
+      "status": "deployed",
+      "url": "https://gridwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/gridwell/pull/1"
+    },
     {
       "name": "papershot",
       "repo": "ben-gy/papershot",
