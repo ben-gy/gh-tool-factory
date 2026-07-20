@@ -1,5 +1,11 @@
 === Tools ===
 
+Glyphcut
+  https://glyphcut.benrichardson.dev
+  Shrink a font for the web — keep only the characters your site uses and export WOFF2. Licensed font files are never uploaded; works offline.
+  Tags: files, fonts, woff2, subset, webfont
+  Repo: https://github.com/ben-gy/glyphcut
+
 Gridwell
   https://gridwell.benrichardson.dev
   Open, query and convert CSV files too big for Excel — millions of rows, filtered and exported in seconds. Nothing is uploaded; works offline.

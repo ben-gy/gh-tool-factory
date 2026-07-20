@@ -1,7 +1,31 @@
 {
   "version": 1,
-  "last_updated": "2026-07-20",
+  "last_updated": "2026-07-21",
   "tools": [
+    {
+      "name": "glyphcut",
+      "repo": "ben-gy/glyphcut",
+      "date": "2026-07-21",
+      "description": "Subset fonts and convert them to WOFF2 in your browser with HarfBuzz compiled to WebAssembly — keep only the characters your site uses. Licensed font files are never uploaded; works offline.",
+      "category": "developer-utilities",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebAssembly (HarfBuzz hb-subset — harfbuzz-subset.wasm vendored same-origin, hand-written raw bindings)",
+        "WebAssembly (woff2-encoder — Google WOFF2/Brotli, compress + decompress)",
+        "Web Workers (whole font pipeline; fonts held worker-side for the session)",
+        "Transferable ArrayBuffer",
+        "CSS Font Loading API (FontFace — live specimen rendered from the subsetted output)",
+        "Compression Streams (DecompressionStream 'deflate' — WOFF 1.0 table inflation)",
+        "First-party SFNT table reader (name/OS-2/cmap/head/maxp/fvar)",
+        "File API + Drag and Drop",
+        "Clipboard API",
+        "Web Share API",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://glyphcut.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/glyphcut/pull/1"
+    },
     {
       "name": "gridwell",
       "repo": "ben-gy/gridwell",
