@@ -1,7 +1,31 @@
 {
   "version": 1,
-  "last_updated": "2026-07-21",
+  "last_updated": "2026-07-22",
   "tools": [
+    {
+      "name": "reactwell",
+      "repo": "ben-gy/reactwell",
+      "date": "2026-07-22",
+      "description": "Drop a JSX or TSX file and see the React component render instantly — transpiled in your browser with esbuild (WASM) and mounted in a sandboxed iframe. React is bundled locally; nothing is uploaded; works offline.",
+      "category": "developer-utilities",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "esbuild-wasm (in-browser JSX/TSX transpile + bundle, worker:false inside our worker)",
+        "Web Workers (dedicated esbuild compile worker)",
+        "Import maps + data: URL ES modules (resolve bare specifiers inside the sandbox)",
+        "Sandboxed <iframe srcdoc> (allow-scripts only, opaque origin; error boundary)",
+        "React 18 UMD (vendored same-origin, no CDN — preview runtime works offline)",
+        "postMessage (runtime/compile errors streamed from the frame)",
+        "File System Access API (showOpenFilePicker + poll-to-live-watch a file)",
+        "CodeMirror 6 (@codemirror/lang-javascript JSX+TS)",
+        "Clipboard API + Web Share API (share-by-URL snippet)",
+        "Compression-free base64url hash routing",
+        "Service Worker (PWA; app shell precached, wasm runtime-cached)"
+      ],
+      "status": "deployed",
+      "url": "https://reactwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/reactwell/pull/1"
+    },
     {
       "name": "glyphcut",
       "repo": "ben-gy/glyphcut",

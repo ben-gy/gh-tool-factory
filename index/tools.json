@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-07-21",
+  "last_updated": "2026-07-22",
   "tools": [
+    {
+      "name": "Reactwell",
+      "slug": "reactwell",
+      "icon": "code",
+      "category": "files",
+      "description": "Drop a JSX or TSX file and see the React component render instantly — transpiled in your browser, no setup, nothing uploaded.",
+      "url": "https://reactwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/reactwell",
+      "tags": [
+        "files",
+        "react",
+        "jsx",
+        "tsx",
+        "playground",
+        "esbuild"
+      ],
+      "type": "tool",
+      "date": "2026-07-22"
+    },
     {
       "name": "Glyphcut",
       "slug": "glyphcut",
