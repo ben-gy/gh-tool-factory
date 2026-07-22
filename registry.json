@@ -3,6 +3,31 @@
   "last_updated": "2026-07-22",
   "tools": [
     {
+      "name": "meshprep",
+      "repo": "ben-gy/meshprep",
+      "date": "2026-07-22",
+      "description": "Check a 3D model before you print it — size, volume, holes and non-manifold edges drawn in red on the model itself. Converts STL/OBJ/PLY/3MF. Nothing is uploaded; works offline.",
+      "category": "3d-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebGL2 (first-party renderer, no three.js — flat shading from fragment-shader derivatives, no normal buffer; two-sided lighting so inverted-normal meshes stay visible)",
+        "Web Workers (parse → analyse → export off the main thread)",
+        "Transferable ArrayBuffer",
+        "First-party format parsers (STL binary/ASCII, OBJ, PLY ASCII/binary both endiannesses, 3MF — a worker has no DOMParser)",
+        "fflate (3MF ZIP container, read + write)",
+        "Pointer Events (orbit / pan / pinch-zoom)",
+        "File System Access API (showSaveFilePicker)",
+        "Drag and Drop / File API",
+        "Web Share API (level 2, files)",
+        "Clipboard API",
+        "ResizeObserver",
+        "Service Worker (vite-plugin-pwa)"
+      ],
+      "status": "deployed",
+      "url": "https://meshprep.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/meshprep/pull/1"
+    },
+    {
       "name": "reactwell",
       "repo": "ben-gy/reactwell",
       "date": "2026-07-22",

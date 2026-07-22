@@ -1,5 +1,11 @@
 === Tools ===
 
+Meshprep
+  https://meshprep.benrichardson.dev
+  Check a 3D model before you print it — size, volume, holes and non-manifold edges shown in red on the model. Nothing is uploaded; works offline.
+  Tags: files, 3d-printing, stl, 3mf, mesh, converter
+  Repo: https://github.com/ben-gy/meshprep
+
 Reactwell
   https://reactwell.benrichardson.dev
   Drop a JSX or TSX file and see the React component render instantly — transpiled in your browser, no setup, nothing uploaded.
