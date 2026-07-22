@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-07-22",
+  "last_updated": "2026-07-23",
   "tools": [
+    {
+      "name": "Voxwell",
+      "slug": "voxwell",
+      "icon": "mic",
+      "category": "media",
+      "description": "Change your voice in your browser — pitch, formants and effects, live from your mic or a file, exported as WAV or MP3. Nothing is uploaded.",
+      "url": "https://voxwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/voxwell",
+      "tags": [
+        "media",
+        "voice-changer",
+        "audio",
+        "microphone",
+        "pitch-shift",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-23"
+    },
     {
       "name": "Meshprep",
       "slug": "meshprep",

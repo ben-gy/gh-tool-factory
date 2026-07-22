@@ -19,5 +19,3 @@ The north-star is **[Dropwell](examples/dropwell/)** — end-to-end encrypted pe
 
 ## Ideas
 
-- Voice modulator — record from the microphone (or drop in an audio file) and pitch/formant-shift it in real time with Web Audio: chipmunk, deep, robot/ring-mod, radio, monster, plus a dry/wet mix and a live preview you can hear while you talk. Export a `.wav` (and a shareable clip via Web Share) so you leave with something. All processing local via an `AudioWorklet` — nothing recorded unless you press record, nothing uploaded, ever, and the mic track is stopped the moment you leave the page. Fallback for a denied mic: drop in a file and process that. Googleable: "voice changer online", "change my voice free", "make my voice deeper".
-

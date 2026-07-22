@@ -1,7 +1,35 @@
 {
   "version": 1,
-  "last_updated": "2026-07-22",
+  "last_updated": "2026-07-23",
   "tools": [
+    {
+      "name": "voxwell",
+      "repo": "ben-gy/voxwell",
+      "date": "2026-07-23",
+      "description": "Change your voice in your browser — pitch and formants moved independently by a hand-written phase vocoder, live from the microphone or from a file, exported as WAV or MP3. Nothing is uploaded.",
+      "category": "media-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "AudioWorklet (first-party phase vocoder: 1024-pt Hann STFT at 4× overlap, per-bin true-frequency estimation, spectral-envelope formant warp — no library)",
+        "AudioWorklet (second processor capturing raw Float32 PCM)",
+        "First-party radix-2 FFT (the worklet must be a single import-free ES module)",
+        "getUserMedia (mono, echoCancellation/noiseSuppression/AGC off; permission requested inside a tap)",
+        "OfflineAudioContext (file rendered through the identical graph, latency-trimmed)",
+        "GainNode with audio-rate gain (true ring modulation, not tremolo)",
+        "WaveShaperNode (drive + deterministic soft-clip safety limiter)",
+        "BiquadFilterNode (telephone band + presence)",
+        "DelayNode (LFO-modulated vibrato, feedback echo)",
+        "AnalyserNode + Canvas 2D (scope + level meter, setInterval-driven so a hidden tab can't stall it)",
+        "MediaStreamTrack.stop() on stop / pagehide / visibilitychange",
+        "Web Workers (WAV / MP3 encoding)",
+        "@breezystack/lamejs (local MP3)",
+        "Web Share API (level 2, files)",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://voxwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/voxwell/pull/1"
+    },
     {
       "name": "meshprep",
       "repo": "ben-gy/meshprep",

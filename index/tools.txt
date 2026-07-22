@@ -1,5 +1,11 @@
 === Tools ===
 
+Voxwell
+  https://voxwell.benrichardson.dev
+  Change your voice in your browser — pitch, formants and effects, live from your mic or a file, exported as WAV or MP3. Nothing is uploaded.
+  Tags: media, voice-changer, audio, microphone, pitch-shift, privacy
+  Repo: https://github.com/ben-gy/voxwell
+
 Meshprep
   https://meshprep.benrichardson.dev
   Check a 3D model before you print it — size, volume, holes and non-manifold edges shown in red on the model. Nothing is uploaded; works offline.
