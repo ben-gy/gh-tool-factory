@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-07-23",
+  "last_updated": "2026-07-24",
   "tools": [
+    {
+      "name": "Shakewell",
+      "slug": "shakewell",
+      "icon": "activity",
+      "category": "live-dashboards",
+      "description": "Measure vibration frequency with your phone — turn the accelerometer into a seismograph, spectrum analyser and RPM meter. Nothing is uploaded.",
+      "url": "https://shakewell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/shakewell",
+      "tags": [
+        "live-dashboards",
+        "vibration",
+        "accelerometer",
+        "seismograph",
+        "rpm",
+        "sensor",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-24"
+    },
     {
       "name": "Voxwell",
       "slug": "voxwell",

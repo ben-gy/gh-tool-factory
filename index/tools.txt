@@ -1,5 +1,11 @@
 === Tools ===
 
+Shakewell
+  https://shakewell.benrichardson.dev
+  Measure vibration frequency with your phone — turn the accelerometer into a seismograph, spectrum analyser and RPM meter. Nothing is uploaded.
+  Tags: live-dashboards, vibration, accelerometer, seismograph, rpm, sensor, privacy
+  Repo: https://github.com/ben-gy/shakewell
+
 Voxwell
   https://voxwell.benrichardson.dev
   Change your voice in your browser — pitch, formants and effects, live from your mic or a file, exported as WAV or MP3. Nothing is uploaded.

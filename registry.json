@@ -1,7 +1,34 @@
 {
   "version": 1,
-  "last_updated": "2026-07-23",
+  "last_updated": "2026-07-24",
   "tools": [
+    {
+      "name": "shakewell",
+      "repo": "ben-gy/shakewell",
+      "date": "2026-07-24",
+      "description": "Measure vibration frequency with your phone — turn the accelerometer into a live seismograph, spectrum analyser and RPM meter. Diagnose a wobbly washing machine, fan or motor; leave with a frequency, a spectrum PNG and a CSV. Nothing is uploaded.",
+      "category": "sensor-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "DeviceMotion API (accelerometer stream — the input)",
+        "DeviceMotionEvent.requestPermission() (iOS 13+, requested inside a tap, feature-detected)",
+        "First-party radix-2 Cooley–Tukey FFT + Hann window + linear resampler (no runtime library)",
+        "Per-axis detrend + summed power spectra (avoids the |a| frequency-doubling artefact)",
+        "Parabolic sub-bin peak interpolation + integer-harmonic detection",
+        "Web Workers (large-CSV parse + full-recording FFT off the main thread)",
+        "Transferable ArrayBuffer (Float32 spectrum arrays)",
+        "Canvas 2D (live seismograph, live spectrum, off-screen 1200×675 PNG card)",
+        "setInterval render loop (a hidden tab throttles rAF to a halt)",
+        "File API + Blob + URL.createObjectURL (CSV in, CSV + PNG out)",
+        "Clipboard API (ClipboardItem image + text summary)",
+        "Web Share API (level 2, files)",
+        "localStorage (preferences only)",
+        "Service Worker (PWA)"
+      ],
+      "status": "deployed",
+      "url": "https://shakewell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/shakewell/pull/1"
+    },
     {
       "name": "voxwell",
       "repo": "ben-gy/voxwell",
