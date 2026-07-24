@@ -1,7 +1,33 @@
 {
   "version": 1,
-  "last_updated": "2026-07-24",
+  "last_updated": "2026-07-25",
   "tools": [
+    {
+      "name": "swatchwell",
+      "repo": "ben-gy/swatchwell",
+      "date": "2026-07-25",
+      "description": "Pick colours from your camera or any image, build a palette, and export it as CSS, JSON, PNG, SVG, ASE or GPL. Real-world eyedropping via the rear camera, median-cut extraction from images, and the screen EyeDropper — with perceptual (CIEDE2000) nearest-name matching. Nothing is uploaded.",
+      "category": "color-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "getUserMedia (rear camera — the live sensor input; torch constraint; tracks stopped on teardown/hide/unload)",
+        "EyeDropper API (screen-pixel sampling on desktop, feature-detected)",
+        "Canvas 2D / OffscreenCanvas + getImageData (reticle region sampling + PNG swatch-sheet render)",
+        "createImageBitmap (off-main-thread image decode)",
+        "Web Workers + Transferable ArrayBuffer (first-party median-cut extraction, zero-copy)",
+        "First-party colour science (sRGB→linear→XYZ→Lab, CIEDE2000, HSL) — no runtime colour library",
+        "First-party median-cut quantiser + perceptual de-duplication",
+        "First-party Adobe Swatch Exchange (.ase) binary writer via DataView",
+        "Clipboard API (ClipboardItem image + text)",
+        "Web Share API (level 2, files)",
+        "File System Access API (showSaveFilePicker, with anchor-download fallback)",
+        "localStorage (preferences + last palette, device-only)",
+        "Service Worker (vite-plugin-pwa)"
+      ],
+      "status": "deployed",
+      "url": "https://swatchwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/swatchwell/pull/1"
+    },
     {
       "name": "shakewell",
       "repo": "ben-gy/shakewell",

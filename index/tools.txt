@@ -1,5 +1,11 @@
 === Tools ===
 
+Swatchwell
+  https://swatchwell.benrichardson.dev
+  Pick colours from your camera or any image, build a palette, and export it as CSS, JSON, PNG, SVG, ASE or GPL. Nothing is uploaded.
+  Tags: images, color-picker, palette, eyedropper, camera, design, privacy
+  Repo: https://github.com/ben-gy/swatchwell
+
 Shakewell
   https://shakewell.benrichardson.dev
   Measure vibration frequency with your phone — turn the accelerometer into a seismograph, spectrum analyser and RPM meter. Nothing is uploaded.

@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-07-24",
+  "last_updated": "2026-07-25",
   "tools": [
+    {
+      "name": "Swatchwell",
+      "slug": "swatchwell",
+      "icon": "pipette",
+      "category": "images",
+      "description": "Pick colours from your camera or any image, build a palette, and export it as CSS, JSON, PNG, SVG, ASE or GPL. Nothing is uploaded.",
+      "url": "https://swatchwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/swatchwell",
+      "tags": [
+        "images",
+        "color-picker",
+        "palette",
+        "eyedropper",
+        "camera",
+        "design",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-25"
+    },
     {
       "name": "Shakewell",
       "slug": "shakewell",
