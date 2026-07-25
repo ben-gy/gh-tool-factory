@@ -1,7 +1,32 @@
 {
   "version": 1,
-  "last_updated": "2026-07-25",
+  "last_updated": "2026-07-26",
   "tools": [
+    {
+      "name": "embiggen",
+      "repo": "ben-gy/embiggen",
+      "date": "2026-07-26",
+      "description": "Upscale and enhance small or low-resolution images in your browser with a Swin2SR super-resolution model — 2× or 4×, on WebGPU with a WASM fallback. Nothing is uploaded; the image never leaves the tab, and it works offline after the model downloads once.",
+      "category": "image-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "@huggingface/transformers (Swin2SR image-to-image super-resolution; classical-x2 + realworld-x4 models, lazy-loaded per scale)",
+        "WebGPU (GPU inference) with automatic WASM/ONNX Runtime fallback",
+        "WebAssembly (ONNX Runtime Web, bundled same-origin — no CDN)",
+        "Web Workers + comlink (model + inference off the main thread)",
+        "First-party output-bound planning (pre-scale oversized inputs to keep the result ≤ 4096 px; Swin2SR has no tiling)",
+        "OffscreenCanvas + ImageData (decode via RawImage.fromBlob, encode PNG)",
+        "Pointer Events + clip-path (before/after compare slider, pointer + keyboard)",
+        "File System Access API (showSaveFilePicker, with anchor-download fallback)",
+        "Clipboard API (ClipboardItem image)",
+        "Web Share API (level 2, files)",
+        "localStorage (last-used scale only)",
+        "Service Worker (vite-plugin-pwa; app shell precached, ORT wasm served not precached)"
+      ],
+      "status": "deployed",
+      "url": "https://embiggen.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/embiggen/pull/1"
+    },
     {
       "name": "swatchwell",
       "repo": "ben-gy/swatchwell",

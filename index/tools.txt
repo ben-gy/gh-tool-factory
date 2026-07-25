@@ -1,5 +1,11 @@
 === Tools ===
 
+Embiggen
+  https://embiggen.benrichardson.dev
+  Upscale and enhance small or low-resolution images with an AI super-resolution model that runs entirely in your browser — 2× or 4×. Nothing is uploaded.
+  Tags: images, upscale, super-resolution, enhance, ai, webgpu, privacy
+  Repo: https://github.com/ben-gy/embiggen
+
 Swatchwell
   https://swatchwell.benrichardson.dev
   Pick colours from your camera or any image, build a palette, and export it as CSS, JSON, PNG, SVG, ASE or GPL. Nothing is uploaded.

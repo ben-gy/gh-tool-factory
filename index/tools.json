@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-07-25",
+  "last_updated": "2026-07-26",
   "tools": [
+    {
+      "name": "Embiggen",
+      "slug": "embiggen",
+      "icon": "expand",
+      "category": "images",
+      "description": "Upscale and enhance small or low-resolution images with an AI super-resolution model that runs entirely in your browser — 2× or 4×. Nothing is uploaded.",
+      "url": "https://embiggen.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/embiggen",
+      "tags": [
+        "images",
+        "upscale",
+        "super-resolution",
+        "enhance",
+        "ai",
+        "webgpu",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-26"
+    },
     {
       "name": "Swatchwell",
       "slug": "swatchwell",
