@@ -1,5 +1,11 @@
 === Tools ===
 
+Tunewell
+  https://tunewell.benrichardson.dev
+  A chromatic instrument tuner — tune guitar, bass, ukulele or violin by microphone or by ear, with a downloadable reference-tone pitch pipe. Nothing is uploaded.
+  Tags: media, tuner, guitar-tuner, chromatic, microphone, pitch-detection, music
+  Repo: https://github.com/ben-gy/tunewell
+
 Wavewell
   https://wavewell.benrichardson.dev
   Turn a podcast clip, voice memo or song into a shareable waveform video — animated bars, mirror or sweeping waveform, a caption, and portrait/square/landscape output. Encoded on-device with WebCodecs; nothing is uploaded.

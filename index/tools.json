@@ -2,6 +2,26 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "Tunewell",
+      "slug": "tunewell",
+      "icon": "music",
+      "category": "media",
+      "description": "A chromatic instrument tuner — tune guitar, bass, ukulele or violin by microphone or by ear, with a downloadable reference-tone pitch pipe. Nothing is uploaded.",
+      "url": "https://tunewell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/tunewell",
+      "tags": [
+        "media",
+        "tuner",
+        "guitar-tuner",
+        "chromatic",
+        "microphone",
+        "pitch-detection",
+        "music"
+      ],
+      "type": "tool",
+      "date": "2026-07-28"
+    },
+    {
       "name": "Wavewell",
       "slug": "wavewell",
       "icon": "audio-waveform",

@@ -3,6 +3,35 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "tunewell",
+      "repo": "ben-gy/tunewell",
+      "date": "2026-07-28",
+      "description": "A chromatic instrument tuner in your browser — tune guitar, bass, ukulele or violin by microphone or by ear, with a downloadable reference-tone pitch pipe (WAV). Live cents dial with per-string in-tune lights, first-party McLeod (MPM) pitch detection, selectable reference A (415–444 Hz), and a pitch-over-time report from an uploaded recording. Nothing is uploaded; works offline.",
+      "category": "sensor-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "getUserMedia (live microphone — the sensor input; echo-cancellation/noise-suppression/AGC off so the detector sees the true waveform; never connected to destination, so no earpiece-routing/feedback; tracks stopped on teardown/pagehide)",
+        "First-party pitch detection — McLeod's Pitch Method (MPM): NSDF with the autocorrelation term via a hand-written radix-2 FFT, running sum-of-squares normalisation, key-maxima picking (octave-error resistant) and parabolic sub-sample interpolation. No runtime library.",
+        "First-party note maths (frequency↔MIDI↔cents, selectable reference A 415–444 Hz, sharp/flat naming) and per-string nearest-match by cents distance",
+        "Web Audio AnalyserNode (getFloatTimeDomainData tap on the live stream)",
+        "Web Audio OscillatorNode + GainNode (live reference-tone playback — the pitch pipe)",
+        "OfflineAudioContext.decodeAudioData (uploaded-recording / mic-denied fallback path)",
+        "First-party 16-bit PCM WAV encoder + reference-tone synthesiser (fundamental + harmonics, raised-cosine fades) — renders the downloadable pitch-pipe WAV artefact",
+        "Web Workers (frame-by-frame pitch trace of a whole uploaded recording off the main thread)",
+        "Transferable ArrayBuffer (decoded PCM to the worker)",
+        "Canvas 2D (live −50…+50 cents dial with in-tune band + needle; 1200×675 pitch-over-time report card)",
+        "setInterval tuner loop at ~20 Hz (a hidden tab throttles rAF to a halt)",
+        "File System Access API (showSaveFilePicker for the WAV/PNG/CSV, with anchor-download fallback)",
+        "Clipboard API (summary text + ClipboardItem report image)",
+        "Web Share API (level 2, files)",
+        "localStorage (instrument / reference-A / accidental only)",
+        "Service Worker (vite-plugin-pwa; app shell + sample precached)"
+      ],
+      "status": "deployed",
+      "url": "https://tunewell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/tunewell/pull/1"
+    },
+    {
       "name": "wavewell",
       "repo": "ben-gy/wavewell",
       "date": "2026-07-28",
