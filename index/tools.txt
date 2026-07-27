@@ -1,5 +1,11 @@
 === Tools ===
 
+Vectorwell
+  https://vectorwell.benrichardson.dev
+  Turn a PNG, JPG or photo into a clean, scalable SVG — colour or black & white tracing, tuned live. Nothing is uploaded.
+  Tags: images, svg, vectorize, trace, png-to-svg, potrace, privacy
+  Repo: https://github.com/ben-gy/vectorwell
+
 Embiggen
   https://embiggen.benrichardson.dev
   Upscale and enhance small or low-resolution images with an AI super-resolution model that runs entirely in your browser — 2× or 4×. Nothing is uploaded.

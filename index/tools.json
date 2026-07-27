@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-07-26",
+  "last_updated": "2026-07-27",
   "tools": [
+    {
+      "name": "Vectorwell",
+      "slug": "vectorwell",
+      "icon": "spline",
+      "category": "images",
+      "description": "Turn a PNG, JPG or photo into a clean, scalable SVG — colour or black & white tracing, tuned live. Nothing is uploaded.",
+      "url": "https://vectorwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/vectorwell",
+      "tags": [
+        "images",
+        "svg",
+        "vectorize",
+        "trace",
+        "png-to-svg",
+        "potrace",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-27"
+    },
     {
       "name": "Embiggen",
       "slug": "embiggen",

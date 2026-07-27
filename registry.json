@@ -1,7 +1,31 @@
 {
   "version": 1,
-  "last_updated": "2026-07-26",
+  "last_updated": "2026-07-27",
   "tools": [
+    {
+      "name": "vectorwell",
+      "repo": "ben-gy/vectorwell",
+      "date": "2026-07-27",
+      "description": "Turn a PNG, JPG or photo into a clean, scalable SVG in your browser — colour (posterised) or black & white line-art tracing with Potrace compiled to WebAssembly, tuned live with a before/after slider. Nothing is uploaded; works offline.",
+      "category": "image-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "esm-potrace-wasm (Potrace raster→vector tracing, WASM — colour posterised + black & white; wasm inlined into the worker bundle, served same-origin, offline)",
+        "Web Workers (decode + down-scale + trace off the main thread; job-id multiplexing so a newer trace supersedes an in-flight one)",
+        "createImageBitmap + OffscreenCanvas (worker-side decode and pre-scale to the chosen trace resolution)",
+        "Canvas 2D (source + SVG render for the compare slider; PNG rasterisation of the SVG for clipboard)",
+        "Pointer Events + clip-path (before/after raster-vs-vector compare slider)",
+        "First-party SVG tidy (viewBox/namespace normalise, coordinate rounding + DTD strip without touching fill colours)",
+        "File System Access API (showSaveFilePicker, with anchor-download fallback)",
+        "Clipboard API (SVG markup + ClipboardItem PNG)",
+        "Web Share API (level 2, files)",
+        "localStorage (preset + advanced settings only, device-only)",
+        "Service Worker (vite-plugin-pwa; app shell + worker/wasm precached)"
+      ],
+      "status": "deployed",
+      "url": "https://vectorwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/vectorwell/pull/1"
+    },
     {
       "name": "embiggen",
       "repo": "ben-gy/embiggen",
