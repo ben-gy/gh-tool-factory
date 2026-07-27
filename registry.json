@@ -1,7 +1,31 @@
 {
   "version": 1,
-  "last_updated": "2026-07-27",
+  "last_updated": "2026-07-28",
   "tools": [
+    {
+      "name": "wavewell",
+      "repo": "ben-gy/wavewell",
+      "date": "2026-07-28",
+      "description": "Turn a podcast clip, voice memo or song into a shareable waveform video (audiogram) in your browser — animated dancing-spectrum, mirror or sweeping-waveform styles, a caption, an optional background image, and portrait/square/landscape output for social. Rendered to an H.264 + AAC MP4 entirely on-device with WebCodecs; nothing is uploaded, no watermark, works offline.",
+      "category": "media-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebCodecs (H.264 video encode from canvas frames, via mediabunny CanvasSource; getFirstEncodableVideoCodec('avc') capability gate with a Chrome/Edge/Safari notice)",
+        "mediabunny (Output + Mp4OutputFormat + BufferTarget — the fleet's first tool that GENERATES video rather than transcoding it; no COOP/COEP needed)",
+        "mediabunny AudioSampleSource (planar f32 AudioSample chunks re-encoded to AAC uniformly across input formats) + @mediabunny/aac-encoder (WASM fallback registered in-worker)",
+        "Web Audio API (AudioContext.decodeAudioData for any input format; AudioBufferSourceNode for the live preview — worker can't construct an AudioContext, so decode is main-thread and channel-data copies are transferred)",
+        "OffscreenCanvas + Canvas 2D (per-frame render shared between the worker encode and the main-thread preview)",
+        "Web Workers (whole render→encode pipeline off the main thread; postMessage progress, no rAF to avoid the hidden-tab hang)",
+        "First-party DSP: radix-2 Cooley–Tukey FFT + Hann window, log-spaced spectrum banding (40 Hz–16 kHz) with dB mapping, whole-clip peak-envelope extraction, fast-attack/slow-release temporal smoothing — no runtime DSP library",
+        "File System Access API (showSaveFilePicker for the MP4, with anchor-download fallback)",
+        "Web Share API (level 2, files) + Clipboard API (ClipboardItem video)",
+        "localStorage (style/aspect/palette/sensitivity settings only; never the caption or audio)",
+        "Service Worker (vite-plugin-pwa; app shell + sample precached, AAC-encoder JS served)"
+      ],
+      "status": "deployed",
+      "url": "https://wavewell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/wavewell/pull/1"
+    },
     {
       "name": "ditherwell",
       "repo": "ben-gy/ditherwell",

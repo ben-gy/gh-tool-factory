@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-07-27",
+  "last_updated": "2026-07-28",
   "tools": [
+    {
+      "name": "Wavewell",
+      "slug": "wavewell",
+      "icon": "audio-waveform",
+      "category": "media",
+      "description": "Turn a podcast clip, voice memo or song into a shareable waveform video — animated bars, mirror or sweeping waveform, a caption, and portrait/square/landscape output. Encoded on-device with WebCodecs; nothing is uploaded.",
+      "url": "https://wavewell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/wavewell",
+      "tags": [
+        "media",
+        "audiogram",
+        "waveform-video",
+        "podcast",
+        "webcodecs",
+        "mp4",
+        "social"
+      ],
+      "type": "tool",
+      "date": "2026-07-28"
+    },
     {
       "name": "Ditherwell",
       "slug": "ditherwell",

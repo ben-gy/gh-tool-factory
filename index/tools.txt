@@ -1,5 +1,11 @@
 === Tools ===
 
+Wavewell
+  https://wavewell.benrichardson.dev
+  Turn a podcast clip, voice memo or song into a shareable waveform video — animated bars, mirror or sweeping waveform, a caption, and portrait/square/landscape output. Encoded on-device with WebCodecs; nothing is uploaded.
+  Tags: media, audiogram, waveform-video, podcast, webcodecs, mp4, social
+  Repo: https://github.com/ben-gy/wavewell
+
 Ditherwell
   https://ditherwell.benrichardson.dev
   Turn any photo into retro dithered pixel-art — 1-bit, Game Boy, CGA or an adaptive palette, with Floyd–Steinberg, Atkinson and ordered dithering. Nothing is uploaded.
