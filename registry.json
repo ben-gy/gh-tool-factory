@@ -3,6 +3,33 @@
   "last_updated": "2026-07-27",
   "tools": [
     {
+      "name": "noisewell",
+      "repo": "ben-gy/noisewell",
+      "date": "2026-07-27",
+      "description": "A sound level meter in your browser — measure noise in decibels with your microphone, log it over time, and export a report (Leq, Lmax, L10/L90 as a chart and CSV). A live dB(A) readout with hearing-safety colour coding, octave spectrum, and a first-class upload-a-file path. Nothing is uploaded.",
+      "category": "sensor-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "getUserMedia (live microphone — the sensor input; echo-cancellation/noise-suppression/AGC off so the meter reads the true level; tracks stopped + context closed on teardown/hide/unload)",
+        "Web Audio AnalyserNode (getFloatTimeDomainData tap on the live stream; never connected to destination, so no earpiece-routing/feedback problem)",
+        "OfflineAudioContext (decodeAudioData for the uploaded-file / mic-denied fallback path)",
+        "First-party DSP: radix-2 FFT + Hann window, IEC 61672 A/C-weighting curves applied as a spectral correction to the broadband RMS, Fast/Slow exponential ballistics in the power domain, 1/1-octave banding — no runtime library",
+        "First-party acoustics statistics: Leq (energy average), Lmax/Lmin, L10/L50/L90 exceedance percentiles, sample-peak",
+        "Web Workers (frame-by-frame FFT of a whole uploaded recording off the main thread)",
+        "Transferable ArrayBuffer (decoded PCM to the worker)",
+        "Canvas 2D (live level bar with safety zones + peak-hold, scrolling history, octave spectrum, and the 1200×675 report card)",
+        "setInterval meter loop (a hidden tab throttles rAF to a halt)",
+        "File System Access API (showSaveFilePicker for the report PNG/CSV, with anchor-download fallback)",
+        "Clipboard API (summary text + ClipboardItem report image)",
+        "Web Share API (level 2, files)",
+        "localStorage (weighting / time constant / calibration offset only)",
+        "Service Worker (vite-plugin-pwa; app shell + sample precached)"
+      ],
+      "status": "deployed",
+      "url": "https://noisewell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/noisewell/pull/1"
+    },
+    {
       "name": "vectorwell",
       "repo": "ben-gy/vectorwell",
       "date": "2026-07-27",

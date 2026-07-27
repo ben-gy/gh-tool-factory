@@ -1,5 +1,11 @@
 === Tools ===
 
+Noisewell
+  https://noisewell.benrichardson.dev
+  A sound level meter in your browser — measure noise in dB(A) with your microphone, log it over time, and export a report (Leq, Lmax, L10/L90 as a chart and CSV). Nothing is uploaded.
+  Tags: live-dashboards, decibel-meter, sound-level-meter, noise, microphone, dba, privacy
+  Repo: https://github.com/ben-gy/noisewell
+
 Vectorwell
   https://vectorwell.benrichardson.dev
   Turn a PNG, JPG or photo into a clean, scalable SVG — colour or black & white tracing, tuned live. Nothing is uploaded.

@@ -2,6 +2,26 @@
   "last_updated": "2026-07-27",
   "tools": [
     {
+      "name": "Noisewell",
+      "slug": "noisewell",
+      "icon": "gauge",
+      "category": "live-dashboards",
+      "description": "A sound level meter in your browser — measure noise in dB(A) with your microphone, log it over time, and export a report (Leq, Lmax, L10/L90 as a chart and CSV). Nothing is uploaded.",
+      "url": "https://noisewell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/noisewell",
+      "tags": [
+        "live-dashboards",
+        "decibel-meter",
+        "sound-level-meter",
+        "noise",
+        "microphone",
+        "dba",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-27"
+    },
+    {
       "name": "Vectorwell",
       "slug": "vectorwell",
       "icon": "spline",
