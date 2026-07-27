@@ -3,6 +3,31 @@
   "last_updated": "2026-07-27",
   "tools": [
     {
+      "name": "ditherwell",
+      "repo": "ben-gy/ditherwell",
+      "date": "2026-07-27",
+      "description": "Turn any photo into retro dithered pixel-art in your browser — 1-bit black & white, Game Boy, CGA, grayscale/sepia, or an adaptive palette drawn from the image. Floyd–Steinberg, Atkinson, Jarvis, Stucki and ordered Bayer dithering, live before/after, exported as a crisp blocky PNG. Nothing is uploaded; works offline.",
+      "category": "image-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "Web Workers (whole decode→dither→encode pipeline off the main thread; job-id multiplexing so a newer render supersedes an in-flight one)",
+        "createImageBitmap + OffscreenCanvas (worker-side decode, smooth downsample by pixel-size, and nearest-neighbour upscale for crisp blocky output)",
+        "OffscreenCanvas.convertToBlob (PNG encoded in the worker)",
+        "First-party dithering DSP — error diffusion (Floyd–Steinberg, Atkinson, Jarvis–Judice–Ninke, Stucki) with serpentine scanning, plus ordered 4×4/8×8 Bayer dithering with a palette-adaptive perturbation amplitude — no runtime library",
+        "First-party median-cut adaptive palette (2–32 colours from the image) + fixed palettes (1-bit, Game Boy DMG, CGA, grayscale, sepia ramps) + squared-Euclidean nearest-colour",
+        "First-party brightness/contrast pre-adjustment in the pixel domain",
+        "File System Access API (showSaveFilePicker for the PNG, with anchor-download fallback)",
+        "Clipboard API (ClipboardItem PNG)",
+        "Web Share API (level 2, files)",
+        "Pointer Events + clip-path (before/after compare slider)",
+        "localStorage (preset + settings only, device-only)",
+        "Service Worker (vite-plugin-pwa; app shell + sample precached, offline)"
+      ],
+      "status": "deployed",
+      "url": "https://ditherwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/ditherwell/pull/1"
+    },
+    {
       "name": "noisewell",
       "repo": "ben-gy/noisewell",
       "date": "2026-07-27",

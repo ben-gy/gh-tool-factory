@@ -2,6 +2,26 @@
   "last_updated": "2026-07-27",
   "tools": [
     {
+      "name": "Ditherwell",
+      "slug": "ditherwell",
+      "icon": "grid-2x2",
+      "category": "images",
+      "description": "Turn any photo into retro dithered pixel-art — 1-bit, Game Boy, CGA or an adaptive palette, with Floyd–Steinberg, Atkinson and ordered dithering. Nothing is uploaded.",
+      "url": "https://ditherwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/ditherwell",
+      "tags": [
+        "images",
+        "dithering",
+        "pixel-art",
+        "1-bit",
+        "floyd-steinberg",
+        "game-boy",
+        "retro"
+      ],
+      "type": "tool",
+      "date": "2026-07-27"
+    },
+    {
       "name": "Noisewell",
       "slug": "noisewell",
       "icon": "gauge",

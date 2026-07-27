@@ -1,5 +1,11 @@
 === Tools ===
 
+Ditherwell
+  https://ditherwell.benrichardson.dev
+  Turn any photo into retro dithered pixel-art — 1-bit, Game Boy, CGA or an adaptive palette, with Floyd–Steinberg, Atkinson and ordered dithering. Nothing is uploaded.
+  Tags: images, dithering, pixel-art, 1-bit, floyd-steinberg, game-boy, retro
+  Repo: https://github.com/ben-gy/ditherwell
+
 Noisewell
   https://noisewell.benrichardson.dev
   A sound level meter in your browser — measure noise in dB(A) with your microphone, log it over time, and export a report (Leq, Lmax, L10/L90 as a chart and CSV). Nothing is uploaded.
