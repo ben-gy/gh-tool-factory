@@ -2,6 +2,26 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "Sentrywell",
+      "slug": "sentrywell",
+      "icon": "radar",
+      "category": "privacy",
+      "description": "Turn any browser into a private, motion-detecting security camera — it records only when something moves — or scan a video to find every moment of movement. Frame differencing runs on-device; footage is never uploaded.",
+      "url": "https://sentrywell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/sentrywell",
+      "tags": [
+        "privacy",
+        "security-camera",
+        "motion-detection",
+        "webcam",
+        "surveillance",
+        "video",
+        "cctv"
+      ],
+      "type": "tool",
+      "date": "2026-07-28"
+    },
+    {
       "name": "Hushwell",
       "slug": "hushwell",
       "icon": "audio-waveform",

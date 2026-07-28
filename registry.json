@@ -3,6 +3,35 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "sentrywell",
+      "repo": "ben-gy/sentrywell",
+      "date": "2026-07-28",
+      "description": "Turn any browser into a private, motion-detecting security camera — it snaps a photo and records a clip only when something moves — or scan an existing video to find every stretch of movement, each with a timecode and thumbnail. Grid-based frame differencing runs entirely on-device; clips live in IndexedDB on this machine only and footage is never uploaded. Live mode adds a motion meter, sensitivity, a draggable detection zone, an optional local beep + system notification, and a screen wake lock; the file-scan path is the first-class fallback when the camera is denied.",
+      "category": "sensor-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "getUserMedia (live camera + optional mic — the sensor input; echo-cancellation/noise-suppression/AGC off; every track stopped on disarm/pagehide; denied permission falls back to the first-class video-scan path)",
+        "First-party motion DSP (unit-tested): reduce each frame to a 20×15 luma grid, per-cell brightness differencing within an optional zone mask, sensitivity→(cellDelta, triggerFraction) mapping",
+        "First-party motion gate (unit-tested state machine): consecutive-frame debounce → start, cooldown/maxClip → stop; plus a segmentsFromScores grouper for the file path (peak-frame tracking)",
+        "MediaRecorder (+ isTypeSupported codec pick — vp9/vp8/webm, mp4 on Safari): motion-triggered clips encoded on-device, a fresh recorder per event so each clip is self-contained",
+        "Canvas 2D / OffscreenCanvas (downscaled 160×120 detection frame; full-res JPEG snapshots; overlay canvas for the detection-zone rectangle + live active-cell heat; 2× contact-sheet PNG)",
+        "HTMLVideoElement seek-stepping (file scan): frame-step an uploaded video by seeking, wait one presented frame via requestVideoFrameCallback — always raced against a timeout so a hidden tab can't hang the scan",
+        "Screen Wake Lock API (keeps a monitoring device awake while armed; re-acquired on visibilitychange)",
+        "Notifications API + Web Audio OscillatorNode (optional local 'motion detected' notification + two-tone beep; both device-local)",
+        "IndexedDB (captured events — snapshot + clip blobs — stored on this device only, with an in-memory fallback; one-click clear-all)",
+        "setInterval detection loop (a hidden tab throttles rAF to a halt; a background monitor must keep running)",
+        "Pointer Events (drag a normalized detection-zone rectangle over the video)",
+        "File System Access API (showSaveFilePicker for clips/snapshots/CSV/JSON/PNG, anchor-download fallback)",
+        "Web Share API (level 2, files) + Clipboard API",
+        "First-party timeline CSV + segments JSON + contact-sheet PNG (the file-scan artefacts)",
+        "localStorage (sensitivity / toggles only; never footage)",
+        "Service Worker (vite-plugin-pwa; app shell + sample clip precached, full offline)"
+      ],
+      "status": "deployed",
+      "url": "https://sentrywell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/sentrywell/pull/1"
+    },
+    {
       "name": "hushwell",
       "repo": "ben-gy/hushwell",
       "date": "2026-07-28",

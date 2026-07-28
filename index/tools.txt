@@ -1,5 +1,11 @@
 === Tools ===
 
+Sentrywell
+  https://sentrywell.benrichardson.dev
+  Turn any browser into a private, motion-detecting security camera — it records only when something moves — or scan a video to find every moment of movement. Frame differencing runs on-device; footage is never uploaded.
+  Tags: privacy, security-camera, motion-detection, webcam, surveillance, video, cctv
+  Repo: https://github.com/ben-gy/sentrywell
+
 Hushwell
   https://hushwell.benrichardson.dev
   Remove background noise and hiss from voice recordings — an on-device AI model (RNNoise) keeps the voice and strips fans, hum and traffic. Drop a clip or record yourself, export a clean WAV or MP3. Nothing is uploaded.
