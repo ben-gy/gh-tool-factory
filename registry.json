@@ -3,6 +3,31 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "redactwell",
+      "repo": "ben-gy/redactwell",
+      "date": "2026-07-28",
+      "description": "Black out text in a PDF permanently, in your browser — the covered words are physically removed, not just hidden. Drag black boxes or use Find & redact to place a box over every match of a word; redacted pages are rasterised and flattened to images so the text layer under each bar is destroyed, untouched pages are copied verbatim, and document metadata is dropped. Nothing is uploaded; works offline.",
+      "category": "document-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "pdf.js (pdfjs-dist) + its Web Worker — parse + render each page to a canvas, and extract the text layer (getTextContent + Util.transform) for Find & redact",
+        "Canvas 2D — rasterise each redacted page at the chosen DPI and paint the black bars into the pixels (padded to over-cover), so redaction is burned in rather than layered on top",
+        "pdf-lib in a dedicated Web Worker — rebuild the output PDF: embed flattened page images, copyPages untouched pages verbatim, and strip document metadata (author/title/producer)",
+        "First-party redaction geometry — normalized 0..1 boxes (orientation-agnostic), drag→box, pad/over-cover, page→pixel mapping, flatten-plan, DPI→scale (all unit-tested)",
+        "Pointer Events — draw / move / delete redaction rectangles, with a draw-vs-scroll mode toggle (touch-action none only in draw mode) so drawing and scrolling don't fight on a phone",
+        "IntersectionObserver — lazily render page canvases as they scroll into view",
+        "Transferable ArrayBuffer — zero-copy of the source bytes + rasterised page images to the assembly worker",
+        "requestAnimationFrame shim (native when visible, setTimeout when document.hidden) so an export keeps rendering when the tab is backgrounded — pdf.js schedules render continuations on rAF",
+        "File System Access API (showSaveFilePicker for the PDF, anchor-download fallback)",
+        "Web Share API (level 2, files) + Clipboard-free download path",
+        "localStorage (export DPI / sharpness / flatten-all only; never the document)",
+        "Service Worker (vite-plugin-pwa; app shell + pdf.js worker + sample precached, full offline)"
+      ],
+      "status": "deployed",
+      "url": "https://redactwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/redactwell/pull/1"
+    },
+    {
       "name": "tunewell",
       "repo": "ben-gy/tunewell",
       "date": "2026-07-28",

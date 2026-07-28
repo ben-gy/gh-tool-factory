@@ -1,5 +1,11 @@
 === Tools ===
 
+Redactwell
+  https://redactwell.benrichardson.dev
+  Black out text in a PDF permanently — the covered words are physically removed, not just hidden — right in your browser. Drag boxes or find-and-redact every match of a word. Nothing is uploaded.
+  Tags: documents, pdf, redact, redaction, black-out, privacy, pdf-editor
+  Repo: https://github.com/ben-gy/redactwell
+
 Tunewell
   https://tunewell.benrichardson.dev
   A chromatic instrument tuner — tune guitar, bass, ukulele or violin by microphone or by ear, with a downloadable reference-tone pitch pipe. Nothing is uploaded.

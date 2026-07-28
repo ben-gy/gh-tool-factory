@@ -2,6 +2,26 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "Redactwell",
+      "slug": "redactwell",
+      "icon": "file-lock",
+      "category": "documents",
+      "description": "Black out text in a PDF permanently — the covered words are physically removed, not just hidden — right in your browser. Drag boxes or find-and-redact every match of a word. Nothing is uploaded.",
+      "url": "https://redactwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/redactwell",
+      "tags": [
+        "documents",
+        "pdf",
+        "redact",
+        "redaction",
+        "black-out",
+        "privacy",
+        "pdf-editor"
+      ],
+      "type": "tool",
+      "date": "2026-07-28"
+    },
+    {
       "name": "Tunewell",
       "slug": "tunewell",
       "icon": "music",
