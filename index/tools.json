@@ -2,6 +2,26 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "Hushwell",
+      "slug": "hushwell",
+      "icon": "audio-waveform",
+      "category": "media",
+      "description": "Remove background noise and hiss from voice recordings — an on-device AI model (RNNoise) keeps the voice and strips fans, hum and traffic. Drop a clip or record yourself, export a clean WAV or MP3. Nothing is uploaded.",
+      "url": "https://hushwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/hushwell",
+      "tags": [
+        "media",
+        "audio",
+        "noise-reduction",
+        "denoise",
+        "voice",
+        "podcast",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-07-28"
+    },
+    {
       "name": "Redactwell",
       "slug": "redactwell",
       "icon": "file-lock",

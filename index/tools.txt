@@ -1,5 +1,10 @@
 === Tools ===
 
+Hushwell
+  https://hushwell.benrichardson.dev
+  Remove background noise and hiss from voice recordings — an on-device AI model (RNNoise) keeps the voice and strips fans, hum and traffic. Drop a clip or record yourself, export a clean WAV or MP3. Nothing is uploaded.
+  Tags: media, audio, noise-reduction, denoise, voice, podcast, privacy
+
 Redactwell
   https://redactwell.benrichardson.dev
   Black out text in a PDF permanently — the covered words are physically removed, not just hidden — right in your browser. Drag boxes or find-and-redact every match of a word. Nothing is uploaded.

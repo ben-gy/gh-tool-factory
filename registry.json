@@ -3,6 +3,34 @@
   "last_updated": "2026-07-28",
   "tools": [
     {
+      "name": "hushwell",
+      "repo": "ben-gy/hushwell",
+      "date": "2026-07-28",
+      "description": "Remove background noise and hiss from voice recordings in your browser — the private answer to the cloud audio enhancers. On-device RNNoise (WebAssembly) streams the clip frame-by-frame, keeping the voice and suppressing steady hum/hiss/fans/traffic; a VAD-gated noise-floor estimate gives a real 'background reduced by N dB' number, a dry/wet strength slider re-mixes live, and you export a clean WAV or MP3. Input by file (audio, or a video's audio track) or by mic recording. Nothing is uploaded; works offline.",
+      "category": "media-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebAssembly (@shiguredo/rnnoise-wasm — RNNoise recurrent-net speech denoiser; wasm inlined into the JS chunk, served same-origin, precached for offline; frameSize read dynamically, processFrame scaled to/from 16-bit PCM range, returns a per-frame VAD score)",
+        "Web Audio decodeAudioData (decode any input format, including the audio track of many video containers) + OfflineAudioContext (downmix to mono + high-quality resample to 48 kHz, with a first-party linear-resampler fallback)",
+        "AudioWorklet (import-free capture processor — raw mono Float32 PCM from the mic; never connected to the destination, so no monitoring feedback and nothing routes to the iOS earpiece; loaded as a same-origin asset to stay within CSP)",
+        "getUserMedia (mic recording requested inside a tap, echo-cancellation/noise-suppression/AGC off; every track stopped + context closed on stop/teardown/pagehide; denied permission falls back to file upload as a first-class path)",
+        "Web Workers (dedicated denoise loop streaming RNNoise frames off the main thread with determinate progress; separate WAV/MP3 encode worker)",
+        "Transferable ArrayBuffer (zero-copy PCM to/from the workers)",
+        "First-party DSP (unit-tested): downmix, linear resample, RMS/dBFS, VAD-gated low-percentile noise-floor estimate, dry/wet mix, peak-normalise",
+        "First-party 16-bit PCM WAV encoder + minimal WAV reader (the downloadable artefact + test round-trip)",
+        "@breezystack/lamejs (pure-JS MP3 export, in the encode worker)",
+        "AudioBufferSourceNode (A/B before/after preview player, Space to toggle)",
+        "Canvas 2D (live before/after min/max waveforms + 1200×675 shareable report card)",
+        "File System Access API (showSaveFilePicker for WAV/MP3/PNG, with anchor-download fallback)",
+        "Web Share API (level 2, files) + Clipboard API (copy summary)",
+        "localStorage (strength / output-format preferences only; never audio)",
+        "Service Worker (vite-plugin-pwa; app shell + RNNoise chunk + sample precached, full offline; maximumFileSizeToCacheInBytes raised for the 4.8 MB inlined-wasm chunk)"
+      ],
+      "status": "deployed",
+      "url": "https://hushwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/hushwell/pull/1"
+    },
+    {
       "name": "redactwell",
       "repo": "ben-gy/redactwell",
       "date": "2026-07-28",
