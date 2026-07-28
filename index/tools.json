@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-07-28",
+  "last_updated": "2026-07-29",
   "tools": [
+    {
+      "name": "Meetwell",
+      "slug": "meetwell",
+      "icon": "video",
+      "category": "privacy",
+      "description": "Private, end-to-end encrypted video calls from a link — no account, no download, nothing hosted. Camera and mic travel directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle.",
+      "url": "https://meetwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/meetwell",
+      "tags": [
+        "privacy",
+        "video-call",
+        "webrtc",
+        "peer-to-peer",
+        "encrypted",
+        "no-signup",
+        "screen-share"
+      ],
+      "type": "tool",
+      "date": "2026-07-29"
+    },
     {
       "name": "Sentrywell",
       "slug": "sentrywell",

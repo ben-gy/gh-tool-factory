@@ -1,5 +1,9 @@
 === Tools ===
 
+Meetwell
+  https://meetwell.benrichardson.dev
+  Private, end-to-end encrypted video calls from a link — no account, no download, nothing hosted. Camera and mic travel directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle.
+
 Sentrywell
   https://sentrywell.benrichardson.dev
   Turn any browser into a private, motion-detecting security camera — it records only when something moves — or scan a video to find every moment of movement. Frame differencing runs on-device; footage is never uploaded.
