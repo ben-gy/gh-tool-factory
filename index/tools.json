@@ -2,6 +2,27 @@
   "last_updated": "2026-07-30",
   "tools": [
     {
+      "name": "Chatwell",
+      "slug": "chatwell",
+      "icon": "message-circle",
+      "category": "privacy",
+      "description": "A disposable, end-to-end encrypted group chat room you open from a link — share it, everyone joins with a name, and messages go straight browser-to-browser over an encrypted mesh with no account, no app and no server keeping a copy. The room is ephemeral and evaporates when everyone leaves; export a plain-text transcript first if you want to keep one.",
+      "url": "https://chatwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/chatwell",
+      "tags": [
+        "privacy",
+        "chat",
+        "group-chat",
+        "encrypted",
+        "webrtc",
+        "peer-to-peer",
+        "ephemeral",
+        "no-signup"
+      ],
+      "type": "tool",
+      "date": "2026-07-30"
+    },
+    {
       "name": "Beamwell",
       "slug": "beamwell",
       "icon": "send",

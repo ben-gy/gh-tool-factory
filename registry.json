@@ -3,6 +3,30 @@
   "last_updated": "2026-07-30",
   "tools": [
     {
+      "name": "chatwell",
+      "repo": "ben-gy/chatwell",
+      "date": "2026-07-30",
+      "description": "A disposable, accountless, end-to-end encrypted group chat room from a link + passphrase — messages go straight browser-to-browser over a full WebRTC mesh (DTLS on the wire) with no server in the path, additionally sealed in AES-GCM-256 with a key derived from the room passphrase, so plaintext exists only inside the participants' tabs. Peer discovery + signalling ride public nostr relays via trystero, with the handshake encrypted by the passphrase so a relay sees only ciphertext; a four-word Short Authentication String — identical for everyone in the room — catches a MITM relay. Nothing is stored server-side: the room is ephemeral and evaporates when everyone leaves. Pick a display name, chat with a live per-author-coloured member list, typing indicators, and inline images (drag / picker / paste). The takeaway artefact is the shareable invite link (copy / Web Share / QR) plus an on-demand plain-text transcript export. Honest v1 limitation stated in the Threat Model: one static key from the passphrase, so no forward secrecy — rotate rooms for sensitive conversations.",
+      "category": "p2p-communication",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebRTC (RTCPeerConnection + data channels, full-mesh via trystero) — every message/presence/typing signal travels directly browser-to-browser, DTLS-encrypted, with no media/message server in the path; trystero auto-chunks larger image frames and reports progress",
+        "trystero (nostr strategy) — zero-backend peer discovery + signalling over public nostr relays; the room passphrase encrypts the whole handshake (SDP/ICE) so a relay can't read the offer/answer or swap DTLS fingerprints",
+        "Web Crypto (PBKDF2-SHA-256 → 32-byte room secret → AES-GCM-256 message key; every message's envelope sealed with a fresh 12-byte IV before it leaves and opened only in the other tabs; SHA-256 → a deterministic, symmetric four-word Short Authentication String — unit-tested for determinism + symmetry so everyone in the room derives the same words)",
+        "First-party versioned message envelope (unit-tested pure core): [version|headerLen|headerJSON|payload] carrying id/kind/at/from/text/name/mime + optional image bytes, and an [iv|ciphertext] frame packer/unpacker — the whole wire format is pure and unit-tested end-to-end; the transport peer id is the authoritative sender, the header name is convenience-only",
+        "First-party text rendering (unit-tested): HTML-escape + http(s) URL linkification with trailing-punctuation trimming, so message bodies render safely with clickable links",
+        "First-party per-author colour (unit-tested FNV-1a hash → stable hue) so the same participant keeps the same colour on everyone's screen with no coordination",
+        "Typing indicators (broadcast JSON signal with a sender-side heartbeat + receiver-side expiry) and a live presence/member list over the mesh",
+        "qrcode (invite QR) + Web Share API (level 2, invite link + transcript) + Clipboard API (copy invite; copy a message)",
+        "File System Access API (showSaveFilePicker for the plain-text transcript artefact + received images, anchor-download fallback)",
+        "localStorage (display-name preference only; never message contents)",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell)"
+      ],
+      "status": "deployed",
+      "url": "https://chatwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/chatwell/pull/1"
+    },
+    {
       "name": "beamwell",
       "repo": "ben-gy/beamwell",
       "date": "2026-07-30",

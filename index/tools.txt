@@ -1,5 +1,11 @@
 === Tools ===
 
+Chatwell
+  https://chatwell.benrichardson.dev
+  A disposable, end-to-end encrypted group chat room you open from a link — share it, everyone joins with a name, and messages go straight browser-to-browser over an encrypted mesh with no account, no app and no server keeping a copy. The room is ephemeral and evaporates when everyone leaves; export a plain-text transcript first if you want to keep one.
+  Tags: privacy, chat, group-chat, encrypted, webrtc, peer-to-peer, ephemeral, no-signup
+  Repo: https://github.com/ben-gy/chatwell
+
 Beamwell
   https://beamwell.benrichardson.dev
   A private 'send this to my phone' button — pair two of your own devices once by scanning a QR, then beam text, links, one-time codes and images between them instantly. Sent directly browser-to-browser and end-to-end encrypted, with no cloud clipboard, no account and nothing kept on any server; the pairing is remembered for one-tap reconnect.
