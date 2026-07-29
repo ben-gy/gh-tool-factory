@@ -1,6 +1,27 @@
 {
-  "last_updated": "2026-07-29",
+  "last_updated": "2026-07-30",
   "tools": [
+    {
+      "name": "Beamwell",
+      "slug": "beamwell",
+      "icon": "send",
+      "category": "privacy",
+      "description": "A private 'send this to my phone' button — pair two of your own devices once by scanning a QR, then beam text, links, one-time codes and images between them instantly. Sent directly browser-to-browser and end-to-end encrypted, with no cloud clipboard, no account and nothing kept on any server; the pairing is remembered for one-tap reconnect.",
+      "url": "https://beamwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/beamwell",
+      "tags": [
+        "privacy",
+        "clipboard",
+        "send-to-phone",
+        "webrtc",
+        "peer-to-peer",
+        "encrypted",
+        "no-cloud",
+        "no-signup"
+      ],
+      "type": "tool",
+      "date": "2026-07-30"
+    },
     {
       "name": "Syncwell",
       "slug": "syncwell",

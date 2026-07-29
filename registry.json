@@ -1,7 +1,31 @@
 {
   "version": 1,
-  "last_updated": "2026-07-29",
+  "last_updated": "2026-07-30",
   "tools": [
+    {
+      "name": "beamwell",
+      "repo": "ben-gy/beamwell",
+      "date": "2026-07-30",
+      "description": "A private 'send this to my phone' clipboard bridge: pair two of your own devices once (scan a QR or open a link), then beam text, links, one-time codes and images between them instantly — sent directly browser-to-browser and end-to-end encrypted, with nothing kept on any server. Peer discovery + signalling ride public nostr relays via trystero, with the handshake encrypted by the room passphrase so a relay sees only ciphertext; a four-word Short Authentication String catches a MITM relay. Each item is packed into a versioned envelope, sealed in AES-GCM-256 with a key derived from the passphrase, and framed as [iv|ciphertext] over a direct DTLS data channel. Text is auto-classified into link / one-time-code / plain text; images ride the same channel as a binary payload. Pairings are remembered locally (room + passphrase in localStorage) for one-tap reconnect and are forgettable any time. The camera QR scan (BarcodeDetector) is a sensor input, with open/paste-the-link as the first-class fallback; delivery receipts, tap-to-copy and save/Web-Share round it out.",
+      "category": "p2p-communication",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebRTC (RTCPeerConnection + data channels, via trystero) — a direct two-peer link; item frames travel browser-to-browser DTLS-encrypted with no server in the path; trystero auto-chunks the binary frames and reports send/receive progress",
+        "trystero (nostr strategy) — zero-backend peer discovery + signalling over public nostr relays; the room passphrase encrypts the whole handshake (SDP/ICE) so a relay can't read the offer/answer or swap DTLS fingerprints",
+        "Web Crypto (PBKDF2-SHA-256 → 32-byte room secret → AES-GCM-256 item key; every item's envelope sealed with a fresh 12-byte IV before it leaves and opened only on the far side; SHA-256 → a deterministic, symmetric four-word Short Authentication String — unit-tested for determinism + symmetry)",
+        "BarcodeDetector + getUserMedia (rear camera — the sensor input; reads the pairing QR on-device via a setInterval decode loop, permission requested inside a tap, every track stopped the moment a code is read / on teardown; open-or-paste-the-link is the first-class fallback when BarcodeDetector is absent or the camera is denied)",
+        "First-party versioned item envelope (unit-tested pure core): [version|headerLen|headerJSON|payload] carrying id/kind/at/text/name/mime + optional image bytes, and an [iv|ciphertext] frame packer/unpacker — the whole wire format is pure and unit-tested end-to-end",
+        "First-party item classifier (unit-tested): URL vs one-time-code vs plain-text detection so a beamed snippet is labelled and given the right copy affordance",
+        "First-party remembered-pairing store (unit-tested over injected storage): room+passphrase+name kept in localStorage for one-tap reconnect, upsert-by-room / touch / forget, corrupt-storage tolerant",
+        "qrcode (pairing QR) + Web Share API (level 2, link + received images) + Clipboard API (Beam-clipboard in; tap-to-copy received text/link/code out)",
+        "File System Access API (showSaveFilePicker for a received image, anchor-download fallback)",
+        "localStorage (remembered pairings + device-name/remember preferences only; never item contents)",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell)"
+      ],
+      "status": "deployed",
+      "url": "https://beamwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/beamwell/pull/1"
+    },
     {
       "name": "syncwell",
       "repo": "ben-gy/syncwell",

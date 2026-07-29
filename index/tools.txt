@@ -1,5 +1,11 @@
 === Tools ===
 
+Beamwell
+  https://beamwell.benrichardson.dev
+  A private 'send this to my phone' button — pair two of your own devices once by scanning a QR, then beam text, links, one-time codes and images between them instantly. Sent directly browser-to-browser and end-to-end encrypted, with no cloud clipboard, no account and nothing kept on any server; the pairing is remembered for one-tap reconnect.
+  Tags: privacy, clipboard, send-to-phone, webrtc, peer-to-peer, encrypted, no-cloud, no-signup
+  Repo: https://github.com/ben-gy/beamwell
+
 Syncwell
   https://syncwell.benrichardson.dev
   Private, end-to-end encrypted live folder sync between your own devices — laptop to phone, or with one collaborator. Pick a folder on each; edits propagate directly between browsers over an encrypted channel, with no cloud, no account and nothing uploaded. It only ever adds and updates files — it never deletes.
