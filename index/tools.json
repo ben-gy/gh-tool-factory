@@ -2,6 +2,27 @@
   "last_updated": "2026-07-29",
   "tools": [
     {
+      "name": "Syncwell",
+      "slug": "syncwell",
+      "icon": "folder-sync",
+      "category": "privacy",
+      "description": "Private, end-to-end encrypted live folder sync between your own devices — laptop to phone, or with one collaborator. Pick a folder on each; edits propagate directly between browsers over an encrypted channel, with no cloud, no account and nothing uploaded. It only ever adds and updates files — it never deletes.",
+      "url": "https://syncwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/syncwell",
+      "tags": [
+        "privacy",
+        "folder-sync",
+        "file-sync",
+        "webrtc",
+        "peer-to-peer",
+        "encrypted",
+        "no-cloud",
+        "no-signup"
+      ],
+      "type": "tool",
+      "date": "2026-07-29"
+    },
+    {
       "name": "Castwell",
       "slug": "castwell",
       "icon": "screen-share",

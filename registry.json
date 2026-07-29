@@ -3,6 +3,29 @@
   "last_updated": "2026-07-29",
   "tools": [
     {
+      "name": "syncwell",
+      "repo": "ben-gy/syncwell",
+      "date": "2026-07-29",
+      "description": "Private, end-to-end encrypted live folder sync between your own devices (laptop ↔ phone) or with one peer — no cloud, no account, nothing hosted. Pick a folder on each device with the File System Access API; edits propagate live over a direct WebRTC data channel (DTLS on the wire), and every file is additionally sealed in AES-GCM-256 with a key derived from the room passphrase, so the plaintext exists only inside the two tabs. Peer discovery + signalling ride public nostr relays via trystero, with the handshake encrypted by the passphrase so a relay sees only ciphertext; a four-word Short Authentication String catches a MITM relay. The protocol is pull-based (each side asks for what the other holds newer/unique, so no file is sent twice), diffs are computed from an encrypted manifest, and a version ledger prevents the write-mtime sync ping-pong. Syncwell never deletes — a peer can only add or update files. Direction control (two-way / send-only / receive-only); a files-only send/download path is the first-class fallback on non-Chromium browsers.",
+      "category": "p2p-communication",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "File System Access API (showDirectoryPicker readwrite — the input; recursive scan → manifest, per-file read, getDirectoryHandle({create})+createWritable to mirror incoming files to disk; drag-a-folder via DataTransferItem.getAsFileSystemHandle + requestPermission; polled every ~3s since there is no file-watch API)",
+        "WebRTC (RTCPeerConnection + data channels, via trystero) — a direct two-peer link; file frames travel browser-to-browser DTLS-encrypted with no server in the file path; trystero auto-chunks the binary frames and reports send/receive progress",
+        "trystero (nostr strategy) — zero-backend peer discovery + signalling over public nostr relays; the room passphrase encrypts the whole handshake (SDP/ICE) so a relay can't read the offer/answer or swap DTLS fingerprints",
+        "Web Crypto (PBKDF2-SHA-256 → 32-byte room secret → imported as an AES-GCM-256 key; every file's bytes sealed with a fresh 12-byte IV before they leave and opened only on the far side; SHA-256 per-file integrity check after decrypt; SHA-256 → a deterministic, symmetric four-word Short Authentication String — unit-tested)",
+        "Web Workers (dedicated crypto worker holding the AES key; all encrypt/decrypt/hash off the main thread; Transferable ArrayBuffers zero-copy the file bytes and frames in and out)",
+        "First-party pull-based sync engine (unit-tested pure cores): manifest diff (computeWanted / fulfillable — remote-newer/unique wins, same-mtime-different-size flagged as a conflict and left untouched), path-safety validator (rejects ../, absolute paths, drive letters, control chars, Windows reserved names — a hard write-boundary against a malicious peer), self-framing file envelope ([len][JSON header][ciphertext]), and a version ledger that reports a synced file's origin mtime so the File-System-Access write-mtime doesn't cause a sync ping-pong",
+        "First-party safety guarantee: Syncwell never deletes — a path vanishing from a peer's manifest is simply no longer offered; existing files are never removed",
+        "qrcode (pairing QR) + Web Share API (level 2) + Clipboard API (copy the pairing link, which carries room + passphrase only in the URL hash, never sent to a server)",
+        "Files-only fallback (non-Chromium): <input webkitdirectory> to read files to send + anchor-download to receive — a first-class path when showDirectoryPicker is unavailable",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell)"
+      ],
+      "status": "deployed",
+      "url": "https://syncwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/syncwell/pull/1"
+    },
+    {
       "name": "castwell",
       "repo": "ben-gy/castwell",
       "date": "2026-07-29",
