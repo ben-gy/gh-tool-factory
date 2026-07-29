@@ -3,6 +3,31 @@
   "last_updated": "2026-07-29",
   "tools": [
     {
+      "name": "talkwell",
+      "repo": "ben-gy/talkwell",
+      "date": "2026-07-29",
+      "description": "Private, end-to-end encrypted voice calls and a push-to-talk walkie-talkie from a link — no account, no download, nothing hosted. Full-mesh WebRTC means the microphone audio travels directly between browsers (DTLS-SRTP) with no media server in the path; peer discovery + signalling ride public nostr relays via trystero, with the handshake encrypted by the room passphrase so the relay sees only ciphertext. A four-word Short Authentication String (derived from the passphrase, matching on both sides) catches a MITM relay. Open-mic and walkie-talkie (hold-to-talk / Space) modes; a denied mic falls back to a first-class listen-only join. Optional local-only recording mixes every voice into a WebM audio file on-device — the takeaway artefact, never uploaded.",
+      "category": "p2p-communication",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebRTC (RTCPeerConnection + data channels) — full-mesh peer-to-peer voice, presence and chat; every audio stream is direct browser-to-browser and DTLS-SRTP encrypted, with no media server in the path",
+        "trystero (nostr strategy) — zero-backend peer discovery + signalling over public nostr relays; the room passphrase encrypts the whole handshake (SDP/ICE), so a relay cannot read the offer/answer or swap DTLS fingerprints",
+        "getUserMedia (microphone — the sensor input; echo-cancellation/noise-suppression/AGC ON for a clean call; requested inside the Join tap; every track stopped on leave/pagehide; a denied permission falls back to a first-class listen-only join)",
+        "Push-to-talk gate (first-party, unit-tested pure `shouldTransmit()`): open-mic vs walkie-talkie, driving the outgoing audio track's `enabled` flag; hold the on-screen talk button or the Space bar to transmit; switchable live mid-call",
+        "Web Crypto (PBKDF2-SHA-256 → 32-byte room secret; SHA-256 → a four-word Short Authentication String and a room fingerprint; unit-tested for determinism + symmetry so both peers derive identical words, and a mismatched passphrase yields different words)",
+        "Web Audio MediaStreamDestination + MediaRecorder — mix every peer's audio (plus your own mic) into one track and encode a compact Opus/WebM audio file on-device (setInterval-free; the artefact), never uploaded",
+        "Web Audio AnalyserNode (per-speaker reactive level rings via a smoothed time-domain RMS; the mic tap is never connected to the destination, so no feedback)",
+        "Screen Wake Lock API (keeps the screen awake during a call; re-acquired on visibilitychange)",
+        "Web Share API (level 2, files — share the invite link and the recording) + Clipboard API (copy the invite) + qrcode (invite QR)",
+        "iPhone-only earpiece note (getUserMedia routes live-call audio to the receiver on iPhone/iPod — a WebKit fact no web API can override; detected and surfaced honestly, iPad excluded)",
+        "First-party (unit-tested): room-id/passphrase generation, invite-link build/parse (room + pass live only in the URL hash, never sent to a server), speaker-grid layout, audio-level shaping",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell)"
+      ],
+      "status": "deployed",
+      "url": "https://talkwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/talkwell/pull/1"
+    },
+    {
       "name": "meetwell",
       "repo": "ben-gy/meetwell",
       "date": "2026-07-29",

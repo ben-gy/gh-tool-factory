@@ -2,6 +2,27 @@
   "last_updated": "2026-07-29",
   "tools": [
     {
+      "name": "Talkwell",
+      "slug": "talkwell",
+      "icon": "radio",
+      "category": "privacy",
+      "description": "Private, end-to-end encrypted voice calls and a push-to-talk walkie-talkie from a link — no account, no download, nothing hosted. Your voice travels directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle.",
+      "url": "https://talkwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/talkwell",
+      "tags": [
+        "privacy",
+        "voice-call",
+        "walkie-talkie",
+        "push-to-talk",
+        "webrtc",
+        "peer-to-peer",
+        "encrypted",
+        "no-signup"
+      ],
+      "type": "tool",
+      "date": "2026-07-29"
+    },
+    {
       "name": "Meetwell",
       "slug": "meetwell",
       "icon": "video",
