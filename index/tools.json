@@ -2,6 +2,27 @@
   "last_updated": "2026-07-29",
   "tools": [
     {
+      "name": "Castwell",
+      "slug": "castwell",
+      "icon": "screen-share",
+      "category": "privacy",
+      "description": "Private, end-to-end encrypted screen sharing from a link — broadcast your screen to viewers with no account, no download, nothing hosted. The pixels travel directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle, and any viewer can keep a local clip or snapshot.",
+      "url": "https://castwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/castwell",
+      "tags": [
+        "privacy",
+        "screen-share",
+        "screen-sharing",
+        "webrtc",
+        "peer-to-peer",
+        "encrypted",
+        "broadcast",
+        "no-signup"
+      ],
+      "type": "tool",
+      "date": "2026-07-29"
+    },
+    {
       "name": "Talkwell",
       "slug": "talkwell",
       "icon": "radio",

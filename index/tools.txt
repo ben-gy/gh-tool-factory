@@ -1,5 +1,11 @@
 === Tools ===
 
+Castwell
+  https://castwell.benrichardson.dev
+  Private, end-to-end encrypted screen sharing from a link — broadcast your screen to viewers with no account, no download, nothing hosted. The pixels travel directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle, and any viewer can keep a local clip or snapshot.
+  Tags: privacy, screen-share, screen-sharing, webrtc, peer-to-peer, encrypted, broadcast, no-signup
+  Repo: https://github.com/ben-gy/castwell
+
 Talkwell
   https://talkwell.benrichardson.dev
   Private, end-to-end encrypted voice calls and a push-to-talk walkie-talkie from a link — no account, no download, nothing hosted. Your voice travels directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle.
