@@ -1,7 +1,32 @@
 {
   "version": 1,
-  "last_updated": "2026-07-30",
+  "last_updated": "2026-07-31",
   "tools": [
+    {
+      "name": "sketchwell",
+      "repo": "ben-gy/sketchwell",
+      "date": "2026-07-31",
+      "description": "A private, end-to-end encrypted collaborative whiteboard you open from a link — draw together in real time with no account, no server and nothing stored. Browsers connect in a full WebRTC mesh (DTLS on the wire) via trystero over public nostr relays, with the signalling handshake encrypted by the room passphrase so a relay sees only ciphertext; a four-word Short Authentication String catches a MITM relay. The board is a first-party op-based CRDT — an LWW-element-set of shapes (add-wins register per id + remove tombstones + a monotonic clear barrier) ordered by a Lamport clock — so concurrent edits from every participant converge to the identical board with no server refereeing, and a newcomer is sent the whole board as an encrypted sync bundle. Pen, line, arrow, rectangle, ellipse, text and an object-eraser; colour + width; undo; clear; live per-person cursors with name labels. Every op and every sync bundle is sealed in AES-GCM-256 with a key derived from the passphrase (which lives only in the link hash). The takeaway artefacts are a PNG raster and a scalable SVG exported entirely on-device, plus a shareable invite link (copy / Web Share / QR). Honest v1 limitation stated in the Threat Model: one static key from the passphrase (no forward secrecy), and live cursor positions + names ride the DTLS channel as presence rather than under the AES layer.",
+      "category": "p2p-collaboration",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebRTC (RTCPeerConnection + data channels, full-mesh via trystero) — every drawing op, full-board sync and cursor travels directly browser-to-browser, DTLS-encrypted, with no server in the drawing path; trystero auto-chunks larger sync bundles",
+        "trystero (nostr strategy) — zero-backend peer discovery + signalling over public nostr relays; the room passphrase encrypts the whole handshake (SDP/ICE) so a relay can't read the offer/answer or swap DTLS fingerprints",
+        "Web Crypto (PBKDF2-SHA-256 → 32-byte room secret → AES-GCM-256 op key; every op and sync bundle sealed with a fresh 12-byte IV before it leaves and opened only in the other tabs; SHA-256 → a deterministic, symmetric four-word Short Authentication String — unit-tested for determinism + symmetry)",
+        "First-party op-based CRDT (unit-tested pure core): an LWW-element-set of shapes — an add-wins register keyed by shape id (a live-streamed stroke re-sends the same id with a higher Lamport stamp so the finished stroke beats its partials), remove tombstones, and a monotonic clear barrier; a Lamport clock gives a total order for z-ordering + last-writer-wins; commutative + idempotent so applying a peer's whole op-log in any order converges, verified end-to-end (commutativity, idempotent union, snapshot-sync reproduction)",
+        "First-party wire codec (unit-tested): CRDT ops + full op-log bundles serialised to JSON, encrypted, and framed as [iv|ciphertext]; pack/unpack + array-guarded bundle decode",
+        "Canvas 2D + devicePixelRatio — render the shared logical board (fixed 1600×1000, fitted per client so everyone sees the identical composition) with a settle loop so the canvas never sticks at a 0/1px first-frame measure; a 2× offscreen render for the PNG artefact",
+        "Pointer Events (+ getCoalescedEvents) — smooth freehand + shape drawing on mouse, pen and touch; setPointerCapture drag; touch-action:none",
+        "First-party geometry + SVG serialiser (unit-tested): fit transform + screen↔logical inverse, point-to-segment/rect/ellipse/text hit-testing for the object-eraser, arrowhead maths, and an XML-escaping SVG writer that emits the board as a standalone scalable document (the vector artefact)",
+        "First-party live cursors (throttled JSON presence signals) + a member list with per-author colour (FNV-1a hash → hue)",
+        "File System Access API (showSaveFilePicker for PNG/SVG, anchor-download fallback) + Web Share API (level 2, files) + Clipboard API (copy invite) + qrcode (invite QR)",
+        "localStorage (display name + last tool/colour/width only; never board content)",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell)"
+      ],
+      "status": "deployed",
+      "url": "https://sketchwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/sketchwell/pull/1"
+    },
     {
       "name": "chatwell",
       "repo": "ben-gy/chatwell",

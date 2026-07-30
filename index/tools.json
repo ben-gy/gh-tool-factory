@@ -1,6 +1,27 @@
 {
-  "last_updated": "2026-07-30",
+  "last_updated": "2026-07-31",
   "tools": [
+    {
+      "name": "Sketchwell",
+      "slug": "sketchwell",
+      "icon": "pen-tool",
+      "category": "fun",
+      "description": "A private, end-to-end encrypted collaborative whiteboard you open from a link — draw together in real time with pen, shapes, arrows and text, live per-person cursors, and no account, no server and nothing stored. Every stroke goes straight browser-to-browser over an encrypted mesh and the board is kept in sync by a conflict-free CRDT; export it as a PNG or a scalable SVG to keep a copy.",
+      "url": "https://sketchwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/sketchwell",
+      "tags": [
+        "whiteboard",
+        "collaborative",
+        "drawing",
+        "encrypted",
+        "webrtc",
+        "peer-to-peer",
+        "crdt",
+        "no-signup"
+      ],
+      "type": "tool",
+      "date": "2026-07-31"
+    },
     {
       "name": "Chatwell",
       "slug": "chatwell",

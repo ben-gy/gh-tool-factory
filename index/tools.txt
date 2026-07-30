@@ -1,5 +1,11 @@
 === Tools ===
 
+Sketchwell
+  https://sketchwell.benrichardson.dev
+  A private, end-to-end encrypted collaborative whiteboard you open from a link — draw together in real time with pen, shapes, arrows and text, live per-person cursors, and no account, no server and nothing stored. Every stroke goes straight browser-to-browser over an encrypted mesh and the board is kept in sync by a conflict-free CRDT; export it as a PNG or a scalable SVG to keep a copy.
+  Tags: whiteboard, collaborative, drawing, encrypted, webrtc, peer-to-peer, crdt, no-signup
+  Repo: https://github.com/ben-gy/sketchwell
+
 Chatwell
   https://chatwell.benrichardson.dev
   A disposable, end-to-end encrypted group chat room you open from a link — share it, everyone joins with a name, and messages go straight browser-to-browser over an encrypted mesh with no account, no app and no server keeping a copy. The room is ephemeral and evaporates when everyone leaves; export a plain-text transcript first if you want to keep one.
