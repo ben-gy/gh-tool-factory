@@ -1,6 +1,27 @@
 {
-  "last_updated": "2026-07-31",
+  "last_updated": "2026-08-01",
   "tools": [
+    {
+      "name": "Burnwell",
+      "slug": "burnwell",
+      "icon": "flame",
+      "category": "privacy",
+      "description": "The safe way to send someone a password, API key or recovery phrase — type the secret, share a one-time link, and it's handed straight from your browser to theirs, end-to-end encrypted, shown once, then burned. Unlike the paste-into-a-website services, nothing is ever stored on a server: the secret only moves while you're both connected, and it's released to a single verified recipient then wiped. A four-word code catches an impostor, and a split-link mode keeps the passphrase off the link entirely.",
+      "url": "https://burnwell.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/burnwell",
+      "tags": [
+        "privacy",
+        "secret",
+        "password",
+        "one-time",
+        "encrypted",
+        "webrtc",
+        "peer-to-peer",
+        "no-signup"
+      ],
+      "type": "tool",
+      "date": "2026-08-01"
+    },
     {
       "name": "Sketchwell",
       "slug": "sketchwell",

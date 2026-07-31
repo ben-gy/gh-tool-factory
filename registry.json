@@ -1,7 +1,30 @@
 {
   "version": 1,
-  "last_updated": "2026-07-31",
+  "last_updated": "2026-08-01",
   "tools": [
+    {
+      "name": "burnwell",
+      "repo": "ben-gy/burnwell",
+      "date": "2026-08-01",
+      "description": "A one-time, burn-after-read secret sender — hand a password, API key or recovery phrase straight from your browser to the recipient's over a direct WebRTC data channel (DTLS on the wire), additionally sealed in AES-GCM-256 with a key derived from the room passphrase, so the plaintext exists only inside the two tabs. Unlike the paste-into-a-website services, NOTHING is ever stored on a server, encrypted or otherwise: the secret only moves while both people are connected, and it's released to exactly one verified recipient (the first to reveal it) then burned — wiped from the sender's tab and the room torn down; a second device that opens the link afterwards gets 'already delivered'. Peer discovery + signalling ride public nostr relays via trystero, with the handshake encrypted by the passphrase so a relay sees only ciphertext; a four-word Short Authentication String catches a MITM relay. Two link modes: full link (passphrase in the hash) or split (link carries only the room; the four-word passphrase is read aloud out-of-band, so the link alone can't open the secret). The one-time-delivery rule is a pure, exhaustively unit-tested state machine. Takeaway artefacts: the recipient copies the revealed secret; the sender gets a 'delivered & burned' receipt. Honest limitation stated in the Threat Model: both parties must be online at once (the price of never storing anything), and one static key from the passphrase (no forward secrecy).",
+      "category": "p2p-communication",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebRTC (RTCPeerConnection + data channels, via trystero) — a direct two-peer link; the encrypted secret frame travels browser-to-browser DTLS-encrypted with no server in the path",
+        "trystero (nostr strategy) — zero-backend peer discovery + signalling over public nostr relays; the room passphrase encrypts the whole handshake (SDP/ICE) so a relay can't read the offer/answer or swap DTLS fingerprints",
+        "Web Crypto (PBKDF2-SHA-256 → 32-byte room secret → AES-GCM-256 secret key; the secret's envelope sealed with a fresh 12-byte IV before it leaves and opened only on the far side; SHA-256 → a deterministic, symmetric four-word Short Authentication String — unit-tested for determinism + symmetry, with a mismatched passphrase or bridged room yielding different words)",
+        "First-party one-time-delivery state machine (unit-tested pure core): sender armed → releases to the FIRST verified requester → delivering → burned on ack, any later request answered with 'gone' and never re-delivered; receiver reveals at most once — the single-use guarantee proven by test rather than asserted",
+        "First-party versioned secret envelope (unit-tested pure core): [version|headerLen(uint32 BE)|headerJSON|payload] where the secret rides as the raw payload bytes and the header carries only a timestamp + optional non-sensitive label (never the secret), plus an [iv|ciphertext] frame packer/unpacker — the whole wire format is pure and unit-tested end-to-end",
+        "Split-link mode — buildInviteUrl omits the passphrase so the link carries only the room id; the passphrase is conveyed out-of-band, making a leaked link alone useless (unit-tested full vs split)",
+        "qrcode (burn-link QR) + Web Share API (level 2, link) + Clipboard API (copy the link / passphrase; recipient copies the revealed secret)",
+        "-webkit-text-security masked secret input with a show/hide toggle + a char count that reveals nothing",
+        "localStorage — NONE; not even preferences that could hint at a secret; the secret lives only in a module-local variable nulled the instant it is delivered or burned",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell)"
+      ],
+      "status": "deployed",
+      "url": "https://burnwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/burnwell/pull/1"
+    },
     {
       "name": "sketchwell",
       "repo": "ben-gy/sketchwell",

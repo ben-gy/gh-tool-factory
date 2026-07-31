@@ -1,5 +1,11 @@
 === Tools ===
 
+Burnwell
+  https://burnwell.benrichardson.dev
+  The safe way to send someone a password, API key or recovery phrase — type the secret, share a one-time link, and it's handed straight from your browser to theirs, end-to-end encrypted, shown once, then burned. Unlike the paste-into-a-website services, nothing is ever stored on a server: the secret only moves while you're both connected, and it's released to a single verified recipient then wiped. A four-word code catches an impostor, and a split-link mode keeps the passphrase off the link entirely.
+  Tags: privacy, secret, password, one-time, encrypted, webrtc, peer-to-peer, no-signup
+  Repo: https://github.com/ben-gy/burnwell
+
 Sketchwell
   https://sketchwell.benrichardson.dev
   A private, end-to-end encrypted collaborative whiteboard you open from a link — draw together in real time with pen, shapes, arrows and text, live per-person cursors, and no account, no server and nothing stored. Every stroke goes straight browser-to-browser over an encrypted mesh and the board is kept in sync by a conflict-free CRDT; export it as a PNG or a scalable SVG to keep a copy.
