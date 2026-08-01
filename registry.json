@@ -1,7 +1,35 @@
 {
   "version": 1,
-  "last_updated": "2026-08-01",
+  "last_updated": "2026-08-02",
   "tools": [
+    {
+      "name": "tiltwell",
+      "repo": "ben-gy/tiltwell",
+      "date": "2026-08-02",
+      "description": "A spirit level, angle finder, inclinometer and roof-pitch meter in your browser — it turns the phone's orientation sensor into a precise 2-axis bubble level and a clinometer, then hands you the number as a saved measurement, a CSV and a report card. Lay the phone flat to check a shelf is level; hold it against a slope to read the angle, percent grade, roof pitch (rise-in-12) and 1:n ratio, with an accessibility-ramp reference (1:20 / 1:14 / 1:12); Calibrate zeros it against a reference surface. Every angle is derived from a single unit gravity direction reconstructed from the DeviceOrientation beta/gamma (with DeviceMotion's accelerationIncludingGravity as a robust fallback), which keeps platform sign-quirks in one place and makes the whole derivation a pure, exhaustively unit-tested function. Screen rotation is compensated via screen.orientation.angle. On a desktop with no sensor — or when orientation permission is denied — the first-class Photo tab is an on-screen protractor: drop a photo (or the bundled roof sample), tap two points for a slope from horizontal or three for the angle at a vertex, and export an annotated PNG. Artefacts: captured measurements as CSV + a 1200x675 report-card PNG + a copyable summary, plus the annotated photo. Nothing is uploaded; installable PWA, fully offline. No real-device sensor check was possible in the pipeline — the live derivation is proven by 76 unit tests over synthetic gravity vectors and the photo fallback was driven end-to-end.",
+      "category": "sensor-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "DeviceOrientation API (deviceorientation beta/gamma — the primary live tilt input; the genuinely untouched 'orientation sensor'; combined into a unit gravity direction so every angle is derived from one vector)",
+        "DeviceMotion accelerationIncludingGravity (robust gravity-vector fallback for devices that only report motion; negated + normalised, platform sign neutralised by the calibration zero)",
+        "DeviceOrientationEvent.requestPermission() / DeviceMotionEvent.requestPermission() (iOS 13+, requested inside a tap, feature-detected; a denied permission lands in the first-class Photo protractor)",
+        "Screen Orientation API (screen.orientation.angle read per frame to compensate beta/gamma when the phone rotates to landscape — a pure, unit-tested in-plane rotation)",
+        "First-party angle/gravity maths (unit-tested pure core): betaGamma→gravity vector, gravity→tilt-from-horizontal + signed per-axis + long-axis slope, screen-rotation compensation, calibration zero — 76 tests over synthetic vectors (flat→0, on-edge→90, 45°→45)",
+        "First-party slope conversions (unit-tested): degrees ↔ percent grade ↔ roof pitch (rise-in-12, rounded to a half unit) ↔ 1:n run ratio ↔ accessibility-ramp verdict (1:20 gentle / 1:14 preferred / 1:12 max / steeper)",
+        "First-party photo protractor geometry (unit-tested): line-inclination-from-horizontal (2 points → slope) and interior-angle-at-vertex (3 points → angle), with a contain-fit image↔canvas mapping so exports are full-resolution",
+        "Canvas 2D + devicePixelRatio (live 2-axis bubble level that drifts to the high side, a protractor angle dial, the photo overlay with points/line/dashed-horizon/angle-label, and a 1200x675 report-card PNG)",
+        "Pointer Events (drop points on the photo protractor; touch-action:none)",
+        "setInterval render loop (~30 Hz — a hidden/backgrounded tab throttles rAF to a halt) + a deferred setTimeout first-draw so the gauge sizes correctly after layout",
+        "Screen Wake Lock API (keeps a measuring device awake; re-acquired on visibilitychange)",
+        "File System Access API / anchor-download (measurements CSV, report-card PNG, annotated photo PNG) + Web Share API (level 2, files) + Clipboard API (ClipboardItem image + summary text)",
+        "First-party measurements CSV writer (unit-tested: field escaping, ISO timestamps, blank cells for non-applicable conversions)",
+        "localStorage (mode + calibration zero preferences only; never measurement data)",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell + sample photo precached)"
+      ],
+      "status": "deployed",
+      "url": "https://tiltwell.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/tiltwell/pull/1"
+    },
     {
       "name": "burnwell",
       "repo": "ben-gy/burnwell",

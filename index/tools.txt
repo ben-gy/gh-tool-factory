@@ -1,5 +1,11 @@
 === Tools ===
 
+Tiltwell
+  https://tiltwell.benrichardson.dev
+  A spirit level, angle finder and inclinometer in your browser — lay your phone flat to check a shelf is level, or hold it against a slope to read the angle, percent grade, roof pitch and ramp ratio, all from the orientation sensor with nothing uploaded. Capture readings to a CSV and a report card; calibrate it to zero against any reference surface. No sensor? The Photo tab is an on-screen protractor: tap points on a photo to measure any angle and export it annotated.
+  Tags: live-dashboards, spirit-level, angle-finder, inclinometer, roof-pitch, protractor, sensor, privacy
+  Repo: https://github.com/ben-gy/tiltwell
+
 Burnwell
   https://burnwell.benrichardson.dev
   The safe way to send someone a password, API key or recovery phrase — type the secret, share a one-time link, and it's handed straight from your browser to theirs, end-to-end encrypted, shown once, then burned. Unlike the paste-into-a-website services, nothing is ever stored on a server: the secret only moves while you're both connected, and it's released to a single verified recipient then wiped. A four-word code catches an impostor, and a split-link mode keeps the passphrase off the link entirely.
