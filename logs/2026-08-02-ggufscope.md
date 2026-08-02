@@ -167,3 +167,30 @@ Qwen3-32B at 32768 → 8192.00 / 4352.00 MiB. All exact.
 - Sliding-window models (Gemma) likewise get a safe upper bound and say so.
 - Fork quantisations cannot be sized; the tool refuses rather than guessing.
 - The remote path is disclosed as a real request to Hugging Face, not hand-waved.
+
+## Post-deploy: synthesis findings applied
+
+The 13-agent workflow's final synthesis landed after the first deploy. It confirmed both headline
+capabilities and, importantly, confirmed the CSP requirement I had already shipped: `connect-src`
+must include `https://*.hf.co`, because CSP is enforced against the **redirect target** and
+huggingface.co 302s to its CDN. A policy naming only `huggingface.co` fails with `TypeError: Failed
+to fetch`. (This contradicts the existing `transformers-image-to-image-superres` memory note that
+"connect-src only needs huggingface" — that note does not generalise to GGUF LFS range reads.)
+
+Two findings warranted changes, both shipped in `0d7c66c` and redeployed:
+
+1. **The trust banner said "about 6 MB".** Observed header depths span **14 KB (stories260K) to
+   13.07 MB (Llama-4-Scout, gpt-oss-20b)** with no proven ceiling, and the driver is vocab + BPE
+   merge count rather than model size — a 770 MiB Llama-3.2-1B has a 7.8 MB header while a 19.8 GB
+   Qwen3-32B has a 5.98 MB one. The banner now says "a few megabytes", which is true. The 8 MB → 24
+   MB ladder already covers the 13 MB cases in two requests.
+2. **Hosts that serve `.gguf` without CORS** (GitHub release assets, ollama.com — both return 206
+   with no `access-control-allow-origin`) fail the fetch before any response object exists, which
+   surfaced as a bare `TypeError` and sent the user looking for a fault on their end. That case is
+   now named explicitly, with the local-file path offered as the remedy. Verified live against a
+   real github.com URL.
+
+Findings noted but deliberately not acted on: the synthesis suggests a 32 MiB hard abort cap where
+mine is 160 MB (mine succeeds where theirs would abort, and is still bounded); and `x-error-code` /
+`?expand[]=gated` could sharpen gated-repo errors, which the current 401 message already handles
+acceptably.
