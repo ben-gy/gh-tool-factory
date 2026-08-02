@@ -3,6 +3,37 @@
   "last_updated": "2026-08-02",
   "tools": [
     {
+      "name": "ggufscope",
+      "repo": "ben-gy/ggufscope",
+      "date": "2026-08-02",
+      "description": "Will this GGUF fit on your GPU? Paste a Hugging Face repo id (or drop a local .gguf) and GGUFScope reads the model's REAL tensor table straight out of the file with a single HTTP Range request — about 8 MB of a multi-gigabyte model, ~0.1% of it — then computes exactly what it needs in VRAM. It exists because the SEO 'VRAM calculator' pages guess from a parameter count and a quant name, and both inputs are unreliable: Q4_K_M is a llama-quantize MIXTURE (attention V, the FFN down projection and the output head are stored at higher precision, and a row length not divisible by the block size silently falls back to another type — qwen2.5-0.5b-instruct-q4_k_m.gguf is 133 Q5_0 tensors and only 12 Q4_K, a true 6.16 bpw vs the assumed 4.85), and the KV cache depends on GQA geometry a parameter count cannot reveal (Qwen3-32B declares key_length 128 while 5120/64 = 80, an 8192 vs 5120 MiB error at 32k that says a model fits when it does not). Weight bytes come from ggml's real block sizes; the KV cache reproduces llama.cpp's own per-layer formula including explicit key_length/value_length, per-layer head_count_kv and the 256-token context padding. The killer assertion is a self-check: the summed tensor table is reconciled against the file's true size read from Content-Range — exact match shows 'verified', a mismatch is surfaced rather than hidden, which catches fork quantisations, removed ggml types and truncated downloads for free (delta 0 bytes on every model tested). Solvers find the largest -ngl and the largest context that fit. Sharded models are fully supported (shards 2+ are ~10 KB each). Artefacts: fit-report.json, a solved llama-server command line (which forces -fa on whenever the KV cache is quantised, because llama.cpp exits otherwise), an Ollama Modelfile, chat_template.jinja rendered live, and a 1200x630 report-card PNG. A local .gguf is read with Blob.slice and never uploaded; remote inspection is honestly disclosed as a request to Hugging Face. Working memory is shown as an adjustable allowance, never folded silently into the headline, because llama.cpp's compute buffer has no closed form; MLA and sliding-window models are flagged as upper bounds. KV figures are checked in CI against numbers llama.cpp itself printed at startup.",
+      "category": "developer-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "fetch + HTTP Range requests (the headline: Range is a CORS-safelisted request header, so a single bytes=0-N request fires no preflight; huggingface.co 302s to its CDN which answers 206)",
+        "CORS Access-Control-Expose-Headers: * → the browser can read Content-Range and learn a 20 GB file's true size without downloading it (x-linked-size is only on the 302 hop, which fetch hides)",
+        "Guard against a server that ignores Range and answers 200: the body is stream-read to the requested length and then cancelled, so the tool never downloads the model it exists to avoid downloading",
+        "Blob.slice (the identical parser over a local file, header only, never uploaded — fully offline)",
+        "First-party GGUF binary parser (DataView + TextDecoder, little- and big-endian): magic/version/counts, the full metadata KV block, and the tensor-info table; throws NeedMoreBytes on a truncated prefix rather than yielding zero-shaped tensors, which is the failure mode that would silently report 0 GB",
+        "Progressive Range ladder (8 MB → 24 MB → 64 MB → 160 MB): the tensor table sits AFTER all metadata, and the tokenizer vocabulary is in that metadata, so real headers start 5.7–7.5 MB in (measured: Qwen3-8B 5.68 MB, Llama-3.2-1B 7.47 MB, gemma-3-4b 6.24 MB, Qwen3-32B 5.70 MB) — one request covers the overwhelming majority",
+        "Huge string arrays are WALKED, not materialised: the 128k–260k-entry tokenizer vocab is skipped by length prefix, with only the BOS/EOS/PAD/UNK entries decoded by index for the chat-template preview",
+        "First-party ggml type table (unit-tested): block and type sizes for every type F32…MXFP4/NVFP4/Q1_0/Q2_0, verified twice over — by compiling ggml-common.h and printing sizeof for every block struct, and by diffing llama.cpp's gguf-py/gguf/constants.py; removed types (Q4_2, Q4_0_4_4, IQ4_NL_8_8…) have a zero block size and are hard-rejected instead of dividing by zero, and ids beyond the upstream enum are refused as fork quantisations",
+        "First-party VRAM arithmetic (unit-tested against llama.cpp's own startup logs): weights as Σ align(elements/blockSize × typeSize, alignment); KV cache as Σ_layers n_ctx × (key_length × head_count_kv × bytes_k + value_length × head_count_kv × bytes_v) — Llama-3.1-8B at 131072 f16 gives 16384.00 MiB, matching the figure in its own log, and TinyLlama/Llama-3.2-1B/Qwen3-32B all match at f16 and q8_0",
+        "First-party reconciliation self-check: dataStart + Σ aligned tensor bytes vs the real Content-Length — 'verified' at delta 0, and a named diagnosis (header-only fixture / truncated download / fork quantisation) otherwise",
+        "First-party offload model: -ngl offloads the LAST N blocks (llama.cpp's i_gpu_start), the output head only when ngl > n_layer, the token embedding stays on the host; plus binary-search solvers for the largest fitting -ngl and the largest fitting context on a 256-token boundary",
+        "Hugging Face tree API over CORS (paginated via the Link: rel=next header, limit caps at 1000) to list a repo's .gguf files with real LFS sizes, and to group split models so a 49 GB eight-way shard set is offered as one entry",
+        "Web Worker (module) + AbortController — fetch and parse off the main thread with determinate progress; superseded requests are cancelled",
+        "@huggingface/jinja (the only runtime dependency) — renders the model's own tokenizer.chat_template against example messages, with a failure shown as the thrown error plus the template source rather than a wrong count",
+        "Canvas 2D — the 1200x630 shareable fit-report card, rendered on-device",
+        "File System Access API (showSaveFilePicker for JSON/PNG/.jinja, anchor-download fallback) + Web Share API (level 2, files) + Clipboard API (the command line and Modelfile)",
+        "localStorage (GPU size, context, cache type preferences only; never model data)",
+        "Service Worker (vite-plugin-pwa; installable, offline app shell + the synthetic sample header precached)"
+      ],
+      "status": "deployed",
+      "url": "https://ggufscope.benrichardson.dev",
+      "pr_url": "https://github.com/ben-gy/ggufscope/pull/1"
+    },
+    {
       "name": "tiltwell",
       "repo": "ben-gy/tiltwell",
       "date": "2026-08-02",

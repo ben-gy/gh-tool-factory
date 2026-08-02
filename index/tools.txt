@@ -1,5 +1,11 @@
 === Tools ===
 
+GGUFScope
+  https://ggufscope.benrichardson.dev
+  Will this AI model fit on your graphics card? Paste a Hugging Face model id and GGUFScope reads the model's real internal layout straight out of the file — about 8 MB of a multi-gigabyte download — then tells you exactly how much VRAM it needs, at what context length, and hands you the llama-server command that fits. The VRAM calculators guess from a parameter count and a quant name; both are unreliable, so this reads the actual file instead and proves it by reconciling the numbers against the file's true byte size.
+  Tags: data-explorers, gguf, llama-cpp, vram, local-llm, quantisation, ollama, privacy
+  Repo: https://github.com/ben-gy/ggufscope
+
 Tiltwell
   https://tiltwell.benrichardson.dev
   A spirit level, angle finder and inclinometer in your browser — lay your phone flat to check a shelf is level, or hold it against a slope to read the angle, percent grade, roof pitch and ramp ratio, all from the orientation sensor with nothing uploaded. Capture readings to a CSV and a report card; calibrate it to zero against any reference surface. No sensor? The Photo tab is an on-screen protractor: tap points on a photo to measure any angle and export it annotated.

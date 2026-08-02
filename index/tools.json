@@ -2,6 +2,27 @@
   "last_updated": "2026-08-02",
   "tools": [
     {
+      "name": "GGUFScope",
+      "slug": "ggufscope",
+      "icon": "cpu",
+      "category": "data-explorers",
+      "description": "Will this AI model fit on your graphics card? Paste a Hugging Face model id and GGUFScope reads the model's real internal layout straight out of the file — about 8 MB of a multi-gigabyte download — then tells you exactly how much VRAM it needs, at what context length, and hands you the llama-server command that fits. The VRAM calculators guess from a parameter count and a quant name; both are unreliable, so this reads the actual file instead and proves it by reconciling the numbers against the file's true byte size.",
+      "url": "https://ggufscope.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/ggufscope",
+      "tags": [
+        "data-explorers",
+        "gguf",
+        "llama-cpp",
+        "vram",
+        "local-llm",
+        "quantisation",
+        "ollama",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-08-02"
+    },
+    {
       "name": "Tiltwell",
       "slug": "tiltwell",
       "icon": "ruler",
