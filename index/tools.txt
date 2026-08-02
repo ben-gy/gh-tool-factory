@@ -1,5 +1,11 @@
 === Tools ===
 
+Scrubjay
+  https://scrubjay.benrichardson.dev
+  You are three hours from uploading four gigabytes of support transcripts to a fine-tuning provider, someone asks "has anyone checked this for keys?", and you have no answer — because you do not know what a customer pasted into a chat two years ago. Every hosted scanner has the same absurdity at its heart: uploading the file to learn whether the file is safe to upload IS the disclosure you were trying to avoid. Drag the file into Scrubjay instead and it streams the whole thing through 27 recognisers on your own machine, then hands back a copy where personal data has become stable pseudonyms (so it still trains, and rows still join), credentials are destroyed, a findings report tells you exactly where each one was, and an encrypted map lets only you reverse it. It never tests a key against a live API, because checking means transmitting. And it tells you what it cannot do first rather than last: there is no language model in it, so it finds no names and no postal addresses at all, and a clean report means nothing matched — not that the file is clean.
+  Tags: privacy, secrets, pii, dataset, jsonl, redaction, developer-tools
+  Repo: https://github.com/ben-gy/scrubjay
+
 Searchpack
   https://searchpack.benrichardson.dev
   Your docs site's search box cannot find a page you know exists, because the reader typed "how do I stop it retrying forever" and the page says "configure the backoff ceiling". Point Searchpack at the folder and it builds a semantic search engine on your own machine, then hands you a zip: a binary index, a trimmed embedding table and a small search.js. Unpack it into your site and you have search — no account, no vector database, no per-query bill, nothing hosted. Because the whole engine ships as static files, your readers' queries never reach anyone either, including you.

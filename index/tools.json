@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-08-02",
+  "last_updated": "2026-08-03",
   "tools": [
+    {
+      "name": "Scrubjay",
+      "slug": "scrubjay",
+      "icon": "scan-search",
+      "category": "privacy",
+      "description": "Find the API keys and personal data in a dataset before you upload it — entirely in your browser.",
+      "url": "https://scrubjay.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/scrubjay",
+      "tags": [
+        "privacy",
+        "secrets",
+        "pii",
+        "dataset",
+        "jsonl",
+        "redaction",
+        "developer-tools"
+      ],
+      "type": "tool",
+      "date": "2026-08-03"
+    },
     {
       "name": "Searchpack",
       "slug": "searchpack",
