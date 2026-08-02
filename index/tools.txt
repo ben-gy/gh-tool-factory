@@ -1,5 +1,11 @@
 === Tools ===
 
+Searchpack
+  https://searchpack.benrichardson.dev
+  Your docs site's search box cannot find a page you know exists, because the reader typed "how do I stop it retrying forever" and the page says "configure the backoff ceiling". Point Searchpack at the folder and it builds a semantic search engine on your own machine, then hands you a zip: a binary index, a trimmed embedding table and a small search.js. Unpack it into your site and you have search — no account, no vector database, no per-query bill, nothing hosted. Because the whole engine ships as static files, your readers' queries never reach anyone either, including you.
+  Tags: data-explorers, search, embeddings, static-site, developer-tools, privacy
+  Repo: https://github.com/ben-gy/searchpack
+
 Chatprint
   https://chatprint.benrichardson.dev
   Your AI request came back with "maximum context length exceeded" and you cannot tell what filled it. Paste the request your code was about to send and Chatprint shows you the exact text the model receives, then breaks the token count down by system prompt, tool definitions, retrieved documents and conversation history — so you can see what is actually spending your context, and trim it to fit. It uses each model's own template and tokenizer, so the numbers are the real ones: the same conversation costs 6,478 tokens on one model and 1,900 on another, because some quietly discard your tool definitions entirely.

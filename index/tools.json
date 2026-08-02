@@ -2,6 +2,24 @@
   "last_updated": "2026-08-02",
   "tools": [
     {
+      "name": "Searchpack",
+      "slug": "searchpack",
+      "icon": "search-code",
+      "category": "data-explorers",
+      "description": "Turn your docs folder into a drop-in semantic search engine — a binary index and a tiny search shim, zipped, with no backend ever.",
+      "url": "https://searchpack.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/searchpack",
+      "tags": [
+        "data-explorers",
+        "search",
+        "embeddings",
+        "static-site",
+        "developer-tools"
+      ],
+      "type": "tool",
+      "date": "2026-08-02"
+    },
+    {
       "name": "Chatprint",
       "slug": "chatprint",
       "icon": "align-left",
