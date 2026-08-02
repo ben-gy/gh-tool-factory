@@ -2,6 +2,27 @@
   "last_updated": "2026-08-02",
   "tools": [
     {
+      "name": "Chatprint",
+      "slug": "chatprint",
+      "icon": "align-left",
+      "category": "data-explorers",
+      "description": "Your AI request came back with \"maximum context length exceeded\" and you cannot tell what filled it. Paste the request your code was about to send and Chatprint shows you the exact text the model receives, then breaks the token count down by system prompt, tool definitions, retrieved documents and conversation history — so you can see what is actually spending your context, and trim it to fit. It uses each model's own template and tokenizer, so the numbers are the real ones: the same conversation costs 6,478 tokens on one model and 1,900 on another, because some quietly discard your tool definitions entirely.",
+      "url": "https://chatprint.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/chatprint",
+      "tags": [
+        "data-explorers",
+        "tokens",
+        "context-window",
+        "prompt",
+        "llm",
+        "tokenizer",
+        "chat-template",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-08-02"
+    },
+    {
       "name": "GGUFScope",
       "slug": "ggufscope",
       "icon": "cpu",

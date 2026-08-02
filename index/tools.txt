@@ -1,5 +1,11 @@
 === Tools ===
 
+Chatprint
+  https://chatprint.benrichardson.dev
+  Your AI request came back with "maximum context length exceeded" and you cannot tell what filled it. Paste the request your code was about to send and Chatprint shows you the exact text the model receives, then breaks the token count down by system prompt, tool definitions, retrieved documents and conversation history — so you can see what is actually spending your context, and trim it to fit. It uses each model's own template and tokenizer, so the numbers are the real ones: the same conversation costs 6,478 tokens on one model and 1,900 on another, because some quietly discard your tool definitions entirely.
+  Tags: data-explorers, tokens, context-window, prompt, llm, tokenizer, chat-template, privacy
+  Repo: https://github.com/ben-gy/chatprint
+
 GGUFScope
   https://ggufscope.benrichardson.dev
   Will this AI model fit on your graphics card? Paste a Hugging Face model id and GGUFScope reads the model's real internal layout straight out of the file — about 8 MB of a multi-gigabyte download — then tells you exactly how much VRAM it needs, at what context length, and hands you the llama-server command that fits. The VRAM calculators guess from a parameter count and a quant name; both are unreliable, so this reads the actual file instead and proves it by reconciling the numbers against the file's true byte size.
