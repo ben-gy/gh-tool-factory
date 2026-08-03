@@ -44,6 +44,25 @@ This is the real reason the backlog exists and why it resists repair. On 2026-08
 cycling 20 stalled domains at once recovered exactly **5** and left 15 frozen with zero
 state movement across five minutes of polling — the bucket had about five tokens left.
 
+### AMENDMENT 2026-08-04 — this does not explain the current 15
+
+Cause 2 is real and the ceiling maths below still stands, but it is **not** why the present
+backlog is stuck, and the `RATE LIMITED` verdict that pointed here was a script artefact
+(fixed; see `ssl-2026-08-04.md`). Two observations kill the rate-limit reading:
+
+- New properties keep getting certificates — `au-bushfires`, `scrubjay`, `loraprep` are all
+  `approved`. An exhausted per-registered-domain bucket would stall them too.
+- Nine properties held an **undisturbed** authorization for 42h with zero state movement.
+  A throttled queue waiting on refill does not behave that way.
+
+DNS, Pages config, HTTP-01 reachability and CAA were all compared against the healthy
+controls and are indistinguishable. Every remaining domain-scoped explanation predicts new
+properties would fail too, so the cause is almost certainly **hostname-scoped** — most
+likely Let's Encrypt's failed-validation limit, accumulated on exactly these hostnames
+during the pre-08-02 era when authorizations never completed. If so, **cycling extends the
+block rather than clearing it**, and the right move is to leave the nine untouched for a
+week. Unconfirmed — treat as the leading hypothesis, not established fact.
+
 ### Consequences for repair
 
 - A **frozen** `cert_state` (no movement across polls) means throttled, not broken. Stop.
