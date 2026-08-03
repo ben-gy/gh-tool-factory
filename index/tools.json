@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-08-03",
+  "last_updated": "2026-08-04",
   "tools": [
+    {
+      "name": "Loraprep",
+      "slug": "loraprep",
+      "icon": "images",
+      "category": "images",
+      "description": "Turn a folder of photos into a clean, deduplicated LoRA training set — entirely in your browser.",
+      "url": "https://loraprep.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/loraprep",
+      "tags": [
+        "images",
+        "lora",
+        "training-data",
+        "deduplication",
+        "machine-learning",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-08-04"
+    },
     {
       "name": "Scrubjay",
       "slug": "scrubjay",
