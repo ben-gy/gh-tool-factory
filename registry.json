@@ -214,7 +214,7 @@
         "Service Worker (vite-plugin-pwa; installable, offline app shell + sample photo precached)"
       ],
       "status": "deployed",
-      "url": "https://tiltwell.benrichardson.dev",
+      "url": "https://tiltwell-level.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/tiltwell/pull/1"
     },
     {
@@ -358,7 +358,7 @@
         "Service Worker (vite-plugin-pwa; installable, offline app shell)"
       ],
       "status": "deployed",
-      "url": "https://castwell.benrichardson.dev",
+      "url": "https://castwell-cast.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/castwell/pull/1"
     },
     {
@@ -542,7 +542,7 @@
         "Service Worker (vite-plugin-pwa; app shell + sample precached, AAC-encoder JS served)"
       ],
       "status": "deployed",
-      "url": "https://wavewell.benrichardson.dev",
+      "url": "https://wavewell-audiogram.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/wavewell/pull/1"
     },
     {
