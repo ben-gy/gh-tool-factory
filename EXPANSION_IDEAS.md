@@ -26,4 +26,23 @@ Review periodically and fold the best ones into the existing repos.
   https://github.com/ollama/ollama/blob/main/template/template.go
 
 - **searchpack**: Retrieval quality is the one weak spot (measured 2/5 top-3 on conversational sample queries; static embeddings are ~35 MTEB Retrieval vs ~43 for all-MiniLM-L6-v2). Three cheap, independent levers, in order of expected payoff: (1) **query expansion from the corpus** — at build time, precompute for each shipped row its top-k nearest neighbouring rows and ship a small expansion table, then add weakly-weighted neighbours to the query vector; this is how you recover synonymy that mean-pooling cannot ("callback" → "webhook"). (2) **Index the heading trail as its own micro-chunk** with a boost, so "Verifying that an event really came from us" is directly matchable rather than diluted into 150 words of prose. (3) **Field-weighted BM25** (heading terms weighted above body terms, BM25F-style) — the postings already exist, only the scorer changes. Also worth testing: `minishlab/potion-retrieval-32M` (MTEB Ret 35.06 vs 34.95, model.safetensors 129,210,456 B, trivially parsed 8-byte-header safetensors) as an optional larger-download/better-quality model choice — the loader is the only thing that differs, since both are pure lookup tables.
+- **backslide**: three enhancements cut from v1 on 2026-08-04 with the reason recorded, so nobody
+  re-litigates them. (1) **Token-level diff drill-down** via `gpt-tokenizer` o200k_base +
+  `diff.diffArrays` over token-id arrays. Cut because it costs **1,065,794 B gzipped** and, measured
+  across 11 realistic cases, produced hunk counts *identical* to `diffWords` in 8, was clearer in 1
+  (CJK only), and was actively **worse** on whitespace reflow — 7 noise hunks where `diffJson` on
+  parsed objects correctly reports 0. Only worth adding behind a lazy import for a CJK-heavy user.
+  (2) **A promptfoo `tests` CSV export.** backslide's `regressions.jsonl` is an *output* record and
+  `promptfoo eval` cannot consume it; what it consumes is `tests: file://…csv` with the special
+  columns `__expected`, `__description`, `__metadata:*`
+  (https://www.promptfoo.dev/docs/configuration/test-cases/). Emitting one row per newly-broken case
+  with `vars` as columns and `__expected` carrying the flipped assertion would make the set
+  difference *executable* — which is the one thing `promptfoo eval --filter-failing <path>` cannot
+  express, because it returns everything failing in B rather than "failed in B ∧ passed in A".
+  (3) **Braintrust / LangSmith first-class adapters.** v1 reaches them through the generic column
+  picker; Braintrust needs `is_root === true` span filtering plus a content-hash-of-`input` join key
+  (its own OpenAPI prose says "if you run the same experiment twice, the `input` should be
+  identical"), and LangSmith's bulk export is **zstd-compressed Parquet**, which is a large WASM
+  dependency for one dialect.
+
 - **searchpack**: Ship an optional prebuilt search UI (`search-ui.js`, a few KB: input, debounce, keyboard nav, highlighted snippets, ARIA combobox) alongside `search.js` in the zip. Right now the README hands users a raw `pack.search()` call and they write their own dropdown — the single most likely place for the integration to stall.

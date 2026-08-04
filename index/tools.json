@@ -2,6 +2,26 @@
   "last_updated": "2026-08-04",
   "tools": [
     {
+      "name": "Backslide",
+      "slug": "backslide",
+      "icon": "git-compare",
+      "category": "data-explorers",
+      "description": "Drop yesterday's eval run and today's, and get back only the rows that got worse.",
+      "url": "https://backslide.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/backslide",
+      "tags": [
+        "data-explorers",
+        "llm",
+        "evals",
+        "regression-testing",
+        "diff",
+        "developer-tools",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-08-04"
+    },
+    {
       "name": "Loraprep",
       "slug": "loraprep",
       "icon": "images",
