@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-08-04",
+  "last_updated": "2026-08-05",
   "tools": [
+    {
+      "name": "Toolwright",
+      "slug": "toolwright",
+      "icon": "braces",
+      "category": "developer-tools",
+      "description": "Paste your agent's tool belt and see which provider will reject it — then take the fixed files.",
+      "url": "https://toolwright.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/toolwright",
+      "tags": [
+        "developer-tools",
+        "llm",
+        "json-schema",
+        "function-calling",
+        "mcp",
+        "gbnf",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-08-05"
+    },
     {
       "name": "Backslide",
       "slug": "backslide",
