@@ -105,6 +105,30 @@ Three separate ways the registry lied about reality, all of which hide breakage:
    python3 -c "import json;s=open('registry.json').read();print(json.dumps(json.loads(s),indent=2,ensure_ascii=False)+'\n'==s)"
    ```
 
+## Cause 4 — the cooldown ledger did not know about hostnames (FIXED 2026-08-05)
+
+The 08-04 evening session moved 14 properties to fresh hostnames **by hand**, so
+`state.json` — which `fleet-ssl.mjs` keys by slug — still held timestamps belonging to the
+*old* hostnames. The next morning's run read those 66h-old entries, judged the properties
+out of cooldown, and re-cycled five authorizations that were about **nine hours old**,
+abandoning them. It then printed `NOT ISSUING — …(66h)` against them, which under the
+amendment above reads as "this hostname is blocked, move it again" — and a second rename
+would have spent four more records from a DNS zone already at its 200/200 cap.
+
+**The trap is general: any out-of-band change to a property's hostname invalidates the
+ledger, and the ledger had no way to tell.** Fixed by keying it on `{ts, host}`:
+
+- a hostname the script did not cycle itself is **adopted, not cycled** — if a flow is
+  already open, its start time is unknowable, so first-observation is stamped and the host
+  serves a full untouched cooldown;
+- only a host with **no flow at all** (`certState` null) is cycled on sight, which is the
+  documented case where cycling is the required trigger;
+- `NOT ISSUING` is reported only when the recorded host is still the host in play.
+
+**If you move a property to a new hostname by hand, you no longer need to touch
+`state.json`** — the next run adopts it. Do not "help" by deleting its entry: that makes the
+script cycle a hostname whose authorization may already be in flight.
+
 ## Non-cause — the CNAME file (checked, ruled out)
 
 GitHub Pages reads the custom domain from a `CNAME` file in whatever it publishes; if that
