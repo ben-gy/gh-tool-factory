@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-08-05",
+  "last_updated": "2026-08-06",
   "tools": [
+    {
+      "name": "Charsight",
+      "slug": "charsight",
+      "icon": "scan-eye",
+      "category": "privacy",
+      "description": "Find the characters your screen is not showing you — and read what they say.",
+      "url": "https://charsight.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/charsight",
+      "tags": [
+        "privacy",
+        "security",
+        "unicode",
+        "prompt-injection",
+        "trojan-source",
+        "homoglyph",
+        "pdf"
+      ],
+      "type": "tool",
+      "date": "2026-08-06"
+    },
     {
       "name": "Toolwright",
       "slug": "toolwright",
