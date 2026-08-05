@@ -63,6 +63,25 @@ during the pre-08-02 era when authorizations never completed. If so, **cycling e
 block rather than clearing it**, and the right move is to leave the nine untouched for a
 week. Unconfirmed — treat as the leading hypothesis, not established fact.
 
+### AMENDMENT 2026-08-06 — the budget reading is now measured, not inferred
+
+The trailing-7-day burn can be measured directly rather than modelled, because GitHub
+reports `expires_at` and Let's Encrypt certificates run 90 days:
+
+```bash
+# issuance date ≈ expires_at - 90d, counted across every property in the three registries
+gh api repos/ben-gy/<name>/pages --jq '.https_certificate.expires_at'
+```
+
+On 2026-08-06 that gave **37 / 50** — thirteen tokens spare, three of them spent that
+morning on properties that issued within minutes. So when the backlog is frozen and new
+properties are still issuing, `RATE LIMITED` is not merely unproven, it is measurably false.
+**Measure before accepting a budget explanation.** The modelled `burn ~34.6/50` line the
+script prints is an estimate from fleet size and is not evidence either way.
+
+Note also that Cause 5 below feeds this number: certificates on hijacked subdomains are
+issued against `benrichardson.dev` and count against the same bucket.
+
 ### Consequences for repair
 
 - A **frozen** `cert_state` (no movement across polls) means throttled, not broken. Stop.
@@ -128,6 +147,43 @@ ledger, and the ledger had no way to tell.** Fixed by keying it on `{ts, host}`:
 **If you move a property to a new hostname by hand, you no longer need to touch
 `state.json`** — the next run adopts it. Do not "help" by deleting its entry: that makes the
 script cycle a hostname whose authorization may already be in flight.
+
+## Cause 5 — dangling CNAME → subdomain takeover (FOUND 2026-08-06)
+
+The most serious failure mode found so far, and the only one that is a *security* problem
+rather than an availability one.
+
+When a property moves hostname, the old record keeps pointing at `ben-gy.github.io` and
+nothing of ours claims it. GitHub Pages routes by `Host`, so **anyone can claim that exact
+hostname on their own Pages repo**, and GitHub will then issue them a Let's Encrypt
+certificate for a `benrichardson.dev` subdomain. This happened to
+`metascrub-app.benrichardson.dev` on 2026-07-15 and was not noticed for three weeks; it
+served Indonesian gambling spam. See `ssl-2026-08-06.md` for the evidence and the fix.
+
+Consequences worth holding onto:
+
+- **A hijacked hostname scores as healthy.** It returns `200` over a valid certificate, so
+  every probe-based check passes. `--fix-registry` only inspects properties whose probe
+  fails, so it will never look at one.
+- **The reliable signal is structural, not behavioural:** registry host ≠ the repo's Pages
+  `cname`. Equivalently, a zone record `CNAME`ing to `ben-gy.github.io` that no repo in the
+  fleet claims. Run both against **freshly pulled** registries — a property shipped an hour
+  ago is unclaimed-looking for exactly the same reason a hijacked one is, and the check will
+  happily nominate the day's newest property for deletion.
+- **The attacker's certificate spends our budget.** It is issued against the registered
+  domain `benrichardson.dev`, so it and its renewals come out of the same 50/week bucket as
+  Cause 2. A hostile holder of a dangling subdomain can drain that bucket deliberately.
+- **Every superseded hostname is an open invitation until the record is deleted.** The 08-04
+  renames left 14; five still exist and GitHub reports all five unclaimed. Deleting a
+  superseded record is not just quota hygiene, it closes the hole.
+
+### Prevention
+
+Renaming a property is a two-step operation and the second step is the one that gets
+forgotten: set the new hostname **and delete the old record**. If the old record must stay
+(links in the wild), keep the hostname claimed by leaving it as an additional custom domain
+on the property's own repo — an unclaimed record is the vulnerable state, not the record
+itself.
 
 ## Non-cause — the CNAME file (checked, ruled out)
 
