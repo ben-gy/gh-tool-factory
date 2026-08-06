@@ -82,6 +82,12 @@ script prints is an estimate from fleet size and is not evidence either way.
 Note also that Cause 5 below feeds this number: certificates on hijacked subdomains are
 issued against `benrichardson.dev` and count against the same bucket.
 
+**Re-measured 2026-08-07: 39 / 50** (1 · 14 · 3 · 13 · 3 · 2 · 1 across 08-01…08-07), so
+eleven tokens spare. `au-water-market` shipped and issued that morning while all seven
+backlog properties stayed frozen. Two consecutive days of measurement now say the same
+thing: **issuance works, the budget is not the constraint, and the backlog is hostname-
+scoped.** The modelled `burn ~34.7/50` the script prints is still only a model.
+
 ### Consequences for repair
 
 - A **frozen** `cert_state` (no movement across polls) means throttled, not broken. Stop.
@@ -184,6 +190,66 @@ forgotten: set the new hostname **and delete the old record**. If the old record
 (links in the wild), keep the hostname claimed by leaving it as an additional custom domain
 on the property's own repo — an unclaimed record is the vulnerable state, not the record
 itself.
+
+## Cause 6 — the routine could not carry a decision forward (FIXED 2026-08-07)
+
+The 08-06 session concluded that seven hostnames will not validate and that cycling them is
+the harmful move, and wrote the remedy in its log:
+
+> **Tomorrow's 08:10 run will cycle them unless something stops it** … Either pass
+> `--max-cycles=0` again, or bump `--cooldown-hours` past the intended quiet period.
+
+Nothing stopped it. The scheduled task's command line is fixed, the operator is asleep at
+08:10, and the log is not an input to anything. The 08-07 run cycled six of the seven — the
+second time these authorizations have been abandoned, after the 08-05 run did the same.
+
+**The general lesson is not "remember to pass the flag."** It is that a conclusion which
+only exists in prose cannot survive into an unattended run, and the cooldown could not
+express it: a cooldown answers "is this authorization in flight?", a question about hours,
+whereas the decision here was "leave this hostname alone for a week." There was no way to
+say that, so it was said in English and lost.
+
+Fixed by adding **durable holds** to `fleet-ssl.mjs`, stored beside the cooldown ledger in
+`~/.claude/scheduled-tasks/fleet-ssl-repair/state.json`:
+
+```bash
+node ~/Code/lab/scripts/ssl/fleet-ssl.mjs --hold=slug-a,slug-b --hold-days=7 \
+  --hold-reason="why"                      # place; --release=slug (or =all) lifts early
+```
+
+A held property is still probed, still diagnosed and still counted broken — it is only never
+cycled. Holds lapse by themselves at `until`, so a hold can never silently become a permanent
+exclusion, and both the console output and the run log list what is held and for how long.
+
+The seven were placed on hold until **2026-08-14** on 08-07. Re-probe then: a state that has
+moved means the taint ages out, a state still frozen after a week untouched means these
+hostnames are permanently dead and the properties need fresh ones.
+
+### Cause 6b — `--prune-dns` could not see its own primary target (FIXED 2026-08-07)
+
+The same run showed the prune path had never been able to delete the records it exists to
+delete. Two independent bugs:
+
+1. **It probed `https://`.** A superseded hostname has no certificate — that is what makes
+   it superseded — so the probe died at the TLS handshake and the GitHub 404 was never
+   read. The unclaimed page is served fine over plain **HTTP**. This is why the five records
+   from the 08-04 renames survived a run that was explicitly passed `--prune-dns`.
+2. **Candidates came only from the current run's registry corrections.** A record orphaned
+   by an *earlier* run was never revisited, so those five were unreachable by any future
+   sweep no matter how often it ran. Candidates now come from a sweep of the zone itself:
+   every `CNAME → ben-gy.github.io` that no property claims by either name (registry url or
+   the repo's Pages `cname`).
+
+The safety bar is unchanged and still absolute — GitHub itself must answer *"There isn't a
+GitHub Pages site here"* — plus a **48h grace window on the record's `created_on`**, which is
+what stops the sweep nominating the day's newest property while its registry entry is still
+unpushed. On 08-07 that guard did its job: it held back `kiln.benrichardson.dev`, created
+~24h earlier. Records skipped for either reason are now listed in the log rather than passed
+over silently.
+
+All five 08-04 orphans were deleted on 08-07. The zone went 197 → **192 / 200**, and five
+takeover-shaped holes closed. `metascrub-app` was correctly left alone: it answers 200, so it
+is not unclaimed, and it is not this script's to delete.
 
 ## Non-cause — the CNAME file (checked, ruled out)
 
