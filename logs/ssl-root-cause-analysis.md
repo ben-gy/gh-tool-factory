@@ -269,3 +269,36 @@ that only checked `public/CNAME` wrongly flagged seven healthy root-served sites
 Known-good control set for validating any future check — if these are flagged, the check is
 wrong: `artemis-tracker`, `benrichardson.dev`, `leader-skills`, `pipboy`, `pullshark-board`,
 `voynich-investigation`, `worldcupinvitations`.
+
+## Non-cause — two properties that are not on a `benrichardson.dev` Pages cert (checked, benign)
+
+A trailing-7-day budget measurement (the method in the 08-06 amendment) reports every
+property with no `https_certificate`. Two entries show up there permanently and are **not**
+breakage — recorded here so each morning's measurement does not re-investigate them:
+
+- **`au-worksafe`** — `cname: null`, no certificate, `https_enforced: true`, and healthy. It
+  is deliberately served from **`ben-gy.github.io/au-worksafe/`** rather than a custom
+  subdomain, because on 2026-08-04 the Cloudflare zone was at its 200-record cap. It rides
+  `github.io`'s own certificate, so it costs nothing from the Let's Encrypt bucket and
+  `https_enforced` on it is harmless. Note this is the first property in the fleet to use
+  **path-based hosting** — one of the four architectural options listed under Cause 2's
+  deadline — arrived at by accident rather than decision.
+- **`provenova`** — the Pages API 404s because the repo has no Pages site at all. Its
+  registry `url` is `https://provenova.net`, an external apex outside the zone. Out of this
+  routine's reach by the standing guardrail; reported, never fixed.
+
+Neither is takeover-shaped. The Cause 5 signal is registry host ≠ repo Pages `cname` *for a
+property that should have one*; a property with no custom domain by design does not qualify.
+
+### Zone capacity note (2026-08-08)
+
+The 08-07 prune took the zone to 192/200; it now sits at **195/200**. The 200-record cap that
+forced `au-worksafe` onto a path is therefore no longer binding, but it is close enough that
+it will bind again within days at three properties/day. The cap is a second, nearer ceiling
+than the Let's Encrypt one at ~373 properties, and it arrives first.
+
+### Budget measured a third day (2026-08-08): 38 / 50
+
+14 · 3 · 13 · 3 · 3 · 1 · 1 across 08-02…08-08. Twelve spare. `leakmap` and `sparklight` both
+shipped and issued this morning while all seven held properties stayed frozen. Three
+consecutive measurements now agree: **issuance works and the backlog is hostname-scoped.**
