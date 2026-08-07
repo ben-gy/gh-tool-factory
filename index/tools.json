@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-08-06",
+  "last_updated": "2026-08-08",
   "tools": [
+    {
+      "name": "leakmap",
+      "slug": "leakmap",
+      "icon": "droplets",
+      "category": "privacy",
+      "description": "Find out which of your secrets your build actually contains — before you deploy.",
+      "url": "https://leakmap.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/leakmap",
+      "tags": [
+        "privacy",
+        "security",
+        "developer-tools",
+        "api-keys",
+        "sourcemaps",
+        "vite",
+        "nextjs"
+      ],
+      "type": "tool",
+      "date": "2026-08-08"
+    },
     {
       "name": "Charsight",
       "slug": "charsight",
