@@ -251,6 +251,37 @@ All five 08-04 orphans were deleted on 08-07. The zone went 197 → **192 / 200*
 takeover-shaped holes closed. `metascrub-app` was correctly left alone: it answers 200, so it
 is not unclaimed, and it is not this script's to delete.
 
+## Cause 7 — the sweep read registries it never refreshed (FIXED 2026-08-09)
+
+`fleet-ssl.mjs` read the three `registry.json` files straight off disk. Nothing pulled them,
+and the routine runs unattended at 08:10, four hours after the factories ship and push. On
+2026-08-09 the local clones were two commits behind: `haggle` (game) and `runledger` (tool)
+had shipped, been pushed, and were invisible. The run reported `catalog 181` against a fleet
+of 183 and both properties went unprobed.
+
+Two unswept properties is the smaller half. **`--prune-dns` builds its "claimed by the fleet"
+set from these same files**, so a property that shipped hours ago is indistinguishable from
+an orphan — and both of the day's new properties were duly nominated for deletion. The only
+thing that stopped it was the 48h grace window on the record's `created_on` from Cause 6b,
+which meant the backstop was doing the work of the input. A property that shipped 49 hours
+before a stale sweep has no such protection.
+
+This is the same shape as Cause 4: **state that lives outside the script's knowledge, silently
+disagreeing with it.** There the ledger did not know a hostname had moved; here the catalog did
+not know the fleet had grown. Both fail in the direction of acting on a stale picture.
+
+Fixed by fast-forwarding the three registry repos before the catalog loads:
+
+- fast-forward **only** — a registry with local commits or an uncommitted `registry.json` is
+  left exactly as it is, because rewinding or merging an operator's in-progress edit to get a
+  cleaner sweep is not a trade this script may make;
+- any registry that could **not** be brought current **disables `--prune-dns` for the whole
+  run**, rather than letting the grace window absorb an incomplete claim set. Deleting a live
+  property's record is the worst thing this script can do and it is not reversible from here;
+- what was refreshed, skipped, or left stale is printed and written to the run log, so a stale
+  input is never silent;
+- `--no-pull` opts out.
+
 ## Non-cause — the CNAME file (checked, ruled out)
 
 GitHub Pages reads the custom domain from a `CNAME` file in whatever it publishes; if that
@@ -297,8 +328,46 @@ forced `au-worksafe` onto a path is therefore no longer binding, but it is close
 it will bind again within days at three properties/day. The cap is a second, nearer ceiling
 than the Let's Encrypt one at ~373 properties, and it arrives first.
 
+### Zone capacity 2026-08-09 — 198/200, THE BINDING CONSTRAINT
+
+**Two records of headroom: 185 CNAME + 5 MX + 5 AAAA + 3 TXT = 198 of 200.** At three new
+properties per day the zone fills **tomorrow, 2026-08-10**, and the fourth property to ship
+after that gets no DNS record at all.
+
+This has overtaken the Let's Encrypt ceiling by a wide margin and is the number that now
+matters. The certificate ceiling at ~373 properties is roughly **mid-October**; the zone cap
+is **days away** at 183 properties. Note also how the two interact: a property that cannot get
+a record cannot get a certificate either, so the zone cap will present as a TLS failure and
+this routine will diagnose it as one.
+
+Pruning cannot buy meaningful room. The 08-09 sweep found only five orphan-shaped candidates
+and GitHub reports every one of them claimed — including `metascrub-app`, which is Cause 5's
+hijack and not ours to delete. **There is nothing left to reclaim.** The 08-07 prune of five
+records was a one-off recovery of the 08-04 renames, not a repeatable source of headroom.
+
+The options are the same four architectural ones under Cause 2's deadline, and `au-worksafe`
+already demonstrates the cheapest of them working in production: path-based hosting under
+`ben-gy.github.io` costs zero DNS records and zero certificate budget. It arrived by accident
+on 08-04 when the zone last hit its cap. **This is an operator decision and this routine will
+not attempt any of them.** What it will do, absent a decision, is report the same failure every
+morning as new properties fail to get records.
+
 ### Budget measured a third day (2026-08-08): 38 / 50
 
 14 · 3 · 13 · 3 · 3 · 1 · 1 across 08-02…08-08. Twelve spare. `leakmap` and `sparklight` both
 shipped and issued this morning while all seven held properties stayed frozen. Three
 consecutive measurements now agree: **issuance works and the backlog is hostname-scoped.**
+
+### Budget measured a fourth day (2026-08-09): 29 / 50
+
+3 · 13 · 3 · 3 · 2 · 3 · 2 across 08-03…08-09. **Twenty-one spare** — the 08-04 spike of 13
+has begun rolling out of the trailing window, so the measured burn is falling even as the
+fleet grows. Two properties issued this morning; all seven held stayed frozen. Four
+consecutive measurements: the budget is not the constraint and has not been for a week.
+
+Worth stating plainly, because the script's headline invites the opposite conclusion: the
+modelled `burn ~35.2/50` it prints is now **six certificates above** the measured figure. The
+model assumes 21 new certificates a week from three factories shipping daily, but a property
+that reuses an existing hostname does not spend a token, and renewals are lumpier than
+`N × 7/90`. Treat the printed line as a fleet-size proxy, never as evidence about headroom —
+and note that it will keep pointing at Let's Encrypt while the real wall is the DNS zone.
