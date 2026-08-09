@@ -61,7 +61,7 @@ GGUFScope
   Repo: https://github.com/ben-gy/ggufscope
 
 Tiltwell
-  https://tiltwell.benrichardson.dev
+  https://tiltwell-level.benrichardson.dev
   A spirit level, angle finder and inclinometer in your browser — lay your phone flat to check a shelf is level, or hold it against a slope to read the angle, percent grade, roof pitch and ramp ratio, all from the orientation sensor with nothing uploaded. Capture readings to a CSV and a report card; calibrate it to zero against any reference surface. No sensor? The Photo tab is an on-screen protractor: tap points on a photo to measure any angle and export it annotated.
   Tags: live-dashboards, spirit-level, angle-finder, inclinometer, roof-pitch, protractor, sensor, privacy
   Repo: https://github.com/ben-gy/tiltwell
@@ -97,7 +97,7 @@ Syncwell
   Repo: https://github.com/ben-gy/syncwell
 
 Castwell
-  https://castwell.benrichardson.dev
+  https://castwell-cast.benrichardson.dev
   Private, end-to-end encrypted screen sharing from a link — broadcast your screen to viewers with no account, no download, nothing hosted. The pixels travel directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle, and any viewer can keep a local clip or snapshot.
   Tags: privacy, screen-share, screen-sharing, webrtc, peer-to-peer, encrypted, broadcast, no-signup
   Repo: https://github.com/ben-gy/castwell
@@ -136,7 +136,7 @@ Tunewell
   Repo: https://github.com/ben-gy/tunewell
 
 Wavewell
-  https://wavewell.benrichardson.dev
+  https://wavewell-audiogram.benrichardson.dev
   Turn a podcast clip, voice memo or song into a shareable waveform video — animated bars, mirror or sweeping waveform, a caption, and portrait/square/landscape output. Encoded on-device with WebCodecs; nothing is uploaded.
   Tags: media, audiogram, waveform-video, podcast, webcodecs, mp4, social
   Repo: https://github.com/ben-gy/wavewell
@@ -313,7 +313,7 @@ zipsafe
   Date: 2026-06-25
 
 veilpix
-  https://veilpix.benrichardson.dev
+  https://veilpix-stego.benrichardson.dev
   Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.
   Tags: encryption-privacy, steganography, web-crypto, image, privacy
   Repo: https://github.com/ben-gy/veilpix
@@ -334,7 +334,7 @@ metascrub
   Date: 2026-06-22
 
 bgwipe
-  https://bgwipe.benrichardson.dev
+  https://bgwipe-cutout.benrichardson.dev
   Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.
   Tags: image-tools, background-removal, machine-learning, webgpu, privacy
   Repo: https://github.com/ben-gy/bgwipe
