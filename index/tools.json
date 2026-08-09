@@ -205,7 +205,7 @@
       "icon": "ruler",
       "category": "live-dashboards",
       "description": "A spirit level, angle finder and inclinometer in your browser — lay your phone flat to check a shelf is level, or hold it against a slope to read the angle, percent grade, roof pitch and ramp ratio, all from the orientation sensor with nothing uploaded. Capture readings to a CSV and a report card; calibrate it to zero against any reference surface. No sensor? The Photo tab is an on-screen protractor: tap points on a photo to measure any angle and export it annotated.",
-      "url": "https://tiltwell.benrichardson.dev",
+      "url": "https://tiltwell-level.benrichardson.dev",
       "repo": "https://github.com/ben-gy/tiltwell",
       "tags": [
         "live-dashboards",
@@ -331,7 +331,7 @@
       "icon": "screen-share",
       "category": "privacy",
       "description": "Private, end-to-end encrypted screen sharing from a link — broadcast your screen to viewers with no account, no download, nothing hosted. The pixels travel directly between browsers with no server in the path; a four-word code lets both sides verify no one's in the middle, and any viewer can keep a local clip or snapshot.",
-      "url": "https://castwell.benrichardson.dev",
+      "url": "https://castwell-cast.benrichardson.dev",
       "repo": "https://github.com/ben-gy/castwell",
       "tags": [
         "privacy",
@@ -473,7 +473,7 @@
       "icon": "audio-waveform",
       "category": "media",
       "description": "Turn a podcast clip, voice memo or song into a shareable waveform video — animated bars, mirror or sweeping waveform, a caption, and portrait/square/landscape output. Encoded on-device with WebCodecs; nothing is uploaded.",
-      "url": "https://wavewell.benrichardson.dev",
+      "url": "https://wavewell-audiogram.benrichardson.dev",
       "repo": "https://github.com/ben-gy/wavewell",
       "tags": [
         "media",
@@ -995,7 +995,7 @@
       "icon": "eye-off",
       "category": "privacy",
       "description": "Hide an AES-256 encrypted message or file inside an ordinary image via LSB steganography, in your browser.",
-      "url": "https://veilpix-app.benrichardson.dev",
+      "url": "https://veilpix-stego.benrichardson.dev",
       "repo": "https://github.com/ben-gy/veilpix",
       "tags": [
         "encryption-privacy",
@@ -1031,7 +1031,7 @@
       "icon": "eraser",
       "category": "privacy",
       "description": "Strip hidden metadata (GPS, camera serial, timestamps) from photos losslessly, in your browser. No uploads.",
-      "url": "https://metascrub-app.benrichardson.dev",
+      "url": "https://metascrub.benrichardson.dev",
       "repo": "https://github.com/ben-gy/metascrub",
       "tags": [
         "encryption-privacy",
@@ -1049,7 +1049,7 @@
       "icon": "wand-sparkles",
       "category": "images",
       "description": "Erase image backgrounds in your browser with an in-browser ML model. Photos never leave your device.",
-      "url": "https://bgwipe-app.benrichardson.dev",
+      "url": "https://bgwipe-cutout.benrichardson.dev",
       "repo": "https://github.com/ben-gy/bgwipe",
       "tags": [
         "image-tools",
