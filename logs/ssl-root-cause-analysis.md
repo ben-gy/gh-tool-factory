@@ -371,3 +371,56 @@ model assumes 21 new certificates a week from three factories shipping daily, bu
 that reuses an existing hostname does not spend a token, and renewals are lumpier than
 `N × 7/90`. Treat the printed line as a fleet-size proxy, never as evidence about headroom —
 and note that it will keep pointing at Let's Encrypt while the real wall is the DNS zone.
+
+### Zone capacity 2026-08-10 — 200/200, FULL. The prediction landed.
+
+The 08-09 entry said the zone would fill today. It did: **200 of 200 records, zero headroom.**
+
+`chunkforge` shipped this morning only because the 04:10 factory run hit error 81045, ran the
+08-05 reclamation procedure, and found the `metascrub-app` hijack from Cause 5 — deleting it
+freed exactly the one slot it needed. That is not a repeatable source of headroom; it was the
+last orphan and it is now spent.
+
+**The next property to ship gets no DNS record.** Tomorrow's 04:10 run is the first one with
+nothing left to reclaim, and per the 08-09 note it will present as a TLS failure that this
+routine will dutifully misdiagnose. The 08:10 sweep confirmed it independently: `--prune-dns`
+ran clean against all four remaining orphan candidates and GitHub reports every one of them
+claimed. There is nothing to delete.
+
+The decision is unchanged and still the operator's: split across registered domains,
+path-based hosting under `ben-gy.github.io` (already proven by `au-worksafe`), move the zone
+to a plan with a higher record cap, or slow the factories. This routine will not attempt any
+of them.
+
+## Cause 7 — an untracked file collision silently disabled the prune (FIXED 2026-08-10)
+
+The 08:10 run reported `REGISTRY tool: local commits — not fast-forwardable, left alone`. The
+`tool` registry had **no local commits**: `HEAD` was a strict ancestor of `origin/main`, two
+behind. The real error was a different one git returns from the same non-zero exit:
+
+```
+error: The following untracked working tree files would be overwritten by merge:
+	logs/2026-08-10-chunkforge.md
+```
+
+The factory writes its build log into the working copy *and* ships the same path through a
+PR, so the incoming commit collided with the untracked local copy and git refused the entire
+fast-forward. `refreshRegistries()` attributed every `merge --ff-only` failure to local
+commits, so the message sent an operator hunting for a divergent branch that did not exist.
+
+**The reporting error was the smaller half.** A stale registry sets the flag that disables
+`--prune-dns` wholesale — so on the one morning the zone hit 200/200, the sweep skipped the
+only mechanism that reclaims records, and did so while printing a reason that was false. The
+catalog was also short by one: 185 properties swept instead of 186, `chunkforge` invisible to
+the very sweep meant to verify it.
+
+Fixed in `fleet-ssl.mjs`: the failure is now reported with git's actual stderr, and a
+collision of this shape is resolved by **moving the untracked file aside** to `*.superseded`
+and retrying the fast-forward once. Moved, not deleted — git is about to write the
+authoritative version, and a log the factory has already pushed is not the sweep's to
+destroy. A park that ends in a successful fast-forward is flagged `advanced`, i.e. reported
+but *not* treated as stale, because the registry is then current — which is exactly the
+condition the prune requires.
+
+Today's parked copy was the pre-amendment draft: 183 lines against the 207 on `origin/main`,
+which had the Cause 5 takeover write-up appended by PR #7. Nothing was lost.
