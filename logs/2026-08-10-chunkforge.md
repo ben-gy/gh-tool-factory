@@ -159,8 +159,32 @@ assumed:
 ## Deployment
 - Repo created: yes
 - GitHub Pages enabled: yes
-- Directory entry live on main: yes
-- Workflow triggered: yes
+- TLS certificate: approved on the first poll
+- Directory entry live on main: yes, and confirmed being served
+- Workflow triggered: yes, green on both commits
+
+### A subdomain takeover was found during the DNS step
+
+The Cloudflare zone was at exactly **200/200 records** and the deploy failed with error 81045, so the
+reclamation procedure from the 2026-08-05 run was followed: list every CNAME pointing at
+`ben-gy.github.io`, cross-reference against the Pages `cname` of all 300 ben-gy repos, and check what
+each unclaimed name actually serves.
+
+Two names were unclaimed. `www.benrichardson.dev` serves a live 301 from nginx and was left alone —
+"no repo claims it" is not sufficient grounds on its own. The other,
+**`metascrub-app.benrichardson.dev`, was serving an Indonesian gambling page**
+(`<title>Tombolwd # Toto Slot 10K …</title>`). The hostname was created on 2026-07-15 by an SSL
+rename, left pointing at `ben-gy.github.io` when nothing claimed it any more, and someone else claimed
+it from their own account.
+
+The record was deleted, which is both the remediation and the slot chunkforge needed. The other eight
+rename-pair hostnames were checked the same way and all serve their own correct titles — a 200 alone
+proves nothing, the page title is what distinguishes "yours" from "somebody's". `metascrub` (the bare
+name) was left alone: its repo still claims it and its certificate is merely stuck, exactly as recorded
+last time.
+
+Cloudflare's quota counter lags a delete by a few seconds — the immediate retry still returned 81045
+and succeeded twenty seconds later.
 
 ## Errors & Resolutions
 
