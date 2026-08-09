@@ -1,6 +1,18 @@
 {
-  "last_updated": "2026-08-09",
+  "last_updated": "2026-08-10",
   "tools": [
+    {
+      "name": "Chunkforge",
+      "slug": "chunkforge",
+      "icon": "sliders-horizontal",
+      "category": "data-explorers",
+      "description": "Find the chunk size your retrieval actually needs, measured on your own documents.",
+      "url": "https://chunkforge.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/chunkforge",
+      "tags": ["data-explorers", "developer-tools", "rag", "retrieval", "chunking", "langchain", "embeddings"],
+      "type": "tool",
+      "date": "2026-08-10"
+    },
     {
       "name": "Runledger",
       "slug": "runledger",
