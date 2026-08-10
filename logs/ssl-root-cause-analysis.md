@@ -424,3 +424,70 @@ condition the prune requires.
 
 Today's parked copy was the pre-amendment draft: 183 lines against the 207 on `origin/main`,
 which had the Cause 5 takeover write-up appended by PR #7. Nothing was lost.
+
+## Cause 8 — another routine reclaims broken properties' DNS records (FOUND 2026-08-11, ONGOING)
+
+The zone hitting 200/200 did not stop the factories. It made them start taking records from
+properties that already exist.
+
+On 2026-08-10 at 22:20 AEST, `gh-site-factory` needed a slot for `au-public-service`, found
+the zone full, audited it, and identified five records as "completely dead — no TLS
+certificate was ever issued, so HTTPS fails outright (`http=000`) … all created in one bad
+batch on 2026-08-04":
+
+`au-cpi-explorer`, `au-build-approvals`, `au-insolvency-tracker`, `castwell-cast`, `facet-dice`
+
+It then **renamed** `au-cpi-explorer` → `au-public-service`. The proof is the record's own
+metadata: `au-public-service.benrichardson.dev` carries `created_on 2026-08-04T13:44:23Z`,
+which is `au-cpi-explorer`'s creation stamp. The record was repurposed, not created.
+
+**Those five records are not scrap. They are the five held properties**, placed on hold on
+08-07 under Cause 6 precisely *because* they have no certificate — the 08-06 finding is that
+these hostnames carry a validation taint and must be left untouched until **2026-08-14** to
+learn whether it ages out. `http=000` is the symptom the hold exists to wait out. The site
+factory read that symptom as abandonment.
+
+The consequences compound:
+
+- **`au-inflation` went from recoverable to dark.** Through 08-10 it probed `class=A / tls`
+  — DNS resolved, cert stalled. On 08-11 it probes `class=B / dns`: NXDOMAIN. A stalled
+  certificate can still issue; a hostname with no record cannot. The 08-14 re-probe for this
+  property is now unanswerable — a frozen state and a deleted record look identical.
+- **Four more are queued for the same treatment.** The factory's log states it plainly:
+  *"Four dead records remain, so the next four runs are covered — then this blocks again."*
+  Those four are `au-approvals`, `au-insolvency`, `castwell` and `facet`. At three factory
+  runs a day the next is hours away, and the hold cannot stop it — **a hold prevents
+  cycling, it does not own a DNS record.**
+- **This routine misreports it.** Class B reads as "DNS missing" with no hint that another
+  routine took the record. The 08-09 note predicted the zone cap would present as a TLS
+  failure this sweep would misdiagnose; this is that prediction landing, in a worse form
+  than expected — not a property that never got a record, but one that had it taken away.
+
+The general shape is Cause 4 and Cause 7 again, escalated: **state outside the script's
+knowledge, silently disagreeing with it.** There the ledger did not know a hostname had
+moved and the catalog did not know the fleet had grown. Here a second autonomous routine is
+editing the same zone against a different model of what a record is for, and neither routine
+can see the other's reasoning. Both audits were competent in isolation; the collision is that
+"no certificate" means *wait* to one and *free slot* to the other.
+
+Note the site factory's own guardrails held on everything it could see — it verified the cap
+with a throwaway record, refused to touch the 13 live aliases, renamed rather than deleted,
+and logged the exact one-call restoration. It was not reckless. It simply had no way to know
+these five hostnames were the subject of a standing decision, because that decision lives in
+this routine's `state.json` and in this file.
+
+### What this routine did about it (2026-08-11)
+
+**Nothing to the zone, deliberately.** Restoring `au-cpi-explorer` requires a free record and
+there is none; the only source is a slot now serving `au-public-service`, live and returning
+200. Taking a working property offline to un-dark a broken one is not a trade this routine may
+make, and the standing guardrails forbid the surgery in both directions. Reported and escalated.
+
+### What would actually fix it
+
+The record cap is the root cause and remains the operator's decision (Cause 2's four options;
+`au-worksafe` already proves path-based hosting works). But this failure mode needs one thing
+the architectural fix does not supply: **the factories and this routine need a shared, machine-
+readable statement of which hostnames are spoken for.** The hold list is exactly that statement
+and it is currently unreadable to the only processes that act on it. Until then, every morning
+that starts with a full zone spends one held property.
