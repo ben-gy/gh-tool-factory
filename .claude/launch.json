@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ghostdep-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--port", "5199", "--strictPort"],
+      "cwd": "tools/2026-08-11-ghostdep",
+      "port": 5199
+    }
+  ]
+}

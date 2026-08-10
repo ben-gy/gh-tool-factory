@@ -1,6 +1,18 @@
 {
-  "last_updated": "2026-08-10",
+  "last_updated": "2026-08-11",
   "tools": [
+    {
+      "name": "Ghostdep",
+      "slug": "ghostdep",
+      "icon": "package-search",
+      "category": "developer-tools",
+      "description": "Check that the packages your AI told you to install actually exist, then leave with a pinned, hash-locked lockfile.",
+      "url": "https://ben-gy.github.io/ghostdep/",
+      "repo": "https://github.com/ben-gy/ghostdep",
+      "tags": ["developer-tools", "supply-chain", "npm", "pypi", "dependencies", "slopsquatting"],
+      "type": "tool",
+      "date": "2026-08-11"
+    },
     {
       "name": "Chunkforge",
       "slug": "chunkforge",
