@@ -565,3 +565,54 @@ structural wall**, at roughly **N ≈ 373 properties**, i.e. around mid-October 
 from 190. The four architectural options under Cause 2 are unchanged, and one of them — path-based
 hosting — is now a deliberate choice rather than a forced one, with `au-worksafe` and the 08-11
 `ghostdep` fallback both proving it works.
+
+### Budget measured a fifth day (2026-08-12 08:10): 22 / 50
+
+3 · 3 · 2 · 3 · 3 · 4 · 3 · 1 across 08-05…08-12. **Twenty-eight spare**, the lowest burn measured
+yet and still falling as the 08-04 spike rolls out of the window. The 08-04 batch that started this
+whole investigation is now entirely outside the trailing seven days.
+
+The modelled line the script printed this morning was `~35.8/50` — **fourteen certificates above the
+measured figure**, the widest the gap has been. Every measurement since 08-06 has said the same
+thing and the divergence is growing monotonically with fleet size, exactly as the 08-09 note
+predicted it would: the model is a fleet-size proxy, not a headroom measurement. Six consecutive
+days now agree that **issuance works and the seven-property backlog is hostname-scoped**.
+
+### `huntress` — a second path-hosted property, and this one cannot be moved (2026-08-12)
+
+The 08-11 game factory run shipped `huntress` to `ben-gy.github.io/huntress/` for the same reason
+`ghostdep` went there: the zone was full. It shows up in any budget measurement as a property with
+no certificate. **It is not breakage** — it is the third entry in the "no `benrichardson.dev` Pages
+cert" list above, alongside `au-worksafe` and `provenova`, and the sweep correctly scores it live.
+
+It is worth distinguishing from `ghostdep`, because the two look identical in a registry listing and
+only one of them was safely movable:
+
+| | `ghostdep` | `huntress` |
+|---|---|---|
+| registry `url` | `ghostdep.benrichardson.dev` | `ben-gy.github.io/huntress` |
+| `public/CNAME` in repo | present, custom host | **absent** |
+| repo Pages `cname` | set after the move | `null` |
+
+`ghostdep` could be moved on 08-12 without touching a line of its source because **the property
+itself already declared the hostname it wanted** in three places, and the move only had to make DNS
+and Pages agree with that declaration. `huntress` declares the opposite: every artefact it owns says
+it lives at the path. Moving it would mean inventing a hostname for it and editing its source to
+match — both standing guardrails of this routine, and the reason it was reported rather than fixed.
+
+**This is a factory-side decision, not a sweep-side one.** The game factory's fallback fired on
+08-11 when the cap was real; the cap is gone as of 08-12, so the next run should not need it. If a
+factory ships another path-hosted property *after* today, the fallback has become unconditional and
+should be looked at — the zone has 3,297 free records and no reason to reach for it.
+
+### Same-date reruns overwrite the run log (known, unfixed)
+
+`fleet-ssl.mjs` writes `ssl-<date>.md`, so a second run on the same day replaces the first run's
+file rather than appending. The 08-12 00:27 session enabled `https_enforced` on `ghostdep` and its
+log said so; this morning's 08:10 run overwrote that file and the line is gone from the record
+(the change itself is intact and committed in `43e093a`).
+
+Harmless on a day with one scheduled run, but this routine's logs *are* its durable memory — Cause 6
+is the whole lesson about conclusions that do not survive into the next unattended run — so a log
+that can silently lose a completed action is the same shape of problem, one size smaller. Worth
+`--log=PATH` on any ad-hoc rerun until the script appends or suffixes instead.
