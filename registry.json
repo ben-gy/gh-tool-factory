@@ -25,7 +25,7 @@
         "Service Worker (vite-plugin-pwa; installable, offline app shell with the sample precached and NO runtimeCaching, because workbox-expiration pulls IndexedDB into the bundle and would falsify the storage promise)"
       ],
       "status": "deployed",
-      "url": "https://ben-gy.github.io/ghostdep/",
+      "url": "https://ghostdep.benrichardson.dev",
       "repo_url": "https://github.com/ben-gy/ghostdep",
       "notes": "Custom domain ghostdep.benrichardson.dev is configured in public/CNAME but NOT live: the Cloudflare zone is at its 200-record cap. Create the CNAME record and set the Pages cname to switch over; the relative Vite base already works at both URLs."
     },

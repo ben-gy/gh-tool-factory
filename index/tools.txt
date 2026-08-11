@@ -1,14 +1,13 @@
 === Tools ===
 
 Ghostdep
-  https://ben-gy.github.io/ghostdep/
+  https://ghostdep.benrichardson.dev
   Check that the packages your AI told you to install actually exist, then leave with a
   pinned, hash-locked lockfile. Reads a pasted chat answer, a requirements.txt or a
   package.json; asks npm and PyPI whether each name exists; and measures every name
   against a bundled table of the 10,000 most-downloaded packages to catch the ones a
   keystroke away from something far bigger. Your code never leaves the tab — only the
-  package names are looked up. NOTE: the custom domain ghostdep.benrichardson.dev is
-  pending a free DNS slot in the benrichardson.dev zone, which is at its 200-record cap.
+  package names are looked up.
 
 Chunkforge
   https://chunkforge.benrichardson.dev

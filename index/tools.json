@@ -7,7 +7,7 @@
       "icon": "package-search",
       "category": "developer-tools",
       "description": "Check that the packages your AI told you to install actually exist, then leave with a pinned, hash-locked lockfile.",
-      "url": "https://ben-gy.github.io/ghostdep/",
+      "url": "https://ghostdep.benrichardson.dev",
       "repo": "https://github.com/ben-gy/ghostdep",
       "tags": ["developer-tools", "supply-chain", "npm", "pypi", "dependencies", "slopsquatting"],
       "type": "tool",
