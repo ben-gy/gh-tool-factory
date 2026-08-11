@@ -491,3 +491,77 @@ the architectural fix does not supply: **the factories and this routine need a s
 readable statement of which hostnames are spoken for.** The hold list is exactly that statement
 and it is currently unreadable to the only processes that act on it. Until then, every morning
 that starts with a full zone spends one held property.
+
+### Cause 8 RESOLVED at the root — 2026-08-12, the zone went Pro
+
+The operator upgraded `benrichardson.dev` to a **Pro** plan. The record cap is now **3,500**,
+not 200 ([Cloudflare DNS plan limits](https://developers.cloudflare.com/dns/reference/all-features/):
+Free 200 for zones created on/after 2024-09-01, Pro/Business 3,500). The zone sits at **203/3500**.
+The constraint that drove Causes 6b, 7, 8 and the `au-worksafe` path-hosting workaround is gone.
+
+**The entitlement lagged the plan by hours, and the lag is the trap worth recording.** The zone
+reported `plan: Pro Website`, `is_subscribed: true`, `plan_pending: null` while `POST dns_records`
+still returned `81045 Record quota exceeded`. A throwaway-record probe failed; the same probe ~10
+minutes later succeeded. **The plan field is not the entitlement — only a write proves the quota.**
+The site factory's instinct on 08-10 (create a throwaway record rather than trust the count) was
+right for the opposite reason too: it is the only way to tell a lagging upgrade from a real cap.
+
+Note the account-level DNS quota shipped 2026-06-10 is **Enterprise-only**; non-Enterprise per-zone
+quotas behave exactly as before, so it is not a factor here.
+
+#### What the damage was, and what was restored
+
+The cap consumed **two** held properties before it was lifted — the second one landing after the
+08-11 sweep had already reported and predicted it:
+
+| Property | Hostname taken | When | Renamed to |
+|---|---|---|---|
+| `au-inflation` | `au-cpi-explorer` | 08-10T13:46Z | `au-public-service` |
+| `au-approvals` | `au-build-approvals` | 08-11T13:54Z | `au-fuel-prices` |
+
+Both were restored on 08-12 by re-creating the CNAME, which was safe and unambiguous because
+**the repo's Pages `cname` and the registry `url` still agreed on the original hostname** — the
+factories only ever moved the DNS record, never the property's own configuration. Both are back to
+`class=A / tls` (DNS healthy, certificate stalled) and back on the hold list, i.e. returned to
+exactly the state they were in before the cannibalisation, not merely un-dark.
+
+The three remaining targets — `au-insolvency-tracker`, `castwell-cast`, `facet-dice` — were never
+reached and are intact.
+
+`ghostdep`, which shipped 08-11 on `ben-gy.github.io/ghostdep/` because no record was available,
+was moved to `ghostdep.benrichardson.dev`: record created, Pages custom domain set, **certificate
+approved within minutes**, `https_enforced` on, IndexNow submitted (202). No source change was
+needed — the factory had already shipped `public/CNAME`, `sitemap.xml` and `robots.txt` pointing at
+the custom domain, and the relative Vite `base` it fell back to resolves correctly at both URLs.
+
+That immediate issuance is also the **fifth** consecutive datapoint that the Let's Encrypt budget is
+not the constraint: a brand-new hostname issued on demand on the same morning seven tainted ones
+stayed frozen.
+
+#### What is NOT fixed
+
+- **The seven held properties are unchanged.** The 08-06 hostname taint is a Let's Encrypt-side
+  failed-validation block and has nothing to do with DNS capacity. The 08-14 re-probe still stands —
+  though `au-inflation`'s answer is now weaker evidence than the others', because its record spent
+  ~40h absent in the middle of the quiet week.
+- **The coordination gap from Cause 8 remains open.** The factories and this routine still have no
+  shared, machine-readable statement of which hostnames are spoken for. It stopped firing because
+  the factories no longer have a reason to reclaim, not because anything reconciled them. If the
+  zone is ever pressured again — or if a factory adopts a "tidy up dead records" habit on its own —
+  it recurs exactly as before.
+- **Two dormant repos still claim hostnames with no DNS record and no registry entry:**
+  `collate` (archived, Pages never built, `status: null`) and `au-road-deaths` (Pages never built).
+  Neither was restored: publishing a dormant property is outside this routine's remit, and with no
+  DNS record neither is takeover-shaped. They are noise in any zone-vs-repo audit — the ghostdep
+  08-11 audit flagged them — and clearing the stale Pages custom-domain claim on each would remove
+  that noise. Operator's call.
+- **`au-worksafe` remains on path-based hosting.** It works and costs nothing, but it is now there
+  by inertia rather than necessity.
+
+#### The ceiling that is now binding again
+
+With the zone cap gone, the **Let's Encrypt 50/registered-domain/week limit returns as the only
+structural wall**, at roughly **N ≈ 373 properties**, i.e. around mid-October 2026 at three per day
+from 190. The four architectural options under Cause 2 are unchanged, and one of them — path-based
+hosting — is now a deliberate choice rather than a forced one, with `au-worksafe` and the 08-11
+`ghostdep` fallback both proving it works.
