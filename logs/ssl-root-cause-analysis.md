@@ -616,3 +616,79 @@ Harmless on a day with one scheduled run, but this routine's logs *are* its dura
 is the whole lesson about conclusions that do not survive into the next unattended run — so a log
 that can silently lose a completed action is the same shape of problem, one size smaller. Worth
 `--log=PATH` on any ad-hoc rerun until the script appends or suffixes instead.
+
+## Cause 9 — the quiet week ends into a seven-property mass cycle (PRE-EMPTED 2026-08-13)
+
+The 08-07 holds were placed for exactly seven days, so they lapse at `2026-08-13T22:21:30Z`.
+Two consequences that are easy to get backwards, both turning on minutes:
+
+- **The 08-14 08:10 run does not cycle anything.** It fires at `08-13T22:10Z`, eleven minutes
+  *before* the holds expire, so it reports the seven as held with `0d left`. That run is
+  therefore the clean re-probe the 08-06 finding asked for: eight days untouched, nothing
+  cycled, states read as they stand.
+- **The 08-15 08:10 run cycles all seven at once**, unattended, because by then every hold has
+  lapsed and all seven are long past the cooldown gate. Nobody chose that; it is what the
+  calendar does on its own.
+
+Cycling all seven is the wrong shape of action regardless of what the re-probe shows, and
+**"still frozen after a quiet week" is weaker evidence than the 08-06 note assumed.** A stalled
+`authorization_created` does not advance by itself — something has to retry it. So a frozen state
+after eight untouched days is consistent both with "the hostname is permanently dead" and with
+"nothing asked it for a certificate all week." The observation cannot separate them; only a
+request can.
+
+### The canary protocol
+
+One property is cycled, alone, and the other six wait for its answer:
+
+| | |
+|---|---|
+| Canary | **`castwell`** on `castwell-cast.benrichardson.dev` |
+| Cycles | 08-15 08:10, by the scheduled run, its 08-07 hold left to lapse |
+| Six held to 08-20 | `facet`, `au-insolvency`, `au-approvals`, `au-inflation`, `noisewell`, `metascrub` |
+
+`castwell` is the right canary on three counts: it is one of the fresh hostnames minted 08-04, so
+it belongs to the cohort the taint hypothesis is actually about; the 08-07 run missed it, so it has
+been undisturbed since `08-04T22:21Z` — the **longest** quiet period of the seven, and therefore
+the strongest test of whether the taint ages out; and its record was never touched by the Cause 8
+cannibalisation, unlike `au-inflation` and `au-approvals`, whose quiet weeks have holes in them.
+
+Reading the result:
+
+- **Issues** → the taint ages out. Release the remaining six and let them drain normally.
+- **Frozen** → eleven days untouched was not enough, and re-cycling the other six would only
+  re-taint six hostnames to learn what one already showed. Mint fresh hostnames instead; with
+  the zone at 206/3500 that is now cheap, which it was not on 08-04.
+
+Cost of being wrong is one certificate from a bucket measured at 20/50 today, against a mass cycle
+that would spend seven and restart the clock on every one of them.
+
+**This is Cause 6 again and it is worth naming.** The decision "re-probe on the 14th and then
+decide" is a conclusion in prose, and the thing that would have executed on 08-15 is the calendar,
+not the decision. What makes the canary durable is that it is expressed the only way an unattended
+run can read: six holds in `state.json` carrying the reason, and one hold deliberately left to
+expire. Nothing has to be remembered on 08-15.
+
+### Budget measured a seventh day (2026-08-13): 20 / 50
+
+1 · 4 · 3 · 4 · 3 · 3 · 2 across 08-07…08-13. **Thirty spare**, the lowest yet and still falling as
+the 08-04 spike of 13 clears the trailing window. The script's modelled line printed `~36/50` — now
+**sixteen certificates above** the measurement, the widest gap recorded, and growing with fleet size
+exactly as the 08-09 note predicted. `docxray` shipped and issued this morning while all seven held
+properties stayed frozen. Seven consecutive days agree: **issuance works; the backlog is
+hostname-scoped.**
+
+### Fleet checks that came back clean (2026-08-13)
+
+- **Cause 5 / takeovers:** registry host vs the repo's Pages `cname` compared across all 193
+  properties — **no mismatches**. The zone sweep left four records alone, all four serving our own
+  content by design (`conflictmap`, `lab`, `pagewell`, `www`).
+- **No property is `approved` but unenforced.** The morning run's `https_enforced +3` cleared the
+  last of them.
+- **The `expires_at`-derived no-certificate list holds no surprises:** the seven held, plus the
+  three standing benign entries — `au-worksafe` and `huntress` (path-hosted) and `provenova`
+  (external apex, Pages 404s).
+- **Zone at 206 / 3500** on the Pro plan; **no factory reached for the path-hosting fallback
+  today**, which is what the 08-12 note asked to watch for.
+- **No factory shipped a stalled certificate.** `docxray` issued this morning; the 08-02 poll fix
+  is holding in all three.
