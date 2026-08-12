@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "ghostdep-preview",
+      "name": "docxray",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["vite", "preview", "--port", "5199", "--strictPort"],
-      "cwd": "tools/2026-08-11-ghostdep",
+      "cwd": "tools/2026-08-12-docxray",
       "port": 5199
     }
   ]
