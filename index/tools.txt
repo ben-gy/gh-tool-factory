@@ -1,5 +1,16 @@
 === Tools ===
 
+Docxray
+  https://docxray.benrichardson.dev
+  See what is still hiding inside a Word file before you email it. Reveals every tracked
+  change with its author, every comment including the ones marked resolved, hidden and
+  unreadable text, the document-management properties that name your client and matter,
+  and — the one almost nobody knows about — the whole of every photograph that was
+  cropped, redrawn with the visible area outlined, because cropping in Word hides pixels
+  rather than removing them. Strictly read-only: it shows you what is there and tells you
+  the menu path in Word that removes it. The file is opened in your browser and never
+  uploaded.
+
 Ghostdep
   https://ghostdep.benrichardson.dev
   Check that the packages your AI told you to install actually exist, then leave with a
