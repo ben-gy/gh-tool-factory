@@ -692,3 +692,40 @@ hostname-scoped.**
   today**, which is what the 08-12 note asked to watch for.
 - **No factory shipped a stalled certificate.** `docxray` issued this morning; the 08-02 poll fix
   is holding in all three.
+
+### The 08-14 re-probe fired as designed, and all seven are frozen
+
+Cause 9's first prediction landed exactly: the 08:10 run cycled **nothing**, because it fires at
+`08-13T22:10Z` and the 08-07 holds lapse at `08-13T22:21:30Z`. Eight days untouched, and every
+`cert_state` is byte-identical to the day the holds were placed — three `new`, four
+`authorization_created`, no movement anywhere.
+
+**This is the weak evidence Cause 9 said it would be, and it must not be read as a verdict.** A
+stalled authorization does not advance by itself; nothing requested a certificate for these seven
+hostnames all week, so "frozen after eight quiet days" cannot distinguish a permanent
+failed-validation block from an absent request. Only a request separates them, which is what
+`castwell` is for. The protocol is unchanged: it cycles alone at the 08-15 08:10 run with its hold
+already lapsed, and the six remain held. Nothing has to be remembered tomorrow — the decision is in
+`state.json`, not in this prose.
+
+#### A second minutes-level trap, same shape as Cause 9, six days out
+
+The six holds expire at `2026-08-19T22:15:57Z`. The 08-20 08:10 run fires at `08-19T22:10Z` —
+**six minutes before** — so it reports them held with `0d left` and the mass cycle Cause 9
+pre-empted would happen on **08-21**, not 08-20. This is harmless if the canary is read on 08-15
+and acted on, which is the whole point of running it. It matters only if that reading is skipped or
+comes back ambiguous: the calendar would then do the thing nobody chose, one day later than the
+hold list appears to say. Worth stating because the 08-13 note made the same off-by-minutes
+calculation and got it right; the risk is assuming the *next* boundary falls the same way.
+
+### Budget measured an eighth day (2026-08-14): 23 / 50
+
+3 · 3 · 4 · 3 · 4 · 5 · 1 across 08-08…08-14. **Twenty-seven spare.** The modelled line printed
+`~36.2/50`, thirteen above the measurement — the gap continues to track fleet size rather than
+headroom, as the 08-09 note predicted. `au-intl-courses` issued this morning on a fresh hostname
+while all seven held properties stayed frozen. **Eight consecutive days agree: issuance works and
+the backlog is hostname-scoped.**
+
+Fleet checks clean on 08-14: no Cause 5 mismatches across all 195 properties; nothing `approved`
+but unenforced; the no-certificate list is the seven held plus the three standing benign entries;
+zone at **208 / 3500**; no factory shipped at 04:10 and none reached for the path-hosting fallback.
