@@ -729,3 +729,105 @@ the backlog is hostname-scoped.**
 Fleet checks clean on 08-14: no Cause 5 mismatches across all 195 properties; nothing `approved`
 but unenforced; the no-certificate list is the seven held plus the three standing benign entries;
 zone at **208 / 3500**; no factory shipped at 04:10 and none reached for the path-hosting fallback.
+
+## The canary fired on 2026-08-15, and it did not issue
+
+Cause 9's protocol ran exactly as designed, unattended: the 08:10 run cycled **`castwell`** alone
+(`castwell-cast.benrichardson.dev`, undisturbed since `08-04T22:21Z` — 240h, the longest quiet
+period of the seven) and left the other six held. Nothing had to be remembered; the decision was in
+`state.json`.
+
+**Result: no movement whatsoever.** Polled once a minute for 36 minutes after the cycle,
+`https_certificate.state` stayed `new` — it did not even advance to `authorization_created` — and
+the hostname returned `000` over TLS throughout. The description field stayed on *"This domain was
+recently added. The certificate request process will begin shortly."*
+
+The comparison that gives this weight is same-fleet and same-morning:
+
+| | Requested | Outcome |
+|---|---|---|
+| `ghostdep` (08-12, fresh hostname) | on demand | **approved within minutes** |
+| `unfence` (08-15 04:10, fresh hostname) | on demand | **issued**, counted in today's budget |
+| `castwell` (08-15 08:10, tainted hostname) | cycled alone | **no state change in 36 min** |
+
+So the request *was* made — which is the one thing eight days of frozen observation could not
+establish — and it produced nothing. This is the evidence Cause 9 said only a request could supply,
+and it points at the taint hypothesis being right: **these hostnames carry a Let's Encrypt-side
+failed-validation block, and cycling them does not clear it.**
+
+Two honest caveats, because this is one datapoint and the whole point of a canary is to not
+over-read it:
+
+- **36 minutes is not "never."** It is the window in which healthy hostnames on this fleet issue,
+  and zero state movement in it is a strong negative, but a slow authorization is not excluded.
+  `castwell` is now held rather than concluded — every subsequent morning re-probes it for free, and
+  if it issues overnight the taint ages out after all and the answer flips.
+- **It cannot distinguish a per-hostname block from a per-hostname-*cohort* one.** All seven were
+  minted in the same bad batch on 08-04; a block scoped to that batch and one scoped to each name
+  look identical from here.
+
+### What this run did about it
+
+**All seven are held for 7 days, to `2026-08-21T22:5xZ`**, with the finding carried in the hold
+reason itself so the next unattended run reads it rather than re-deriving it. `castwell` is held
+*because* it was cycled: its 08-07 hold had lapsed, and the 08-16 08:10 run fires at almost exactly
+the 24h cooldown boundary, so it would have re-cycled the canary and abandoned the very
+authorization the protocol exists to observe. The six were extended for the reason Cause 9 gives:
+the 08-21 mass cycle would now be spending six certificates to re-learn what one just showed.
+
+Mind the boundary again, since this is the third time it has mattered: the new holds lapse
+`08-21T22:5xZ` and the 08-22 08:10 run fires `08-21T22:10Z`, **~40 minutes before**, so it reports
+all seven held at `0d left` and the mass cycle would land on **08-23**, not 08-22.
+
+### What this routine will not do next, and why it is the operator's call
+
+The 08-13 protocol's own reading of a frozen canary was *"mint fresh hostnames instead; with the
+zone at 206/3500 that is now cheap."* The zone is not the obstacle — it sits at 210/3500 — but the
+**routine's standing guardrails are**, and they bind here in a way worth stating plainly rather than
+quietly working around:
+
+A rename is only safe if the property's own `CNAME` file moves with it; otherwise the next deploy
+clears the custom domain and destroys whatever certificate was won (the "Non-cause — the CNAME file"
+section above). That makes a rename a **source edit**, and *never edit a property's source code to
+fix TLS* is a standing guardrail. This is precisely why `ghostdep` could be moved on 08-12 without
+breaching anything — the property already declared the hostname it wanted in three places, so the
+move only had to make DNS and Pages agree — and why `huntress` could not.
+
+So the seven cannot be rescued by this routine. The move is a seven-property rename, it needs the
+operator, and the options are:
+
+1. **Rename all seven to fresh hostnames** (new CNAME record + Pages custom domain + `public/CNAME`
+   or root `CNAME` per build type, then delete the old record — Cause 5's second step, the one that
+   gets forgotten). Fresh hostnames issue on demand, as `ghostdep` and `unfence` both just showed.
+2. **Path-host them** under `ben-gy.github.io/<slug>/`, as `au-worksafe` and `huntress` already do.
+   Zero DNS records, zero certificate budget, no rename — but each property's `base` and its
+   `sitemap.xml`/`robots.txt` must agree, which is again a source change.
+3. **Leave them held.** They serve fine over plain HTTP and are 7 of 197; the cost is that the
+   broken count never reaches zero and every morning's report carries the same seven.
+
+Option 1 is the recommendation — it is what the evidence supports, it is what the 08-13 protocol
+pre-committed to, and the certificate budget has 24 spare tokens to pay for it.
+
+### Budget measured a ninth day (2026-08-15): 26 / 50
+
+3 · 3 · 4 · 3 · 4 · 5 · 3 · 1 across 08-08…08-15. **Twenty-four spare.** `unfence` shipped and
+issued this morning while all seven held properties stayed frozen. The modelled line printed
+`~36.3/50`, ten above the measurement. **Nine consecutive days agree: issuance works and the
+backlog is hostname-scoped** — and today is the first day that claim rests on a *request* rather
+than on observation of properties nobody was asking for certificates for.
+
+### Fleet checks that came back clean (2026-08-15)
+
+- **Cause 5 / takeovers:** registry host vs the repo's Pages `cname` across all 197 properties —
+  **no mismatches** (only `provenova`, the standing external-apex entry). The zone sweep left four
+  records alone, all four serving our own content by design (`conflictmap`, `lab`, `pagewell`, `www`).
+- **Nothing `approved` but unenforced** — the morning run's `https_enforced +2` cleared the last two.
+- **The no-certificate list holds no surprises:** the seven held, plus `au-worksafe`, `huntress`
+  (path-hosted) and `provenova` (external apex).
+- **Zone at 210 / 3500.** No factory reached for the path-hosting fallback; `unfence` shipped to a
+  real custom hostname and issued, so the 08-12 note's watch item is satisfied.
+- **No factory shipped a stalled certificate.** The 08-02 poll fix is holding in all three.
+- **Registry freshness caught a real one:** the `tool` registry was 1 commit behind and was
+  fast-forwarded before the catalog loaded. Without Cause 7's fix the sweep would have run stale
+  against a 197-property fleet and `unfence` would have been invisible to it — and a `--prune-dns`
+  pass would have seen this morning's newest property as an orphan.
