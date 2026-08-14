@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-08-13",
+  "last_updated": "2026-08-15",
   "tools": [
+    {
+      "name": "Unfence",
+      "slug": "unfence",
+      "icon": "file-diff",
+      "category": "files",
+      "description": "Paste a chat assistant's reply back into your project — it finds the file paths, diffs every block against your folder, and refuses to overwrite a real file with \"rest unchanged\".",
+      "url": "https://unfence.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/unfence",
+      "tags": [
+        "files",
+        "diff",
+        "patch",
+        "ai-workflow",
+        "developer-tools",
+        "privacy"
+      ],
+      "type": "tool",
+      "date": "2026-08-15"
+    },
     {
       "name": "Docxray",
       "slug": "docxray",
@@ -28,7 +47,14 @@
       "description": "Check that the packages your AI told you to install actually exist, then leave with a pinned, hash-locked lockfile.",
       "url": "https://ghostdep.benrichardson.dev",
       "repo": "https://github.com/ben-gy/ghostdep",
-      "tags": ["developer-tools", "supply-chain", "npm", "pypi", "dependencies", "slopsquatting"],
+      "tags": [
+        "developer-tools",
+        "supply-chain",
+        "npm",
+        "pypi",
+        "dependencies",
+        "slopsquatting"
+      ],
       "type": "tool",
       "date": "2026-08-11"
     },
@@ -40,7 +66,15 @@
       "description": "Find the chunk size your retrieval actually needs, measured on your own documents.",
       "url": "https://chunkforge.benrichardson.dev",
       "repo": "https://github.com/ben-gy/chunkforge",
-      "tags": ["data-explorers", "developer-tools", "rag", "retrieval", "chunking", "langchain", "embeddings"],
+      "tags": [
+        "data-explorers",
+        "developer-tools",
+        "rag",
+        "retrieval",
+        "chunking",
+        "langchain",
+        "embeddings"
+      ],
       "type": "tool",
       "date": "2026-08-10"
     },
