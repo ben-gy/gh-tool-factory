@@ -1,5 +1,33 @@
 === Tools ===
 
+Unfence
+  https://unfence.benrichardson.dev
+  You asked a chat assistant to change six files and it answered with six code blocks.
+  Now you are going to create them by hand — copy, New File, type the path from memory,
+  paste, repeat — with no diff, no undo, and no way to notice that block four is only half
+  the file because the model wrote "// ... rest of the implementation unchanged" in the
+  middle of it. Packing a folder for a chat window is solved several times over; the
+  return leg is not solved anywhere on the open web, and every tool that does it is a CLI,
+  an npm package or an editor extension — the four things a locked-down work laptop
+  forbids, which is exactly the machine where copying six files by hand is most likely.
+  Unfence does the whole round trip in a browser tab. It walks your folder applying your
+  real .gitignore rules including nested ones, refuses .env files, private keys and build
+  output, and hands you one bundle sized against your context window. Then it takes the
+  reply back, works out which file each block is — and most blocks in a real answer carry
+  no filename at all, so anything it cannot place goes into a queue where you assign it in
+  one keystroke — diffs each one against what is actually on your disk hunk by hunk, and
+  writes the parts you accept, after a backup zip has been written, re-opened and verified.
+  The refusals are the point. A path that leaves your folder, names a file that runs code,
+  or differs from another block only in capitalisation is refused and listed, never quietly
+  repaired. So is any change that deletes a dozen lines and puts back nothing but a comment
+  — caught by the shape of the diff rather than the wording, so it works in a language the
+  tool has never seen. Where your browser cannot write, it hands you a patch that real git
+  accepts and a zip, which is the same product minus the last step. Your folder is never
+  uploaded; the one thing that does leave is the bundle you paste into the chat yourself,
+  and it says so plainly.
+  Tags: files, diff, patch, ai-workflow, developer-tools, privacy
+  Repo: https://github.com/ben-gy/unfence
+
 Docxray
   https://docxray.benrichardson.dev
   See what is still hiding inside a Word file before you email it. Reveals every tracked
