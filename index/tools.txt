@@ -1,5 +1,26 @@
 === Tools ===
 
+Crowdsize
+  https://crowdsize.benrichardson.dev
+  You are about to send a list of people to a collaborator — trial participants, a patient
+  extract, an FOI response, a staff survey. You have taken the names out. What you cannot
+  tell, and what nobody else in your building can tell you either, is whether the columns
+  you left in still single somebody out: postcode district plus birth year plus sex is
+  enough to pick one person out of a lot of files. Crowdsize measures that. It reads the
+  CSV in your browser, proposes which columns are direct identifiers, which describe the
+  person and which are sensitive, then tells you how many rows are alone on the combination
+  you chose — and shows you those actual records. Widen the columns until nobody is alone:
+  dates to years, ages to bands, postcodes to districts, rare categories folded into Other.
+  Every change re-scores the whole file in milliseconds. You leave with the generalised
+  file, the rows that had to be dropped, and a report you can attach to an ethics or DPIA
+  submission. The measurement is k-anonymity, which is old and well understood; what did
+  not exist is a way to run it on a file you are not allowed to upload. ARX does it
+  properly and is a Java desktop download, which does not exist on an NHS laptop, a
+  Chromebook or a phone; the browser tools that rank for "anonymise a csv" mask columns and
+  not one of them counts how many people are still unique. Crowdsize states no verdict: it
+  will not tell you a file is anonymous, compliant or safe to send, and it prints its own
+  limits into every file it produces.
+
 Unfence
   https://unfence.benrichardson.dev
   You asked a chat assistant to change six files and it answered with six code blocks.
