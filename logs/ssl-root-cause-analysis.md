@@ -851,9 +851,16 @@ because it lands directly on the recommendation the 08-15 session made to the op
 
 So it was already **~2h40m** stalled by the time the 08:10 sweep saw it. The sweep cycled it at
 `22:10Z`, correctly — a `new` state with no flow is the documented case where cycling is the
-required trigger. It was then polled every two minutes from `22:22Z` to `22:52Z`: **no movement in
-42 minutes after the cycle** — never left `new`, never reached `authorization_created`, `000` over
-TLS throughout.
+required trigger. Two independent pollers then watched it from `22:20Z` to `22:55Z`: **no movement
+in the 45 minutes after the cycle** — never left `new`, never reached `authorization_created`,
+`000` over TLS at every sample.
+
+One caveat on the sampling, since this routine's own lesson is not to over-read evidence: both
+pollers show a **~17-minute gap between `22:29Z` and `22:46Z`** (almost certainly the host
+sleeping), so the window is bracketed at both ends and densely sampled either side of the gap, but
+it is not continuous. Nothing could have transitioned and reverted in that gap — Pages certificate
+states do not move backwards — so the conclusion holds; the sampling is simply thinner than
+"every two minutes" would suggest.
 
 **That window exceeds the 36 minutes `castwell` was watched for on 08-15**, so `crowdsize` now has
 the same quality of negative result the canary produced, on a hostname minted eleven days later.
