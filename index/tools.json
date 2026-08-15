@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-08-15",
+  "last_updated": "2026-08-16",
   "tools": [
+    {
+      "name": "Crowdsize",
+      "slug": "crowdsize",
+      "icon": "users",
+      "category": "privacy",
+      "description": "Find out how many rows of your spreadsheet identify exactly one person, generalise until they do not, and export the rewritten file with a risk report.",
+      "url": "https://crowdsize.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/crowdsize",
+      "tags": [
+        "privacy",
+        "csv",
+        "anonymisation",
+        "k-anonymity",
+        "research-data",
+        "gdpr"
+      ],
+      "type": "tool",
+      "date": "2026-08-16"
+    },
     {
       "name": "Unfence",
       "slug": "unfence",
