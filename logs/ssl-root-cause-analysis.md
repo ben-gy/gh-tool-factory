@@ -831,3 +831,105 @@ than on observation of properties nobody was asking for certificates for.
   fast-forwarded before the catalog loaded. Without Cause 7's fix the sweep would have run stale
   against a 197-property fleet and `unfence` would have been invisible to it — and a `--prune-dns`
   pass would have seen this morning's newest property as an orphan.
+
+## `crowdsize` — the first fresh-hostname stall in ten days (2026-08-16)
+
+Nine consecutive days of measurement concluded that **issuance works and the backlog is
+hostname-scoped to the 08-04 cohort**. Today produced the first counterexample, and it matters
+because it lands directly on the recommendation the 08-15 session made to the operator.
+
+`crowdsize` shipped from the 04:10 tool factory run onto a hostname minted the same night:
+
+| | |
+|---|---|
+| repo created | `2026-08-15T19:28:58Z` |
+| DNS record created | `2026-08-15T19:29:16Z` — `CNAME → ben-gy.github.io`, unproxied, ttl 1 |
+| Pages custom domain | `crowdsize.benrichardson.dev`, `build_type: workflow` |
+| `public/CNAME` | present, correct for the build type |
+| plain HTTP | `200` |
+| `https_certificate.state` | `new` since `19:29Z` — *"recently added … will begin shortly"* |
+
+So it was already **~2h40m** stalled by the time the 08:10 sweep saw it. The sweep cycled it at
+`22:10Z`, correctly — a `new` state with no flow is the documented case where cycling is the
+required trigger. **No movement in the 15 minutes observed after the cycle**, still `new`, still
+`000` over TLS.
+
+That window is shorter than the 36 minutes `castwell` was watched for on 08-15 and is deliberately
+not called a verdict. The clean answer arrives free on tomorrow's re-probe, which is what the hold
+below exists to protect.
+
+### Why this is not any of the known causes
+
+Every domain-scoped and configuration-scoped explanation was checked and cleared:
+
+- **Not the budget.** Measured **24/50** for the trailing seven days, 26 spare — the tenth
+  consecutive day the budget is not the constraint.
+- **Not DNS.** Record type, target, proxy status and TTL are identical to `au-spectrum`, `torc`
+  and `unfence`, all of which issued within minutes. No CAA records on the zone.
+- **Not the CNAME file.** `public/CNAME` is present and correct for a `workflow` build.
+- **Not a Cause 5 takeover.** Registry host and repo Pages `cname` agree across all 200
+  properties (only `provenova`, the standing external-apex entry, differs).
+- **Not a reverted Cause 1 poll fix.** All three factory SKILL.md files still poll
+  `.https_certificate.state`, and the factory's own build log records that it did. The eleven
+  tool shipments before this one — back to `scrubjay` on 08-03 — all issued.
+
+The closest same-fleet control is the decisive one: **`au-spectrum` shipped five hours earlier the
+same night**, through the same deploy path, onto an equally fresh hostname, and is `approved`.
+
+### What it changes
+
+The 08-15 session's recommendation to the operator was **option 1 — rename the seven held
+properties to fresh hostnames** — on the evidence that fresh hostnames issue on demand. That
+evidence now has a hole in it. The rename is a seven-property source edit the operator has to
+perform by hand, and it is worth knowing before they start whether a fresh hostname is a reliable
+escape. `crowdsize` is the first sign that it may not be.
+
+This does **not** overturn the taint hypothesis. It weakens the narrower claim that the failure is
+confined to the 08-04 batch, and it raises a third reading neither the 08-06 nor the 08-15 analysis
+covered: that stalls arrive at a low background rate on *any* hostname, and the 08-04 cohort is a
+cluster rather than a category. One property in twelve is not far off a background rate.
+
+**Do not act on this yet.** It is one datapoint against eleven clean shipments, and a slow
+authorization is not excluded. If `crowdsize` is `approved` tomorrow morning it was merely slow and
+option 1 stands unchanged.
+
+### What this run did about it
+
+`crowdsize` is **held for 2 days, to `2026-08-17T22:25:01Z`**, for the boundary reason that has now
+mattered four times: the 08-17 08:10 run fires at `08-16T22:10Z`, **almost exactly the 24h cooldown
+boundary** on today's cycle, so it would re-cycle `crowdsize` and abandon the very authorization the
+observation depends on. This is the same trap the 08-15 session held `castwell` for.
+
+Mind where the hold actually lands, since the off-by-minutes calculation is the recurring error:
+
+| Run | Fires | `crowdsize` |
+|---|---|---|
+| 08-17 08:10 | `08-16T22:10Z` | held — re-probed free, not cycled |
+| 08-18 08:10 | `08-17T22:10Z` | held, 15 min before the hold lapses |
+| 08-19 08:10 | `08-18T22:10Z` | lapsed — normal repair resumes, cycles if still broken |
+
+Two days rather than seven, deliberately: if it is merely slow the hold costs nothing, and if it is
+dead the hold expires by itself before 08-19 and nobody has to remember to release it.
+
+The other seven are unchanged and remain held to `2026-08-21T22:47:47Z`.
+
+### Budget measured a tenth day (2026-08-16): 24 / 50
+
+4 · 3 · 4 · 5 · 3 · 3 · 2 across 08-10…08-16. **Twenty-six spare.** The modelled line the script
+printed was `~36.6/50`, **thirteen above** the measurement — the gap continues to track fleet size
+rather than headroom, exactly as the 08-09 note predicted. `au-spectrum` shipped and issued this
+morning while all seven held properties stayed frozen.
+
+### Fleet checks that came back clean (2026-08-16)
+
+- **Cause 5 / takeovers:** registry host vs repo Pages `cname` across all 200 properties — **no
+  mismatches** (only `provenova`, the standing external-apex entry). The zone sweep left four
+  records alone, all four serving our own content by design (`conflictmap`, `lab`, `pagewell`, `www`).
+- **Nothing `approved` but unenforced** — the morning run's `https_enforced +2` cleared the last two.
+- **The no-certificate list holds no surprises:** the seven held plus `crowdsize`, and the three
+  standing benign entries — `au-worksafe` and `huntress` (path-hosted) and `provenova` (external apex).
+- **Zone at 213 / 3500** on the Pro plan. No factory reached for the path-hosting fallback.
+- **Registry freshness caught two:** `site` was 2 commits behind and `tool` 1, both fast-forwarded
+  before the catalog loaded. Without Cause 7's fix the sweep would have run stale against a
+  200-property fleet and `crowdsize` — the one property that needed looking at — would have been
+  invisible to it.
