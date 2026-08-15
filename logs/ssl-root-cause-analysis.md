@@ -851,12 +851,17 @@ because it lands directly on the recommendation the 08-15 session made to the op
 
 So it was already **~2h40m** stalled by the time the 08:10 sweep saw it. The sweep cycled it at
 `22:10Z`, correctly — a `new` state with no flow is the documented case where cycling is the
-required trigger. **No movement in the 15 minutes observed after the cycle**, still `new`, still
-`000` over TLS.
+required trigger. It was then polled every two minutes from `22:22Z` to `22:52Z`: **no movement in
+42 minutes after the cycle** — never left `new`, never reached `authorization_created`, `000` over
+TLS throughout.
 
-That window is shorter than the 36 minutes `castwell` was watched for on 08-15 and is deliberately
-not called a verdict. The clean answer arrives free on tomorrow's re-probe, which is what the hold
-below exists to protect.
+**That window exceeds the 36 minutes `castwell` was watched for on 08-15**, so `crowdsize` now has
+the same quality of negative result the canary produced, on a hostname minted eleven days later.
+The request was made and it produced nothing — which is the one thing passive observation of a
+frozen state can never establish.
+
+It is still one property, so the reading below stops short of a verdict; the free re-probe on
+tomorrow's run is what the hold exists to protect.
 
 ### Why this is not any of the known causes
 
@@ -889,9 +894,15 @@ confined to the 08-04 batch, and it raises a third reading neither the 08-06 nor
 covered: that stalls arrive at a low background rate on *any* hostname, and the 08-04 cohort is a
 cluster rather than a category. One property in twelve is not far off a background rate.
 
-**Do not act on this yet.** It is one datapoint against eleven clean shipments, and a slow
-authorization is not excluded. If `crowdsize` is `approved` tomorrow morning it was merely slow and
-option 1 stands unchanged.
+**Do not act on this yet.** It is one datapoint against eleven clean shipments. A slow
+authorization is no longer much of an escape — 42 minutes of silence is the same evidence that was
+accepted as a strong negative for `castwell` — but 42 minutes is still not "never", and if
+`crowdsize` is `approved` tomorrow morning it was merely slow and option 1 stands unchanged.
+
+If it is **still frozen tomorrow**, that is a second independent hostname behaving exactly like the
+08-04 cohort while sharing nothing with it, and option 1 should not be started until that is
+understood. Renaming seven properties to hostnames that may stall the same way would spend seven
+certificates and seven source edits to reproduce the problem.
 
 ### What this run did about it
 
