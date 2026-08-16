@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-08-16",
+  "last_updated": "2026-08-17",
   "tools": [
+    {
+      "name": "Epochcost",
+      "slug": "epochcost",
+      "icon": "ruler",
+      "category": "data-explorers",
+      "description": "Find the training records your fine-tune will silently truncate, and what an epoch really costs.",
+      "url": "https://epochcost.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/epochcost",
+      "tags": [
+        "data-explorers",
+        "jsonl",
+        "fine-tuning",
+        "tokenizer",
+        "llm",
+        "cost-estimate"
+      ],
+      "type": "tool",
+      "date": "2026-08-17"
+    },
     {
       "name": "Crowdsize",
       "slug": "crowdsize",

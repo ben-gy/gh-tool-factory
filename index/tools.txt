@@ -1,5 +1,28 @@
 === Tools ===
 
+Epochcost
+  https://epochcost.benrichardson.dev
+  You have a chat-format JSONL and you are about to hand it to a fine-tuning provider. Two
+  things about it are invisible from the outside and expensive to get wrong. Some records
+  are longer than the trainer will accept, and they will not error: in OpenAI's own words,
+  examples over the limit are "truncated to the maximum context length, which removes
+  tokens from the end of the training example". The end of a chat record is the assistant's
+  reply, so the trainer keeps your question, cuts the answer in half, and charges you to
+  teach the model to stop mid-sentence. And the limit that applies is not the one everybody
+  checks: the maximum length of one training EXAMPLE is 65,536 tokens for the gpt-4.1 and
+  gpt-4o families, against a 128,000-token context window — exactly half. A dataset
+  validated against the context window passes and still loses the end of every long record.
+  Epochcost streams the file in your browser, counts every record with the model's real
+  tokenizer rather than a characters-per-token ratio, and hands back the records you have
+  to fix as a JSONL you can open. It gets three things right that a ratio cannot: the JSON
+  wrapper is not input (the model never sees the word "content"), the per-message chat
+  framing is, and billing caps each record at the limit — so the bill is the sum over
+  records of the lesser of the record and the limit, times the epochs, which is a smaller
+  number than the raw sum on exactly the files that have a problem. It states no verdict:
+  it will not tell you a dataset is ready to train, and every price carries the date it was
+  read and is editable in the interface. Nothing is uploaded; with an OpenAI model selected
+  it makes no network request at all while it counts.
+
 Crowdsize
   https://crowdsize.benrichardson.dev
   You are about to send a list of people to a collaborator — trial participants, a patient
