@@ -951,3 +951,113 @@ morning while all seven held properties stayed frozen.
   before the catalog loaded. Without Cause 7's fix the sweep would have run stale against a
   200-property fleet and `crowdsize` — the one property that needed looking at — would have been
   invisible to it.
+
+## `crowdsize` is still frozen on 2026-08-17 — the rename recommendation is now on hold
+
+The 08-16 note set an explicit condition: *"if `crowdsize` is `approved` tomorrow morning it was
+merely slow and option 1 stands unchanged … if it is still frozen tomorrow, option 1 should not be
+started until that is understood."* The condition fired the second way.
+
+`crowdsize.benrichardson.dev` is `https_certificate.state = new`, description unchanged
+(*"recently added … will begin shortly"*), **~36 hours after the hostname was minted** and
+**~10 hours after the 08-16 solo cycle**. The 08-17 run honoured the hold and did not re-cycle it,
+which is what the hold was placed for.
+
+That makes two hostnames — `castwell` (08-15, tainted cohort) and `crowdsize` (08-15-minted, fresh)
+— that were cycled *alone*, watched, and produced no state movement at all. Neither reached
+`authorization_created`.
+
+### The "08-04 bad batch" framing is imprecise, and that matters
+
+Earlier notes describe the seven as *"all minted in the same bad batch on 08-04"*. The zone's own
+record metadata does not support that. Creation stamps for the eight stalled hostnames:
+
+| Hostname | DNS record created |
+|---|---|
+| `metascrub` | 2026-06-26 |
+| `noisewell` | 2026-07-27 |
+| `castwell-cast`, `facet-dice`, `au-insolvency-tracker` | 2026-08-04 |
+| `au-cpi-explorer`, `au-build-approvals` | 2026-08-11 (recreated after the Cause 8 reclaim; originally 08-04) |
+| `crowdsize` | 2026-08-15 |
+
+So the stalled set spans **four distinct minting dates across seven weeks**, not one batch. Only
+five of the eight are 08-04 properties. This weakens the batch-taint reading further and
+strengthens the third reading the 08-16 note raised: **stalls arrive at a low background rate on
+any hostname, and the 08-04 group is a cluster rather than a category.**
+
+### A new check: GitHub's own health endpoint clears all eight
+
+`GET /repos/ben-gy/<repo>/pages/health` had not been used by this routine before. It is the
+authoritative statement of what GitHub thinks of the domain, and for **all eight** stalled
+properties it returns:
+
+```
+is_valid: true    is_https_eligible: true    caa_error: null
+is_served_by_pages: true    reason: null    https_error: peer_failed_verification
+```
+
+`peer_failed_verification` is the downstream symptom of having no certificate, not a cause. Every
+upstream gate GitHub exposes is green. Compare `epochcost` (shipped and issued this morning), whose
+only difference is `responds_to_https: true` and `https_error: null`.
+
+**This rules out, from GitHub's side, the entire configuration class of explanation:** domain
+validation, CAA, proxying, A-vs-CNAME, MX interference, apex confusion, and "not served by Pages".
+GitHub considers these eight domains eligible for a certificate and simply never advances the
+request. Combined with the two solo-cycle negatives, the failure sits in the certificate-request
+pipeline itself — GitHub's queue or a Let's Encrypt-side block — where this routine has no
+visibility and no lever.
+
+### What this means for the operator's decision
+
+The 08-15 session recommended **option 1 — rename the seven to fresh hostnames**, on the evidence
+that fresh hostnames issue on demand. That evidence is now split:
+
+- **For option 1:** `torc`, `au-spectrum`, `unfence`, `ghostdep`, `realmfold` and `epochcost` all
+  issued within minutes on fresh hostnames — including two this morning.
+- **Against option 1:** `crowdsize` is a fresh hostname, minted through the same factory path on
+  the same night as `au-spectrum`, and it has now failed for 36 hours across a cycle.
+
+One stall in roughly a dozen shipments is consistent with a background failure rate. If that is
+what this is, a seven-property rename would spend seven certificates and seven source edits and
+would statistically leave about one property still broken — while doing nothing about the cause.
+
+**Recommendation as of 08-17: hold option 1.** The cheap way to resolve the split costs nothing and
+needs no source edits: `crowdsize`'s hold lapses 08-18, so the 08-19 run cycles it once under normal
+repair. If it issues, it was slow and option 1 stands. If a second cycle also produces no movement
+on a hostname GitHub calls fully eligible, then renaming is not an escape and the question becomes
+one for GitHub Support — which is the operator's call, not this routine's.
+
+### Budget measured an eleventh day (2026-08-17): 22 / 50
+
+3 · 4 · 5 · 3 · 3 · 3 · 1 across 08-11…08-17. **Twenty-eight spare** — the lowest measured burn
+yet and the eleventh consecutive day the budget is not the constraint. The modelled line printed
+`~36.7/50`, **fifteen above** the measurement; the gap keeps tracking fleet size, as predicted.
+`epochcost` and `realmfold` both shipped and issued while all eight held properties stayed frozen.
+
+### Fleet checks that came back clean (2026-08-17)
+
+- **Cause 5 / takeovers:** no mismatches across all 202 properties (only `provenova`, the standing
+  external-apex entry). The zone sweep left the same four records alone — `conflictmap`, `lab`,
+  `pagewell`, `www` — all serving our own content by design.
+- **DNS for all eight stalled hostnames re-verified against four issuing controls:** identical
+  `CNAME → ben-gy.github.io`, unproxied, ttl 1. **No duplicate or conflicting records** on any
+  stalled name — a check not previously run. The only name in the zone with more than one record is
+  the apex, which is correct.
+- **Nothing `approved` but unenforced** — the morning run's `https_enforced +2` cleared the last two.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex).
+- **Zone at 215 / 3500** on the Pro plan. No factory reached for the path-hosting fallback.
+- **No factory shipped a stalled certificate.** `epochcost` and `realmfold` are both `approved` and
+  enforced; the 08-02 poll fix is holding in all three factories.
+- **Registry freshness caught one:** `tool` was 1 commit behind and was fast-forwarded before the
+  catalog loaded, so `epochcost` was visible to the sweep rather than looking like an orphan.
+
+### Hold boundary for 08-18 (mind it again)
+
+`crowdsize`'s hold was rewritten with today's finding and now lapses `08-17T22:18Z`. The 08-18 08:10
+run fires `08-17T22:10Z` — **8 minutes before**, tighter than the previous 15. It should still report
+`crowdsize` held at `0d left`, with the cycle landing on 08-19 as planned; but if that run starts
+more than 8 minutes late the hold will have lapsed and it will cycle a day early. Either outcome is
+one certificate out of 28 spare and is the intended next step regardless — noted so the next run is
+not surprised by which day it happens. The other seven were re-held for 5 days to
+`2026-08-21T22:18Z`, carrying the updated finding in the hold reason itself.
