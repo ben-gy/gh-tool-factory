@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-08-17",
+  "last_updated": "2026-08-18",
   "tools": [
+    {
+      "name": "Evalspill",
+      "slug": "evalspill",
+      "icon": "copy-check",
+      "category": "data-explorers",
+      "description": "Find the eval rows whose text already appears inside your training file, and leave with a cleaned eval set.",
+      "url": "https://evalspill.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/evalspill",
+      "tags": [
+        "data-explorers",
+        "jsonl",
+        "evaluation",
+        "contamination",
+        "llm",
+        "fine-tuning"
+      ],
+      "type": "tool",
+      "date": "2026-08-18"
+    },
     {
       "name": "Epochcost",
       "slug": "epochcost",

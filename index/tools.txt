@@ -1,5 +1,26 @@
 === Tools ===
 
+Evalspill
+  https://evalspill.benrichardson.dev
+  You fine-tuned a model on a JSONL, scored it on an eval set you carved out months ago, and
+  you are about to put that number in a deck. What you cannot easily check is whether some of
+  those eval questions were already sitting in the training file — not as identical rows, which
+  an exact-match check finds, but quoted inside a longer document, which is what every published
+  decontamination recipe actually measures. Evalspill does that comparison in your browser.
+  Drop both files and neither is uploaded, which matters because those two are usually the two
+  you are least able to hand to anyone: the training corpus is customer data and the eval set is
+  unpublished. It follows GPT-3's recipe — lowercase whitespace-delimited words with no
+  punctuation, and N chosen from your own eval file's row lengths rather than fixed, because a
+  fixed 13 reports zero overlap on a short-question benchmark where most rows are shorter than
+  that. It measures containment rather than similarity, which is the whole design: a hundred-word
+  question sitting verbatim inside a thousand-word training document has a Jaccard of 0.089 and a
+  containment of 1.00. Word runs appearing across many training records are dropped as boilerplate,
+  the shared passage is highlighted in both texts so you can judge it yourself, and you leave with
+  a byte-exact cleaned eval file, a CSV carrying its own settings, and a list of the rows that were
+  too short to check. It states plainly what it cannot do: reworded questions are invisible to a
+  lexical method, and finding nothing does not mean your eval set is clean, because your base
+  model's pretraining corpus is not in the comparison.
+
 Epochcost
   https://epochcost.benrichardson.dev
   You have a chat-format JSONL and you are about to hand it to a fine-tuning provider. Two
