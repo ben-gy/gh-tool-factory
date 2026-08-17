@@ -1061,3 +1061,58 @@ more than 8 minutes late the hold will have lapsed and it will cycle a day early
 one certificate out of 28 spare and is the intended next step regardless — noted so the next run is
 not surprised by which day it happens. The other seven were re-held for 5 days to
 `2026-08-21T22:18Z`, carrying the updated finding in the hold reason itself.
+
+## Cause 10 — a factory committed its new property to `index/` but not `registry.json` (FIXED 2026-08-18)
+
+The 08-18 run printed `PRUNE SKIPPED — 1 registry/registries stale; claim set is not trustworthy`
+and left every orphan-DNS candidate unexamined fleet-wide. The stale registry was `game`:
+`registry.json` was modified in the working tree and uncommitted, so Cause 7's freshness guard
+correctly refused to refresh it and correctly disabled the prune rather than delete records against
+a claim set it could not trust. **The guard did exactly its job; the fault was upstream.**
+
+What happened: `gh-game-factory` shipped `deepshaft` on 08-17. Commit `d79f7e7` ("Add deepshaft to
+the game index (#13)") staged `IDEAS.md`, `index/games.json` and `index/games.txt` — but **not**
+`registry.json`, which the factory had also written. The previous build (`realmfold`, `67ff538`,
+08-16) staged both. So this is a one-off miss in the build's commit step, not a migration: the
+factory maintains two indexes and this run only committed one of them.
+
+- The uncommitted entry was well-formed and matched the schema of its neighbours exactly
+  (`name repo date description genre stack render multiplayer max_players status url repo_url`),
+  and `https://deepshaft.benrichardson.dev` was already serving 200 with `cert=approved`,
+  `https_enforced=true`. The property was fine; only its bookkeeping was missing.
+- The local checkout was also 2 commits behind origin, and the untracked
+  `logs/2026-08-17-deepshaft.md` was byte-identical to the copy already committed in `3fb4d28` —
+  the untracked-file collision described under Cause 7. Verified identical, removed, then pulled.
+- Committed as `b52a8b5` and pushed. The diff is large (~123KB) because the factory's writer now
+  emits literal UTF-8 where the file previously held `\uXXXX` escapes; the JSON is semantically
+  identical apart from the one added entry and `last_updated`.
+
+**Re-run after the commit** (`--log=logs/ssl-2026-08-18-rerun.md`, kept separately so the first
+run's evidence is not overwritten): no freshness warnings, prune ran, and it left alone the same
+four benign records as every day since 08-13 — `conflictmap`, `lab`, `pagewell`, `www`, all serving
+our own content. **No orphan was missed by the skip; there was nothing to delete.** The re-run
+fired at `22:14Z`, four minutes inside `crowdsize`'s hold, so the hold was honoured and the cycle
+still lands on the 08-19 run as planned.
+
+**Watch for a repeat.** If a `game` build again leaves `registry.json` dirty, the miss is systematic
+in the factory's commit step and belongs fixed there — this routine can only clean up after it, and
+each occurrence costs a day of fleet-wide DNS pruning.
+
+### Budget measured a twelfth day (2026-08-18): 21 / 50
+
+4 · 5 · 3 · 3 · 3 · 2 · 1 across 08-12…08-18. **Twenty-nine spare** — the lowest measured burn yet
+and the twelfth consecutive day the budget is not the constraint. The modelled line printed
+`~36.9/50`, **sixteen above** the measurement; the gap keeps widening with fleet size exactly as
+predicted, and the model line should not be read as a budget reading by any future run.
+
+### Fleet checks that came back clean (2026-08-18)
+
+- **The eight held properties are unchanged** — same four `new`, same four `authorization_created`
+  as 08-17. No movement in either direction, and none was cycled.
+- **No factory shipped a stalled certificate.** Both overnight shipments — `deepshaft` (game) and
+  `evalspill` (tool) — are `approved`, `https_enforced`, and serving 200. The 08-02 poll fix is
+  holding in all three factories. The run's `https_enforced +2` was these two.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 from the Pages API by design).
+- **Catalog 204** (site 75 · game 64 · tool 65), still far below the ~300 escalation line and the
+  ~373 structural ceiling.
