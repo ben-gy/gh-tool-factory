@@ -1116,3 +1116,97 @@ predicted, and the model line should not be read as a budget reading by any futu
   (path-hosted) and `provenova` (external apex, 404 from the Pages API by design).
 - **Catalog 204** (site 75 · game 64 · tool 65), still far below the ~300 escalation line and the
   ~373 structural ceiling.
+
+## Cause 8 — the stall is GitHub-side and per-property (established 2026-08-19)
+
+The 08-17 session left one question open: `crowdsize` was minted on a fresh hostname on 08-15,
+outside the so-called "08-04 batch", and stalled anyway — which killed the hostname-taint
+hypothesis without replacing it. The 08-19 session answered it by finding a **control pair that
+isolates the variable**, and the answer is that nothing under our control is wrong.
+
+### The decisive comparison
+
+`crowdsize.benrichardson.dev`, `torc.benrichardson.dev` and `au-spectrum.benrichardson.dev` all
+had their zone records **created on 2026-08-15**, in the same Cloudflare zone, on the same GitHub
+account, requesting from the same Let's Encrypt account against the same registered domain.
+
+| Hostname | Record created | Certificate |
+|---|---|---|
+| `torc` | 08-15 | issued 08-15 07:00Z |
+| `au-spectrum` | 08-15 | issued 08-15 13:42Z |
+| `crowdsize` | 08-15 | **never — `cert=new` for four days** |
+
+Two of the three issued within minutes. **This rules out every domain-wide explanation at once** —
+Let's Encrypt rate limiting, a CAA problem, an account-level block, zone misconfiguration, or
+anything about that particular day. Whatever is wrong is scoped to the individual property, and it
+is not any property attribute we can see.
+
+### What was checked and is provably identical to the issuing controls
+
+Each of these was compared across all eight stalled properties and four issuing controls
+(`torc`, `au-spectrum`, `realmfold`, `epochcost`):
+
+- **The full Pages API object** — `cname`, `build_type: workflow`, `public: true`,
+  `protected_domain_state: null`, `pending_domain_unverified_at: null`. Identical.
+- **The Cloudflare record** — `CNAME → ben-gy.github.io`, `proxied: false`, `ttl: 1`, exactly one
+  record per name, **no AAAA on any stalled name** (an AAAA pointing somewhere dead would have
+  sent Let's Encrypt down an IPv6 path first; there is none).
+- **The `CNAME` file contents** — not merely its presence at the right path for the build type,
+  which is all the 08-02 audit checked. Every stalled property's `public/CNAME` contains exactly
+  the hostname it is supposed to serve. The "a stale `CNAME` file keeps resetting the custom
+  domain, which is why the state is permanently `new`" hypothesis is **dead**, and it was the most
+  plausible one remaining.
+- **Deploy history** — nothing is redeploying and resetting the domain. `crowdsize` has had
+  **one** workflow run and one deployment, on 08-15, and none since; its certificate has been
+  `new` continuously ever since.
+- **The live HTTP-01 validation path** — new check, and the first time anything has tested the
+  path Let's Encrypt actually uses rather than the control plane around it:
+
+  ```bash
+  curl -o /dev/null -w "%{http_code} %{redirect_url} %{num_redirects}" \
+       http://<host>/.well-known/acme-challenge/probe-token
+  ```
+
+  All twelve hosts return **`404`, zero redirects**. That is the correct state (GitHub serves 404
+  until a real token is provisioned) and it is the same for stalled and issuing alike. There is no
+  HTTPS redirect, no SPA 404 handler swallowing the path, and no redirect loop.
+
+### Conclusion
+
+Every layer we own — DNS, the Pages configuration, the repo contents, the served HTTP-01 path — is
+byte-identical between properties that issue in minutes and properties that have never issued in
+up to eight weeks. The four stalled at `new` are the sharper evidence: `new` means *GitHub has not
+yet submitted the order*, and its own description reads "The certificate request process will begin
+shortly." For `crowdsize` that has been true for four days on a property GitHub's `pages/health`
+simultaneously reports `is_valid`, `is_https_eligible`, `caa_error: null`, `is_served_by_pages`.
+
+**GitHub is not picking these requests up.** That is not a configuration fault and it is not
+fixable from this routine. It is an escalation to GitHub Support with the control pair above as the
+reproduction — three hostnames created the same day, two issued, one never started.
+
+### Do not re-derive these
+
+- **Cycling does not help and the evidence is now conclusive.** `crowdsize` was cycled alone on
+  08-16 and sat *undisturbed* for a full 72 hours without issuing — the script reported
+  `NOT ISSUING — crowdsize(72h)` on 08-19. A clean single cycle with no interference and no budget
+  pressure is the best case cycling can possibly get, and it failed.
+- **crt.sh is not a usable budget source.** The 08-19 run tried it as an independent ground truth
+  for issuance against the registered domain. The bulk query `?q=%.benrichardson.dev&output=json`
+  returned 460 rows **truncated at 08-13**, omitting certificates confirmed to exist by reading
+  them straight off the wire (`au-spectrum`, `notBefore=Aug 15`; `epochcost`, `notBefore=Aug 16`).
+  Read naively it says "issuance stopped domain-wide on 08-13", which is false and would have sent
+  a future run chasing a phantom outage. Per-hostname queries returned 502 and 404. **Keep using
+  the `expires_at − 90d` method over the fleet**, and if CT is ever wanted as a cross-check,
+  validate it first against a hostname whose certificate you have already read via `openssl`.
+
+### Zone capacity 2026-08-19 — 219 records. The cap is no longer binding.
+
+The 08-09 and 08-10 entries called the 200-record zone cap "THE BINDING CONSTRAINT" and predicted
+the next property to ship would get no DNS record. **That is over.** The zone now holds
+**219 records** (206 CNAME + 5 MX + 5 AAAA + 3 TXT) and every property in the catalog of 206 has
+one, including all eight stalled and every property shipped since 08-10. The 200 figure was either
+a plan limit that has since changed or was never the real ceiling.
+
+Two consequences worth carrying forward: the emergency that drove `au-worksafe` and `huntress` onto
+path-based hosting has passed, and **the Let's Encrypt property ceiling at ~373 is once again the
+nearer wall** — the ordering the 08-09 entry inverted is now restored.
