@@ -1,5 +1,22 @@
 === Tools ===
 
+Topicgap
+  https://topicgap.benrichardson.dev
+  You have 25,000 logged user queries and a golden set of forty questions somebody wrote in an
+  afternoon, and no idea what the golden set misses. Topicgap groups the real queries by meaning,
+  names every group from the words that make it distinctive — arithmetic, not a language model —
+  and then measures your eval set against those groups, reporting the share of real traffic it
+  never tests. Neither file is uploaded, which is the point: support tickets and production
+  prompts are the datasets with the strictest handling rules in most organisations, and they are
+  also the ones that most need the analysis. It runs on a 15 MB lookup table rather than a
+  transformer, so 8,000 rows take under two seconds and it works offline afterwards. Every
+  coverage number is printed beside its chance level — what an eval set of the same size drawn at
+  random from your own corpus would have covered — and beside a detection floor, below which your
+  eval set was simply too small to demonstrate anything. You leave with your own rows returned
+  intact with a topic column appended, a topics report with the uncovered topics first, and a
+  curation sample of the most central and most peripheral rows per topic, ready to hand to a
+  subject-matter expert as the seed of a golden set that actually covers the traffic.
+
 Evalspill
   https://evalspill.benrichardson.dev
   You fine-tuned a model on a JSONL, scored it on an eval set you carved out months ago, and

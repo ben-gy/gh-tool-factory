@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-08-18",
+  "last_updated": "2026-08-20",
   "tools": [
     {
       "name": "evalspill",
@@ -1610,6 +1610,27 @@
       "status": "deployed",
       "url": "https://clipwell.benrichardson.dev",
       "pr_url": "https://github.com/ben-gy/clipwell/pull/1"
+    },
+    {
+      "name": "topicgap",
+      "repo": "ben-gy/topicgap",
+      "date": "2026-08-20",
+      "description": "Cluster your own support tickets or production queries on-device, label every cluster without an LLM, and see which topics your eval set has never covered.",
+      "category": "data-explorers",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "File.stream() + TextDecoderStream — a large helpdesk export is never held as one string, and the decode is STREAMING so a multi-byte character split across a chunk boundary survives. The RFC-4180 reader is ONE worker and deliberately not a pool: from an arbitrary byte offset you cannot know whether the next quote opens or closes a field, and a newline inside a quoted field is ordinary data — which is exactly how a free-text ticket body behaves",
+        "A ~120-line first-party safetensors reader replacing chunkforge's 254-line ONNX protobuf walker. The trap it exists to survive: potion-base-4M's header FIELD is 80 bytes while its header JSON is 78, the difference being two 0x20 pad bytes — a reader using JSON.stringify(header).length instead of the little-endian u64 lands two bytes early and reads the entire 15 MB table shifted, with no error. Verified on the wire with a Range request; a test pins 80/78/2 and the identity 8 + 80 + 15,118,336 = 15,118,424",
+        "First-party WordPiece with the normaliser flags READ FROM tokenizer.json rather than hard-coded, because this build swapped the model and strip_accents:null means FOLLOW LOWERCASE — read as false, 'cafe' and 'cafe' land on different rows and nothing about the output looks broken. The file also ships a TemplateProcessing post-processor adding [CLS]/[SEP] and five added tokens at ids 0-4: honouring it 'because it is in the config' pools two uninformative rows into the mean of every row, which on a one-line ticket is most of the vector. model2vec calls the tokenizer with add_special_tokens=False, so this implementation has no post-processing stage at all",
+        "Static embedding inference as lookup -> mean -> L2 with NO runtime, NO WASM and NO matmul — 8,000 rows embedded, clustered and labelled in 1.8 s, measured. The model is minishlab/potion-base-4M (15,118,424 B f32, 29,528 x 128) rather than the spec's static-retrieval-mrl-en-v1, on measured grounds: MTEB StackExchangeClustering.v2 v-measure 50.91 against 30.39, beating all-MiniLM-L6-v2's 45.17 — and it LOSES on long scientific abstracts, which the How-it-works table shows rather than quoting only the flattering row. All 20 cells re-verified against the official results repo by two independent agents",
+        "First-party SPHERICAL k-means++ over one flat Float32Array — spherical rather than Euclidean is the reason it is not ml-kmeans: assignment is equivalent on the unit sphere, but the UPDATE is not, since the arithmetic mean lies strictly inside the sphere and its distances to members stop being cosines. Seeded throughout, so the same file at the same k gives byte-identical clusters and an export can be regenerated and diffed. Empty clusters are re-seeded onto the worst-fitting row, so the sizes always sum to the corpus",
+        "c-TF-IDF (BERTopic's class-based TF-IDF) over stemmed 1- and 2-grams with a first-party Porter stemmer — labels are arithmetic over word counts, with no LLM, no API and no second download. Counting is on STEMS and display is the most frequent SURFACE form, so nobody reads the string 'hesit'. Terms appearing in only one row are dropped, which is where order numbers, ticket references, email addresses and customer names live — making topics.md far less likely to carry personal data than the rows it summarises",
+        "Cache API for the two model files (and nothing else) — a build gate over dist/**/*.js fails the release if indexedDB, getDirectory or webkitRequestFileSystem ever appear, because 'nothing is written to disk' is a claim the interface makes and workbox-expiration would quietly falsify it. That is why there is no runtimeCaching",
+        "Web Share + Clipboard + <a download> for the three artefacts; Web Workers (module) own the whole pipeline so the corpus text never crosses back to the main thread except as the handful of exemplar rows actually rendered"
+      ],
+      "status": "deployed",
+      "url": "https://topicgap.benrichardson.dev",
+      "repo_url": "https://github.com/ben-gy/topicgap"
     }
   ]
 }
