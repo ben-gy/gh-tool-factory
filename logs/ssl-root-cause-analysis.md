@@ -1210,3 +1210,61 @@ a plan limit that has since changed or was never the real ceiling.
 Two consequences worth carrying forward: the emergency that drove `au-worksafe` and `huntress` onto
 path-based hosting has passed, and **the Let's Encrypt property ceiling at ~373 is once again the
 nearer wall** — the ordering the 08-09 entry inverted is now restored.
+
+### Cause 8 confirmed again on 2026-08-20, and the eight are now held for 14 days
+
+Nothing changed in the eight overnight: same four `new` (`crowdsize`, `castwell-cast`,
+`facet-dice`, `au-cpi-explorer`), same four `authorization_created` (`metascrub`, `noisewell`,
+`au-insolvency-tracker`, `au-build-approvals`), all eight still failing TLS. `crowdsize` was cycled
+on 08-19 and is back at `new` five days after its hostname was minted.
+
+Meanwhile **three certificates issued this morning** on the same registered domain — `topicgap`,
+`standoff` and `riser` are all `approved` and `https_enforced`, as are `evalspill` and `deepshaft`.
+Issuance against `benrichardson.dev` is working today; it is simply not working for these eight.
+That is the 08-19 control pair reproducing itself daily.
+
+**The holds were the live risk.** All eight were held only to `2026-08-21T22:18Z`. The 08-22 run
+fires `08-21T22:10Z`, eight minutes inside that boundary — so the first run to start even slightly
+late would have found eight eligible properties and mass-cycled `--max-cycles=6` of them. That is
+precisely the harm Cause 9 pre-empted on 08-13, and after Cause 8 it is now *known* to buy nothing:
+six certificates spent for no possible movement. **All eight are therefore re-held for 14 days, to
+`2026-09-03`,** with the Cause 8 conclusion carried in the hold reason itself so the next unattended
+run cannot re-derive its way past it.
+
+A hold costs nothing in detection: recovery does not require cycling. If GitHub's queue picks these
+requests up, `https_certificate.state` advances on its own and the next daily sweep sees it.
+
+### Budget measured a fourteenth day (2026-08-20): 25 / 50
+
+5 · 3 · 3 · 3 · 2 · 2 · 4 · 3 across 08-13…08-20. **Twenty-five spare** — the fourteenth
+consecutive day the budget is not the constraint. The modelled line printed `~37.3/50`, **twelve
+above** the measurement; the gap keeps tracking fleet size and the model line still must not be read
+as a budget reading.
+
+Note for whoever next hand-measures this: the registry's `repo` field is already `ben-gy/<name>`,
+so the API path is `/repos/${entry.repo}/pages` — prefixing the owner again yields a fleet-wide wall
+of 404s that reads exactly like a dead token. GitHub's API also 404s (not 403s) a `pages` request
+sent without a `User-Agent` header, which reads the same way. Both were hit and cleared today.
+
+### Fleet checks that came back clean (2026-08-20)
+
+- **No factory shipped a stalled certificate.** `topicgap` (tool), `standoff` and `riser` (game) are
+  all `approved` + enforced. The 08-02 poll fix is holding in all three factories.
+- **Cause 10 did not repeat.** Both game builds since the 08-18 fix — `riser` (`d7a9c05`) and
+  `standoff` (`94f54b1`) — staged `registry.json` alongside `index/`. The commit step is behaving.
+- **Registry freshness:** `game` and `tool` were each 1 commit behind and were fast-forwarded before
+  the catalog loaded. `game` also had an untracked `logs/2026-08-19-standoff.md` colliding with the
+  incoming commit; the script parked it as `*.superseded`, it was **verified byte-identical** to the
+  committed copy, and removed. The Cause 7 machinery worked end to end.
+- **Prune ran** and left alone the same four benign records as every day since 08-13 —
+  `conflictmap`, `lab`, `pagewell`, `www`, all serving our own content.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 from the Pages API by design). 198 of 209
+  properties hold a certificate.
+- **Catalog 209** (site 77 · game 66 · tool 66) — below the ~300 escalation line and the ~373
+  structural ceiling.
+
+**Still open, still the operator's call:** the GitHub Support escalation. The reproduction is the
+08-15 control triple (`torc`, `au-spectrum`, `crowdsize` — same zone, same day, two issued, one
+never started), plus `pages/health` reporting all eight `is_valid` + `is_https_eligible` +
+`caa_error: null` + `is_served_by_pages` while the request never advances.
