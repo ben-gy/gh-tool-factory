@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-08-18",
+  "last_updated": "2026-08-20",
   "tools": [
+    {
+      "name": "Topicgap",
+      "slug": "topicgap",
+      "icon": "scatter-chart",
+      "category": "data-explorers",
+      "description": "Cluster your own support tickets or production queries on-device and find the topics your eval set never covers.",
+      "url": "https://topicgap.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/topicgap",
+      "tags": [
+        "data-explorers",
+        "clustering",
+        "topic-modeling",
+        "evaluation",
+        "csv",
+        "llm"
+      ],
+      "type": "tool",
+      "date": "2026-08-20"
+    },
     {
       "name": "Evalspill",
       "slug": "evalspill",
