@@ -1268,3 +1268,42 @@ sent without a `User-Agent` header, which reads the same way. Both were hit and 
 08-15 control triple (`torc`, `au-spectrum`, `crowdsize` — same zone, same day, two issued, one
 never started), plus `pages/health` reporting all eight `is_valid` + `is_https_eligible` +
 `caa_error: null` + `is_served_by_pages` while the request never advances.
+
+### Cause 8 unchanged on 2026-08-21 — day 15, and the holds did their job
+
+The 08-22-boundary hazard flagged yesterday is closed: all eight are held to `2026-09-03` and the
+script reported `ON HOLD — not cycled: 8 … (13d)` for every one of them. Nothing was cycled, nothing
+was spent. The eight are bit-for-bit the same set and the same states as 08-19 and 08-20 — four
+`new` (`crowdsize`, `castwell-cast`, `facet-dice`, `au-cpi-explorer`), four `authorization_created`
+(`metascrub`, `noisewell`, `au-insolvency-tracker`, `au-build-approvals`), all eight failing TLS.
+
+### Budget measured a fifteenth day (2026-08-21): 18 / 50
+
+3 · 2 · 2 · 4 · 4 across 08-15…08-20 (08-21 had not issued anything by 08:20Z). **Thirty-two
+spare** — the fifteenth consecutive day the budget is not the constraint, and the lowest reading of
+the run. The modelled line printed `~37.3/50`, **nineteen above** the measurement; the gap keeps
+widening with fleet size and the model line still must not be read as a budget reading.
+
+`salient` is why this matters: shipped 08-20, `approved` and enforced with a certificate whose
+`notBefore` is 08-20. Issuance against `benrichardson.dev` worked yesterday for a brand-new
+hostname while all eight held properties, some of them 13 days old, never moved. That is the 08-19
+control pair reproducing for a seventh consecutive day.
+
+### Fleet checks that came back clean (2026-08-21)
+
+- **No factory shipped a stalled certificate.** One new property since the last sweep — `salient`
+  (game, `2e25587`) — is `approved` + `https_enforced`. The 08-02 poll fix is holding.
+- **Cause 10 did not repeat.** `2e25587` staged `registry.json` alongside `index/games.json`,
+  `index/games.txt` and its build log.
+- **Registry freshness:** `game` was 1 commit behind and was fast-forwarded before the catalog
+  loaded — without it the sweep would have missed `salient` entirely. Cause 7 machinery working.
+- **Prune ran** and left alone the same four benign records as every day since 08-13 —
+  `conflictmap`, `lab`, `pagewell`, `www` — plus `quotewitness`, inside its 48h grace window.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 from the Pages API by design). 199 of 210
+  properties hold a certificate.
+- **Catalog 210** (site 77 · game 67 · tool 66) — below the ~300 escalation line and the ~373
+  structural ceiling.
+
+**Still open, still the operator's call:** the GitHub Support escalation. Nothing this routine can
+do moves the eight, and every check it can run has now been run and re-run for three days.
