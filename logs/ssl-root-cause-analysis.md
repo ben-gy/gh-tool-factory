@@ -1307,3 +1307,49 @@ control pair reproducing for a seventh consecutive day.
 
 **Still open, still the operator's call:** the GitHub Support escalation. Nothing this routine can
 do moves the eight, and every check it can run has now been run and re-run for three days.
+
+### Cause 8 unchanged on 2026-08-22 — day 16, holds still doing their job
+
+The eight are bit-for-bit the same set and the same states as 08-19, 08-20 and 08-21 — four `new`
+(`crowdsize`, `castwell-cast`, `facet-dice`, `au-cpi-explorer`), four `authorization_created`
+(`metascrub`, `noisewell`, `au-insolvency-tracker`, `au-build-approvals`), all eight failing TLS.
+The script reported `ON HOLD — not cycled: 8 … (12d)` for every one of them. Nothing was cycled,
+nothing was spent. Holds run to `2026-09-03`.
+
+### Budget measured a sixteenth day (2026-08-22): 17 / 50
+
+3 · 2 · 2 · 4 · 4 · 2 across 08-16…08-21 (08-22 had not issued anything by 08:20Z). **Thirty-three
+spare** — the sixteenth consecutive day the budget is not the constraint, and a new low for the run
+(previous low 18 on 08-21). The modelled line printed `~37.5/50`, **twenty and a half above** the
+measurement; the gap keeps widening with fleet size and the model line still must not be read as a
+budget reading.
+
+`larder` and `quotewitness` are why this matters: both shipped 08-21, both `approved` + enforced
+with certificates whose `notBefore` is 08-21, both serving 200 over TLS. Two brand-new hostnames
+issued in the same zone on the same account while all eight held properties, the oldest of them 16
+days old, never moved. That is the 08-19 control pair reproducing for an eighth consecutive day.
+
+### Fleet checks that came back clean (2026-08-22)
+
+- **No factory shipped a stalled certificate.** Two new properties since the last sweep — `larder`
+  (game, `988ea7d`) and `quotewitness` (tool, `e27ee05`) — are both `approved` + `https_enforced`
+  and both return 200. The 08-02 poll fix is holding in all three factories.
+- **Cause 10 did not repeat.** Both commits staged `registry.json` alongside their `index/` files.
+- **Registry freshness:** no registry was behind this morning; nothing needed fast-forwarding and no
+  untracked collisions were parked.
+- **Prune ran** and left alone the same four benign records as every day since 08-13 —
+  `conflictmap`, `lab`, `pagewell`, `www`, all serving our own content. `quotewitness` has left the
+  48h grace window and now holds a certificate, so it no longer appears as a candidate.
+- **Registry drift:** none — no URL corrections were needed, so no `registry.json` changed today.
+- **`https_enforced` +2**, both on properties whose certificate was already `approved`.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 from the Pages API by design). 201 of 212
+  properties hold a certificate.
+- **Catalog 212** (site 77 · game 68 · tool 67) — below the ~300 escalation line and the ~373
+  structural ceiling. Site stayed at 77 because `au-pollution`, published to the index this
+  morning, is an existing hostname (certificate `notBefore` ≈ 06-26) rather than a new one.
+
+**Still open, still the operator's call:** the GitHub Support escalation. The reproduction is
+unchanged — the 08-15 control triple (`torc`, `au-spectrum`, `crowdsize`: same zone, same day, two
+issued, one never started), now with eight consecutive days of fresh hostnames issuing normally
+alongside eight that never advance. Nothing this routine can do moves them.
