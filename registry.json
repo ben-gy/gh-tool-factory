@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-08-20",
+  "last_updated": "2026-08-22",
   "tools": [
     {
       "name": "evalspill",
@@ -1631,6 +1631,29 @@
       "status": "deployed",
       "url": "https://topicgap.benrichardson.dev",
       "repo_url": "https://github.com/ben-gy/topicgap"
+    },
+    {
+      "name": "quotewitness",
+      "repo": "ben-gy/quotewitness",
+      "date": "2026-08-22",
+      "description": "Check every quotation in a draft against the source files on your own disk — which are exact, which were altered, which cite the wrong page, and which appear nowhere.",
+      "category": "document-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "pdfjs-dist (PDF text layer with per-item geometry)",
+        "mammoth (.docx)",
+        "fflate (EPUB and zip)",
+        "Web Workers (module) for index + alignment",
+        "Intl.Segmenter",
+        "File API / drag-and-drop with webkitGetAsEntry directory recursion",
+        "Clipboard paste ingest",
+        "Blob download",
+        "Cache API via vite-plugin-pwa",
+        "fetch (off by default, identifier resolution only)"
+      ],
+      "status": "deployed",
+      "url": "https://quotewitness.benrichardson.dev",
+      "repo_url": "https://github.com/ben-gy/quotewitness"
     }
   ]
 }

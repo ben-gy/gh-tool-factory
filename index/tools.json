@@ -1,6 +1,25 @@
 {
-  "last_updated": "2026-08-20",
+  "last_updated": "2026-08-22",
   "tools": [
+    {
+      "name": "Quotewitness",
+      "slug": "quotewitness",
+      "icon": "quote",
+      "category": "documents",
+      "description": "Check every quotation in a draft against the source files on your own disk — which are exact, which were altered, and which appear nowhere.",
+      "url": "https://quotewitness.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/quotewitness",
+      "tags": [
+        "documents",
+        "research",
+        "citations",
+        "pdf",
+        "academic",
+        "writing"
+      ],
+      "type": "tool",
+      "date": "2026-08-22"
+    },
     {
       "name": "Topicgap",
       "slug": "topicgap",

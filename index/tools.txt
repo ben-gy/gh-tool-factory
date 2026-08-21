@@ -1,5 +1,21 @@
 === Tools ===
 
+Quotewitness
+  https://quotewitness.benrichardson.dev
+  You let an assistant draft over sources you already hold, or you pasted the quotations out of a
+  reading pile months ago, and now there are forty sentences in quotation marks and a folder of
+  PDFs. Quotewitness pulls every quotation out of your draft, builds a word five-gram index over
+  the sources on your own disk, and tells you which are exact, which were altered — showing the
+  word-level difference — which were found in a different file from the one you cited, and which
+  appear nowhere. It reports the printed page number harvested off the page itself, not the PDF
+  sheet number, so it can tell you when a pinpoint citation points at the wrong page; a cited range
+  is checked across every page it spans. Neither the draft nor the sources are uploaded, which is
+  the point: an unpublished chapter and a pile of licensed PDFs are precisely the two things you
+  cannot hand to a service. It never returns a verdict about honesty and never a similarity score —
+  only whether these words are in these files. Where it cannot read a file it says so and refuses
+  to count that file's contents as missing, because a false "not found" is an accusation. You leave
+  with quote-audit.csv and a self-contained annotated report.
+
 Topicgap
   https://topicgap.benrichardson.dev
   You have 25,000 logged user queries and a golden set of forty questions somebody wrote in an
