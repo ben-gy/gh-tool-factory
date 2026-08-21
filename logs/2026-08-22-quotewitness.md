@@ -214,6 +214,17 @@ Chicago-style elision handled and a notation change or descending pair refusing 
   repair changes `findGutter`'s return type; flagged, not done.
 - **Cost of the widened image probe:** +87 ms over a 60-page stamped scan (112 ms vs 25 ms), scaling
   with page count.
+- **The first deploy of the fixes FAILED, on a test that passes locally**, and chasing it properly was
+  worth the round trip. `tests/regress-c.test.ts` asserted that a title page carrying a small
+  publisher's device is flagged image-only. That is true on macOS/Node 22 and false on Linux/Node 20.
+  Rather than guess, the test was pushed with a diagnostic line and CI's own numbers read back: the
+  per-page character counts are **byte-identical in both environments** (66, 1585 x4, 61, 8), so the
+  difference is purely that pdf.js does not report a 70x70 image in its operator list consistently
+  across Node versions — it always reports a full-page one. The test now asserts the stable and
+  important half (a full-page plate IS flagged, in both) and records why the other half is not
+  asserted. The direction matters and is benign: the instability can only ADD a preflight warning,
+  never remove one, so it cannot produce a false NOT FOUND, and the case that would be serious — a real
+  scanned sheet going undetected — is asserted in both environments. Second deploy green.
 - The sample ships 10 quotations rather than the 41 the queue spec imagined. It demonstrates exact,
   near-match-with-diff, and the unsearchable abstention, which is what the tool needs to show; the
   smaller number is a deliberate reduction, not an oversight.
