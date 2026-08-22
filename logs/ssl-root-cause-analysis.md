@@ -1353,3 +1353,97 @@ days old, never moved. That is the 08-19 control pair reproducing for an eighth 
 unchanged — the 08-15 control triple (`torc`, `au-spectrum`, `crowdsize`: same zone, same day, two
 issued, one never started), now with eight consecutive days of fresh hostnames issuing normally
 alongside eight that never advance. Nothing this routine can do moves them.
+
+## Cause 11 — one probe is not evidence; a transient marked a healthy property broken (FIXED 2026-08-23)
+
+The 08:10 run reported **nine** broken, not eight. The ninth was `papershot` (tool), and it was
+the first property in a fortnight to land in class `?` — *certificate approved, but not serving* —
+the bucket that by construction has no known cause behind it.
+
+It was healthy the whole time. Immediately after the run it answered `200` to:
+
+- `curl -I https://papershot.benrichardson.dev` (and four repeats),
+- five `curl` calls sending the script's own `fleet-ssl` User-Agent,
+- five calls through Node's `fetch` using the probe's exact options,
+- a full `--dry-run` re-sweep, which put the fleet back at **live 204 · broken 8**.
+
+It had also served 200 in the 08-22 sweep, and its certificate is `approved` with
+`https_enforced` on. Nothing about the property changed between the two runs.
+
+### The mechanism
+
+`probe()` fetched once and trusted the answer:
+
+```js
+const res = await fetch(url, ...);
+return { code: res.status, kind: res.ok ? 'ok' : 'http' };
+```
+
+The sweep fires ~212 requests at one edge inside a few seconds (12-way concurrency on the probe
+pass). One `429` or `5xx` from that burst — the ordinary behaviour of an edge under a burst, not
+a fault — was enough to move a healthy property into the broken list for the day. The re-verify
+pass could not save it either: that pass only re-probes properties the run *touched*, and a
+property with an approved certificate and nothing to fix is never touched.
+
+### Why this was worth fixing rather than noting
+
+The cost is not the wrong row. It is that **class `?` is the "new failure mode" signal**, and
+this routine's entire remaining job is watching eight held properties for a change of state.
+A false positive in that report is indistinguishable, at 08:10 the next morning, from the first
+sign of something genuinely new — and buys an investigation that ends where this one did.
+
+### The fix
+
+`probe()` now retries once, after a 2s pause, and only for transient-shaped outcomes
+(`http`, `net`, `timeout`). `tls` and `dns` are deliberately excluded: both are stable, both are
+already diagnosed by class, and the eight held properties fail `tls` every single morning — a
+retry there would buy nothing and double their probe cost. **A property is now called broken only
+if it fails twice, seconds apart.**
+
+Verified against a local server: `429` then `200` → `ok` with the flake recorded; a stable `404`
+→ still `http`, still broken, unchanged.
+
+The first failure is not swallowed. A property that recovers on the retry is reported separately —
+`flaked once, 200 on retry (not broken)` in the summary, and its own section in the run log —
+because one that flakes every morning is a real problem wearing a healthy result. Suppressing a
+false positive must not create a blind spot.
+
+Fixed in `~/Code/lab/scripts/ssl/fleet-ssl.mjs`.
+
+### Cause 8 unchanged on 2026-08-23 — day 17
+
+The eight are the same set and the same states as 08-19 through 08-22 — four `new` (`crowdsize`,
+`castwell-cast`, `facet-dice`, `au-cpi-explorer`), four `authorization_created` (`metascrub`,
+`noisewell`, `au-insolvency-tracker`, `au-build-approvals`), all eight failing TLS. Reported
+`ON HOLD — not cycled: 8 … (11d)`. Nothing cycled, nothing spent. Holds run to `2026-09-03`.
+
+### Budget measured a seventeenth day (2026-08-23): 14 / 50
+
+4 · 5 · 3 · 3 · 3 · 2 · 2 · 4 · 4 · 2 across 08-12…08-21; nothing issued 08-22 or 08-23.
+**Thirty-six spare — a new low for the run** (previous low 17 on 08-22), and the seventeenth
+consecutive day the budget is not the constraint. The modelled line printed `~37.5/50`, now
+**twenty-three and a half above** the measurement; the gap widens with fleet size and that line
+still must not be read as a budget reading.
+
+The zero-issuance on 08-22/08-23 is not a stall: **no factory shipped a new property**. The
+catalog is unchanged at 212 (site 77 · game 68 · tool 67), and the only registry commit since the
+last sweep is a game-side edit to an existing property (`cipher-clash`, `c4bdc7d`). There was
+nothing to issue.
+
+### Fleet checks that came back clean (2026-08-23)
+
+- **No factory shipped a stalled certificate** — no factory shipped at all. Nothing new to check,
+  and the 08-02 poll fix is untested today rather than regressed.
+- **Cause 10 did not repeat** — no new `index/` entries, so no opportunity for the drift.
+- **Registry freshness:** no registry was behind; nothing needed fast-forwarding.
+- **Prune ran** and left alone the same four benign records as every day since 08-13 —
+  `conflictmap`, `lab`, `pagewell`, `www` — plus `nightshift`, inside its 48h grace window.
+- **Registry drift:** none. No URL corrections, so no `registry.json` changed today.
+- **`https_enforced`:** none to enable — every approved certificate already has it.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and
+  `huntress` (path-hosted) and `provenova` (external apex, 404 by design). 201 of 212 hold a
+  certificate.
+- **Catalog 212** — below the ~300 escalation line and the ~373 structural ceiling.
+
+**Still open, still the operator's call:** the GitHub Support escalation. Seventeen days, and the
+08-15 control triple still reproduces.
