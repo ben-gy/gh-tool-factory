@@ -1,6 +1,22 @@
 {
-  "last_updated": "2026-08-22",
+  "last_updated": "2026-08-24",
   "tools": [
+    {
+      "name": "Regraft",
+      "slug": "regraft",
+      "icon": "sprout",
+      "category": "images",
+      "description": "Recover the prompt and workflow from an AI image, and put them back into the file.",
+      "url": "https://regraft.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/regraft",
+      "tags": [
+        "images",
+        "ai",
+        "metadata"
+      ],
+      "type": "tool",
+      "date": "2026-08-24"
+    },
     {
       "name": "Quotewitness",
       "slug": "quotewitness",
