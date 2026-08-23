@@ -1,5 +1,18 @@
 === Tools ===
 
+Regraft
+  https://regraft.benrichardson.dev
+  You made an image in ComfyUI, posted it to Discord, and now dragging it back onto the canvas does
+  nothing — the graph is gone. Often it is not gone, only somewhere your reader did not look: in a
+  text chunk written after the image data, in a compressed zTXt chunk ComfyUI's own reader has no
+  branch for, in a file whose checksum is damaged so strict readers throw the whole thing away, or
+  written one bit at a time into the pixels themselves, the way NovelAI does by default. Regraft
+  reads all five carriers, shows you what it found and where, and writes the recipes you choose back
+  into the file as chunks placed where any reader will reach them — copying the picture across byte
+  for byte, then re-reading its own output with a fresh parser to prove it. Nothing is uploaded, and
+  it makes no claim about whether an image was generated: it reports only what a file says about
+  itself.
+
 Quotewitness
   https://quotewitness.benrichardson.dev
   You let an assistant draft over sources you already hold, or you pasted the quotations out of a

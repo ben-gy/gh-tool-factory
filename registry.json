@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-08-22",
+  "last_updated": "2026-08-24",
   "tools": [
     {
       "name": "evalspill",
@@ -1654,6 +1654,27 @@
       "status": "deployed",
       "url": "https://quotewitness.benrichardson.dev",
       "repo_url": "https://github.com/ben-gy/quotewitness"
+    },
+    {
+      "name": "regraft",
+      "repo": "ben-gy/regraft",
+      "date": "2026-08-24",
+      "description": "Recover the prompt and workflow from an AI image — including from the pixel bit-plane — and write it back into the file.",
+      "category": "image-tools",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "Compression Streams",
+        "Web Workers",
+        "Transferable ArrayBuffer",
+        "Blob",
+        "Web Share",
+        "Clipboard",
+        "Service Worker",
+        "Web App Manifest"
+      ],
+      "status": "deployed",
+      "url": "https://regraft.benrichardson.dev",
+      "repo_url": "https://github.com/ben-gy/regraft"
     }
   ]
 }
