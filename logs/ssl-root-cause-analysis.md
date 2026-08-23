@@ -1447,3 +1447,64 @@ nothing to issue.
 
 **Still open, still the operator's call:** the GitHub Support escalation. Seventeen days, and the
 08-15 control triple still reproduces.
+
+### Cause 8 unchanged on 2026-08-24 — day 18
+
+The eight are the same set and the same states as 08-19 through 08-23 — four `new` (`crowdsize`,
+`castwell-cast`, `facet-dice`, `au-cpi-explorer`), four `authorization_created` (`metascrub`,
+`noisewell`, `au-insolvency-tracker`, `au-build-approvals`), all eight failing TLS. Reported
+`ON HOLD — not cycled: 8 … (10d)`. Nothing cycled, nothing spent. Holds run to `2026-09-03`.
+
+### Budget measured an eighteenth day (2026-08-24): 16 / 50
+
+2 · 4 · 4 · 2 · 1 · 1 · 2 across 08-18…08-24. **Thirty-four spare** — the eighteenth consecutive
+day the budget is not the constraint. The modelled line printed `~37.8/50`, **twenty-one and a
+half above** the measurement; the gap keeps widening with fleet size and that line still must not
+be read as a budget reading.
+
+**Yesterday's "zero issuance on 08-22/08-23" was a registry-lag artefact, not a fact.** Both days
+did issue — `nightshift` (08-22) and `grist` (08-23) — but neither was in a registry when the
+08-23 sweep measured, so both were invisible to it. `nightshift` was deployed on 08-22 and only
+catalogued this morning by the game factory's own reconcile commit (`edbb622`, "the game the 08-22
+run deployed but never indexed"). Carry this forward: **this measurement counts certificates held
+by catalogued properties, so it under-reads whenever a factory deploys before it indexes.** The
+direction of the error is always downward, which is safe for a budget check but wrong for any
+claim that issuance has stopped.
+
+Four properties issued in the last two days and **all four issued on the day their hostname was
+minted** — `nightshift`, `grist`, and today `au-cyclones` (site) and `regraft` (tool), whose
+certificates carry a `notBefore` of 08-24. That is the 08-19 control pair reproducing for a tenth
+consecutive day: brand-new hostnames in the same zone on the same account issue within the hour
+while the eight held properties, the oldest now 18 days old, have never advanced past `new`.
+
+### Fleet checks that came back clean (2026-08-24)
+
+- **No factory shipped a stalled certificate.** Four new catalogue entries since the last sweep —
+  `au-cyclones` (site, `d28948b`), `grist` (game, `c52b6c2`), `nightshift` (game, `edbb622`,
+  reconciled from an 08-22 deploy) and `regraft` (tool, `edccb5e`) — all four `approved` and all
+  four serving 200. The 08-02 poll fix is holding in all three factories.
+- **Cause 10 did not repeat.** All four commits staged `registry.json` alongside their `index/`
+  files.
+- **Registry freshness:** `site` and `tool` were each 1 commit behind and were fast-forwarded
+  before the catalogue loaded — without it the sweep would have missed `au-cyclones` and `regraft`.
+  No untracked collisions needed parking. Cause 7 machinery working.
+- **Prune ran** and left alone the same four benign records as every day since 08-13 —
+  `conflictmap`, `lab`, `pagewell`, `www`, all serving our own content.
+- **Registry drift:** none. No URL corrections, so no `registry.json` changed today.
+- **`https_enforced` +4** — `au-cyclones`, `grist`, `nightshift`, `regraft`, every one of them on
+  an already-`approved` certificate. Nothing is now approved-but-unenforced fleet-wide.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 by design). 205 of 216 hold a certificate.
+- **Catalog 216** (site 78 · game 70 · tool 68) — below the ~300 escalation line and the ~373
+  structural ceiling.
+
+### Cause 11's retry earned its keep on its first morning (2026-08-24)
+
+`squirm` (game) answered `503` to the first probe and `200` two seconds later, and was reported as
+`flaked once, 200 on retry (not broken)` rather than as a ninth broken property. Under yesterday's
+code this run would have opened with **nine broken** and a fresh class-`?` investigation that ends
+exactly where `papershot`'s did. The separate reporting line is what keeps this honest: if `squirm`
+flakes again tomorrow it is a real problem, not a swallowed one. Worth watching for a few days.
+
+**Still open, still the operator's call:** the GitHub Support escalation. Eighteen days, and the
+08-15 control triple still reproduces.
