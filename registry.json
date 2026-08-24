@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-08-24",
+  "last_updated": "2026-08-25",
   "tools": [
     {
       "name": "evalspill",
@@ -1675,6 +1675,27 @@
       "status": "deployed",
       "url": "https://regraft.benrichardson.dev",
       "repo_url": "https://github.com/ben-gy/regraft"
+    },
+    {
+      "name": "peelback",
+      "repo": "ben-gy/peelback",
+      "date": "2026-08-25",
+      "description": "See every version a PDF still contains — recover the earlier saves buried inside it and read what wrote each one.",
+      "category": "documents",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "Web Workers (module) — the whole cross-reference walk, with the file's bytes TRANSFERRED in and back out so a large PDF exists once in the tab and never twice",
+        "Transferable ArrayBuffer — note getDocument({data}) transfers data.buffer to pdf.js's own worker, so every slice handed to it is a .slice() copy; a view would detach the original and zero every other revision",
+        "Canvas 2D + toDataURL — page images as data URLs rather than object URLs, so a forgotten revoke cannot leak a bank statement for the life of the tab",
+        "File.arrayBuffer, drag-and-drop, clipboard paste",
+        "Blob + <a download> — recovered PDFs, changes.csv, a self-contained report.html and an applicant-facing copy",
+        "Service Worker (vite-plugin-pwa/workbox) — installable, fully offline including the six samples",
+        "fflate decompressSync — chosen because DecompressionStream THROWS on trailing bytes by specification (whatwg/compression#76), and a PDF stream's /Length is routinely generous",
+        "pdfjs-dist 6.2 — a second opinion only; it can add a caveat to a revision and never promote one"
+      ],
+      "status": "deployed",
+      "url": "https://peelback.benrichardson.dev",
+      "repo_url": "https://github.com/ben-gy/peelback"
     }
   ]
 }
