@@ -1508,3 +1508,70 @@ flakes again tomorrow it is a real problem, not a swallowed one. Worth watching 
 
 **Still open, still the operator's call:** the GitHub Support escalation. Eighteen days, and the
 08-15 control triple still reproduces.
+
+### Cause 8 unchanged on 2026-08-25 — day 19
+
+The eight are the same set and the same states as 08-19 through 08-24 — four `new` (`crowdsize`,
+`castwell-cast`, `facet-dice`, `au-cpi-explorer`), four `authorization_created` (`metascrub`,
+`noisewell`, `au-insolvency-tracker`, `au-build-approvals`), all eight failing TLS. Reported
+`ON HOLD — not cycled: 8 … (9d)`. Nothing cycled, nothing spent. Holds run to `2026-09-03`.
+
+### Budget measured a nineteenth day (2026-08-25): 15 / 50 catalogued, 16 / 50 actual
+
+4 · 4 · 2 · 1 · 1 · 2 · 1 across 08-19…08-25 over the catalogue, **plus one certificate the
+catalogue cannot see** — `peelback` (below), whose `notBefore` is 08-25. Sixteen against fifty,
+**thirty-four spare** — the nineteenth consecutive day the budget is not the constraint. The
+modelled line printed `~37.9/50`, **twenty-three above** the measurement; the gap keeps widening
+with fleet size and that line still must not be read as a budget reading.
+
+Yesterday's carried-forward caveat paid off on its first morning: the measurement under-read by one
+because a property deployed before it was indexed. **Always reconcile the uncatalogued hostnames in
+the prune section against the measurement before quoting a burn figure.**
+
+Two properties issued since the last sweep and **both issued on the day their hostname was
+minted** — `au-air-episodes` (site, minted and issued 08-25) and `peelback` (tool, minted 08-24
+22:09Z, issued 08-25). That is the 08-19 control pair reproducing for an eleventh consecutive day:
+brand-new hostnames in the same zone on the same account issue within the hour while the eight held
+properties, the oldest now 19 days old, have never advanced past `new`.
+
+### Cause 10's cousin repeated: `peelback` deployed but never indexed (2026-08-25)
+
+`peelback` (tool — "See every version a PDF still contains") was created and pushed at
+`2026-08-24T22:09Z`, has a live Pages site, an `approved` certificate and serves 200, but appears in
+**no registry and no `index/` file**, and the tool factory's own logs do not mention it. This is the
+`nightshift` shape from 08-22, not Cause 10 proper: Cause 10 was `index/` without `registry.json`;
+this is neither, i.e. a deploy that never reached the catalogue step at all. Second occurrence in
+four days, both times a factory deploying and then failing to index in the same run.
+
+Consequences the sweep sees: the property is invisible to `fleet-ssl.mjs` (registry-driven), so its
+certificate is missing from the budget measurement and its `https_enforced` was never enabled —
+it sat `approved` but unenforced for a day. **Enforcement was enabled by hand this morning**
+(`PUT /repos/ben-gy/peelback/pages`, `https_enforced=true`, cert already `approved`, still 200
+after). The catalogue entry itself is the tool factory's to write — `nightshift` was reconciled by
+its own factory's next run and the same is expected here. Not written by this routine, which does
+not invent catalogue entries.
+
+### Fleet checks that came back clean (2026-08-25)
+
+- **No factory shipped a stalled certificate.** One new catalogue entry since the last sweep —
+  `au-air-episodes` (site, `fdd70fa`) — `approved`, enforced, serving 200. The uncatalogued
+  `peelback` is also `approved` and serving. The 08-02 poll fix is holding in all three factories.
+- **Cause 10 did not repeat in its original form.** `fdd70fa` staged `registry.json` alongside its
+  `index/` files. The failure this morning was upstream of both (see above).
+- **Registry freshness:** refreshed before the catalogue loaded; no untracked collisions needed
+  parking. Cause 7 machinery working.
+- **Prune ran** and left alone the same four benign records as every day since 08-13 —
+  `conflictmap`, `lab`, `pagewell`, `www` — plus `peelback`, inside its 48h grace window. That
+  grace entry is what surfaced the missing catalogue entry; it is worth reading the prune section
+  as a deploy-tracking signal, not only as a DNS one.
+- **Registry drift:** none. No URL corrections, so no `registry.json` changed today.
+- **`https_enforced` +1** — `au-air-episodes`, on an already-`approved` certificate. Nothing
+  catalogued is now approved-but-unenforced fleet-wide; `peelback` was corrected by hand.
+- **Cause 11's retry:** no flakes reported this morning. `squirm` probed clean first time.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 by design). 206 of 217 hold a certificate.
+- **Catalog 217** (site 79 · game 70 · tool 68) — below the ~300 escalation line and the ~373
+  structural ceiling.
+
+**Still open, still the operator's call:** the GitHub Support escalation. Nineteen days, and the
+08-15 control triple still reproduces.
