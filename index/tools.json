@@ -1,6 +1,22 @@
 {
-  "last_updated": "2026-08-24",
+  "last_updated": "2026-08-25",
   "tools": [
+    {
+      "name": "Peelback",
+      "slug": "peelback",
+      "icon": "layers",
+      "category": "documents",
+      "description": "See every version a PDF still contains — recover the earlier saves buried inside it and read what wrote each one.",
+      "url": "https://peelback.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/peelback",
+      "tags": [
+        "documents",
+        "pdf",
+        "forensics"
+      ],
+      "type": "tool",
+      "date": "2026-08-25"
+    },
     {
       "name": "Regraft",
       "slug": "regraft",

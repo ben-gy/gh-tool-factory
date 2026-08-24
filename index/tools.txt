@@ -1,5 +1,20 @@
 === Tools ===
 
+Peelback
+  https://peelback.benrichardson.dev
+  Saving a PDF again does not rewrite it — the changes are appended and the document as it stood at
+  every previous save is still physically inside the file you were sent. Peelback follows the
+  cross-reference chain back through them, hands each earlier version to you as a complete PDF you
+  can open, draws two of them side by side so you can read the difference yourself, and identifies
+  what wrote each save. It never counts %%EOF markers, which is what every article on the subject
+  tells you to do and which is wrong on most real documents: web optimisation, an attached PDF and a
+  page that merely prints the characters each add one, and three of the six shipped samples are traps
+  that reproduce exactly those shapes. It also reads the always-present evidence — producer and
+  creator strings with what they ordinarily mean, XMP save histories, and a digital signature's
+  covered byte range with the bytes that came after it. Nothing is uploaded, and it never offers a
+  verdict: everything it can find has ordinary explanations, and the findings fire hardest on the
+  documents most likely to be real.
+
 Regraft
   https://regraft.benrichardson.dev
   You made an image in ComfyUI, posted it to Discord, and now dragging it back onto the canvas does
