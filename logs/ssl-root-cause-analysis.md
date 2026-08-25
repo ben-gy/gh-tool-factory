@@ -1575,3 +1575,88 @@ not invent catalogue entries.
 
 **Still open, still the operator's call:** the GitHub Support escalation. Nineteen days, and the
 08-15 control triple still reproduces.
+
+### Cause 8 unchanged on 2026-08-26 — day 20
+
+The eight are the same set and the same states as 08-19 through 08-25 — four `new` (`crowdsize`,
+`castwell-cast`, `facet-dice`, `au-cpi-explorer`), four `authorization_created` (`metascrub`,
+`noisewell`, `au-insolvency-tracker`, `au-build-approvals`), all eight still failing TLS. Reported
+`ON HOLD — not cycled: 8 … (8d)`. Nothing cycled, nothing spent. Holds run to `2026-09-03`.
+
+**No factory shipped a new property in the last 24 hours**, so today carries no fresh
+minted-and-issued hostname to hold against the eight. What it does carry is renewals: ten
+certificates issued across 08-25 and 08-26 (eight and two) against `benrichardson.dev`, every one
+of them fine. Issuance on the registered domain is working; it is still not working for these
+eight. Absence of a new-hostname control today is a gap in the evidence, not a change in it.
+
+### The modelled burn line is gone — the script now measures the budget (FIXED 2026-08-26)
+
+For nineteen consecutive mornings this file recorded the same correction: the script printed
+`burn ~N/50`, a **model** (`21 new + N×7/90 renewals`), and the run then hand-measured the real
+figure and noted the model was 12, then 19, then 21, then 23 above it. The gap widens with fleet
+size, so the correction was getting larger, not smaller, and it was never going to converge.
+
+That line was a live hazard, not a cosmetic one. Read as what it looks like, `burn ~38/50` says
+twelve spare and falling — which is exactly the premise that would lead a future unattended run to
+file the eight stalls under "throttling", conclude they are the expected outcome of a large
+backlog, and stop looking. Cause 8 is the finding that premise would bury.
+
+`fleet-ssl.mjs` now computes the real number from data it already had: it fetches every property's
+Pages object for the takeover check, that object carries `https_certificate.expires_at`, and a
+Let's Encrypt certificate is 90 days, so `expires_at - 90d` is the issue date. **Zero additional
+requests.** The line now reads:
+
+```
+budget 24/50 measured over the trailing 7d — 26 spare (model ~38, runs high; do not quote it) · ceiling ~373 properties
+```
+
+The model is kept beside it because it is what sets the ~373 property ceiling, labelled so it
+cannot be misread as a budget. The log gains a per-day issuance breakdown under a `<details>`, so
+the daily "did anything issue?" question is answered by the log itself rather than by re-deriving
+it. Both carry the known bias: **this counts certificates held by catalogued properties, so it
+under-reads whenever a factory deploys before it indexes.** Downward error, safe for "is there
+budget?", wrong for "has issuance stopped?".
+
+### Budget measured a twentieth day (2026-08-26): 24 / 50
+
+4 · 4 · 2 · 1 · 1 · 2 · 8 · 2 across 08-19…08-26. **Twenty-six spare** — the twentieth
+consecutive day the budget is not the constraint, and the first measured by the script rather than
+by hand. The 08-25 count of eight is renewals, not eight new properties: only `au-air-episodes`
+and `peelback` were new that day.
+
+**A hand-measurement trap, recorded so the next run does not fall into it.** This morning's hand
+count came to 20/50 and disagreed with the script's 24. The script was right. The routine fires at
+**08:10 local**, which on this host is `22:2xZ the previous day` — so a hand count that hardcodes
+`08:10Z` as "now" slides the seven-day window ten hours into the future and drops the early part of
+the oldest day. Use the real clock, or just read the script's line now that it computes one.
+
+### Fleet checks that came back clean (2026-08-26)
+
+- **No factory shipped a stalled certificate** — no factory shipped at all. The only registry
+  commit since the last sweep is the tool factory indexing `peelback` (`39d9f15`). The 08-02 poll
+  fix is untested today rather than regressed.
+- **Yesterday's open item closed itself, as predicted.** `peelback` — deployed 08-24, live and
+  `approved` but in no registry — was catalogued by the tool factory's own next run, exactly the
+  way `nightshift` was. Tool 68 → 69, catalog 217 → 218. Its `https_enforced` had already been set
+  by hand on 08-25. Two occurrences in four days of a factory deploying before it indexes; both
+  self-reconciled within a day, and both were surfaced by the prune section's grace-window entry.
+  Worth continuing to read that section as a deploy-tracking signal.
+- **Cause 10 did not repeat.** `39d9f15` staged `registry.json` alongside `index/tools.json`,
+  `index/tools.txt` and its build log.
+- **Registry freshness:** no registry was behind; nothing needed fast-forwarding and no untracked
+  collisions needed parking.
+- **Prune ran** and left alone the same four benign records as every day since 08-13 —
+  `conflictmap`, `lab`, `pagewell`, `www`, all serving our own content. No grace-window entries,
+  consistent with nothing having deployed.
+- **Registry drift:** none. No URL corrections, so no `registry.json` changed today.
+- **`https_enforced`:** none to enable. Nothing fleet-wide is approved-but-unenforced.
+- **Cause 11's retry:** no flakes. `squirm`, worth watching since 08-24, probed clean for the
+  second consecutive morning.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 by design). 207 of 218 hold a certificate.
+- **Catalog 218** (site 79 · game 70 · tool 69) — below the ~300 escalation line and the ~373
+  structural ceiling.
+
+**Still open, still the operator's call:** the GitHub Support escalation. Twenty days. The
+reproduction is unchanged — the 08-15 control triple (`torc`, `au-spectrum`, `crowdsize`: same
+zone, same day, two issued, one never started).
