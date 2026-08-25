@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-08-25",
+  "last_updated": "2026-08-26",
   "tools": [
     {
       "name": "evalspill",
@@ -1696,6 +1696,29 @@
       "status": "deployed",
       "url": "https://peelback.benrichardson.dev",
       "repo_url": "https://github.com/ben-gy/peelback"
+    },
+    {
+      "name": "cuepoint",
+      "repo": "ben-gy/cuepoint",
+      "date": "2026-08-26",
+      "description": "Search a long video by describing what you are looking for, on-device, and cut the matching moments out as MP4 clips.",
+      "category": "media",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "WebCodecs VideoDecoder via mediabunny 1.55 — hardware decode of the user's own file, never an upload",
+        "mediabunny EncodedPacketSink.getFirstKeyPacket/getNextKeyPacket with metadataOnly — every keyframe timestamp read from the container index WITHOUT decoding a frame, so a multi-GB file reports a real frame count and a real ETA before anything is committed to",
+        "mediabunny CanvasSink {width:256,height:256,fit:'cover',poolSize:4} — decode + rotate + resize + centre-crop in one GPU step, which IS MobileCLIP-S0's preprocessing (shortest_edge 256 then centre crop), so no separate createImageBitmap pass",
+        "mediabunny Conversion {trim:{start,end}} — the artefact; isValid/discardedTracks checked BEFORE execute or a dropped track yields an MP4 with no picture",
+        "@huggingface/transformers 4.2.0 CLIPVisionModelWithProjection + CLIPTextModelWithProjection — BOTH towers in ONE worker (the official Xenova/webgpu-mobileclip demo runs both in one context; the two-worker split the spec demanded buys nothing)",
+        "dtype ALWAYS explicit and DEVICE-DEPENDENT: fp16 on WebGPU, fp32 on WASM. transformers.js DEFAULT_DEVICE_DTYPE_MAPPING={wasm:'q8'} would silently load the int8 vision export, MEASURED at cosine 0.253 vs fp32 and agreeing with it on 0 of 8 query rankings",
+        "Boot-time self-check: a synthetic image and a fixed sentence embedded and compared against reference vectors committed to the repo; a backend below 0.985 is REFUSED rather than trusted (browser-verified: image 0.9997, text 0.9922)",
+        "Self-hosted onnxruntime-web WASM in public/ort/ — transformers.js otherwise points wasmPaths at cdn.jsdelivr.net, an undisclosed third-party fetch",
+        "Web Workers (module) x2 — a decode worker and an inference worker, with CREDIT-BASED BACKPRESSURE (max 4 frames in flight) because an unthrottled hardware decoder would queue ~2.8 GB of 256x256 RGBA on a three-hour file",
+        "OffscreenCanvas, Cache API (model only), Web Share, Clipboard, Service Worker + Web App Manifest"
+      ],
+      "status": "deployed",
+      "url": "https://cuepoint.benrichardson.dev",
+      "repo_url": "https://github.com/ben-gy/cuepoint"
     }
   ]
 }

@@ -1,6 +1,23 @@
 {
-  "last_updated": "2026-08-25",
+  "last_updated": "2026-08-26",
   "tools": [
+    {
+      "name": "Cuepoint",
+      "slug": "cuepoint",
+      "icon": "scan-search",
+      "category": "media",
+      "description": "Find the moment in a long video by describing it, then cut it out as a clip — without the footage leaving your machine.",
+      "url": "https://cuepoint.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/cuepoint",
+      "tags": [
+        "media",
+        "video",
+        "search",
+        "ai"
+      ],
+      "type": "tool",
+      "date": "2026-08-26"
+    },
     {
       "name": "Peelback",
       "slug": "peelback",

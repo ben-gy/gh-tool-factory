@@ -1,5 +1,21 @@
 === Tools ===
 
+Cuepoint
+  https://cuepoint.benrichardson.dev
+  You have three hours of dashcam footage and an insurer wants the ten seconds around the impact.
+  Cuepoint opens the file in your browser, reads every keyframe timestamp straight out of the
+  container without decoding anything — so a multi-gigabyte file gives you a real frame count and a
+  real time estimate before you commit to it — then embeds the frames it samples with MobileCLIP
+  running on your own machine. Type what you are looking for and the ranking updates as you type,
+  because scoring is a dot product over one Float32Array. Each result cuts out as a real MP4, and you
+  also leave with a CSV, a WebVTT chapter track that VLC and Plex read natively, and the index itself
+  so the same video is searchable next week without scanning it again. It is honest about two hard
+  limits and says so on the page: it finds things and places rather than actions, because the model
+  sees each frame alone and "a car turning left" collapses to "a car"; and it can never tell you
+  something is absent, so it always shows the score distribution and how far the best frame stands
+  above a typical one. The footage is never uploaded, and the build refuses to publish if any upload,
+  storage or logging call appears in the bundle.
+
 Peelback
   https://peelback.benrichardson.dev
   Saving a PDF again does not rewrite it — the changes are appended and the document as it stood at
