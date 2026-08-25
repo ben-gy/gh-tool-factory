@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "docxray",
+      "name": "cuepoint",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["vite", "preview", "--port", "5199", "--strictPort"],
-      "cwd": "tools/2026-08-12-docxray",
+      "cwd": "tools/2026-08-26-cuepoint",
       "port": 5199
     }
   ]
