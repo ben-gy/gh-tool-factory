@@ -1660,3 +1660,133 @@ the oldest day. Use the real clock, or just read the script's line now that it c
 **Still open, still the operator's call:** the GitHub Support escalation. Twenty days. The
 reproduction is unchanged — the 08-15 control triple (`torc`, `au-spectrum`, `crowdsize`: same
 zone, same day, two issued, one never started).
+
+## Cause 12 — an edit origin already carried kept `--prune-dns` switched off (FIXED 2026-08-27)
+
+This morning's first sweep opened with:
+
+```
+REGISTRY game: uncommitted registry.json — left alone
+PRUNE SKIPPED — 1 registry/registries stale; claim set is not trustworthy.
+```
+
+The game factory's clone had `registry.json`, `index/games.json` and `index/games.txt` modified and
+`logs/2026-08-26-overpressure.md` untracked. Read as "a human or another routine is mid-edit" — the
+reading Cause 7 deliberately installed — that disables the prune for the **whole fleet**, because a
+claim set built from a registry we could not refresh nominates live properties for deletion.
+
+**Nobody was mid-edit.** The game factory shipped `overpressure` at 22:54 on 08-26, opened PR #18,
+and the merge landed on `origin/main` at 23:00. What it left behind was its own now-redundant
+working copy, and a clone one commit *behind* the change it was holding. Verified before touching
+anything:
+
+```
+git diff --stat origin/main -- registry.json index/games.json index/games.txt   # empty
+git show origin/main:logs/2026-08-26-overpressure.md | diff - logs/…            # identical
+```
+
+Every dirty byte was already on `origin`. So the state that switched the prune off was not an edit
+in progress; it was an edit that had already arrived by another route — and left alone it would
+have switched the prune off again every morning until a human looked.
+
+### The fix
+
+`refreshRegistries()` now fetches **first**, then asks a question it could not previously ask: for
+each dirty tracked path, is the working copy identical to `@{u}`? If it is, the local edit is
+discarded (`git checkout --`) and the fast-forward proceeds; the note is reported and, like
+`advanced`, does not gate the prune. Anything that differs from upstream in any way is still left
+exactly where it is and still marks the registry stale.
+
+The distinction that makes this safe is narrow and worth stating: **discarding an edit origin
+already carries loses no bytes.** It is not the merge-or-rewind trade the original comment refused,
+and it is the only case that gets this treatment.
+
+It composed with the existing park logic on the first run — the untracked build log collided with
+the incoming commit, was parked, and the fast-forward completed:
+
+```
+registry game: advanced 1 commit(s) — the sweep would have run stale;
+  discarded 3 local edit(s) origin already carries (index/games.json, index/games.txt, registry.json);
+  parked 1 untracked file(s) that collided with the incoming commit (logs/2026-08-26-overpressure.md → *.superseded)
+```
+
+The parked copy was byte-compared against the committed version and removed.
+
+### The dormant property is not a broken property (FIXED 2026-08-27)
+
+The site factory recorded `au-grants` this morning as `status: blocked_licence`, `url: null`,
+`repo_url: null` — built, 138/138 passing, and **deliberately not published**: GrantConnect's
+robots.txt disallows the only bulk path and its ToU cl. 5.1 (CC BY 3.0 AU) contradicts cl. 5.5(a)(ii)
+with no precedence clause. No repo, no DNS, no Pages site exists, which is the intended outcome.
+
+The sweep counted it broken — class `D`, `probe=nourl`, and it would have counted it broken every
+morning forever. That is corrosive in a specific way: this routine's headline number is the broken
+count, and a broken count with a permanent floor is a number that stops being read. It also drags
+the exit code to 1 for a property nobody may fix — the routine is explicitly forbidden from
+publishing a dormant property or inventing a hostname for one.
+
+`loadCatalog()` now splits these out. The gate is deliberately narrow: **the entry must say it is
+not deployed** (`!url && (status ?? 'deployed') !== 'deployed'`). A missing url on an entry that
+still claims `deployed` is Cause 10's shape — a factory half-indexing a real property — and stays
+in the sweep as class `D`. Dormant entries are reported on their own line and in their own log
+section, never silently dropped:
+
+```
+catalog 220 (site 79 · game 71 · tool 70) · 1 dormant, not swept
+dormant (registry says not published, no hostname to fix): au-grants(blocked_licence)
+live 212 → 212  (+0)   broken 8
+```
+
+Broken 9 → 8, and all eight are the held set.
+
+### `https_enforced` is now logged by name (FIXED 2026-08-27)
+
+The log said `2 properties.` The same-date rerun (a known behaviour, 08-12) then overwrote the log
+with a run that enforced none, and the two names were unrecoverable — GitHub exposes no history for
+`https_enforced`. The section now lists them. **The two properties enforced at 08:1x on 2026-08-27
+are not recorded anywhere**; `overpressure` and `cuepoint` are the only plausible candidates, both
+approved and both enforced now.
+
+### Cause 8 unchanged on 2026-08-27 — day 21, and today carries a fresh-hostname control
+
+The same eight, the same states: four `new` (`crowdsize`, `castwell-cast`, `facet-dice`,
+`au-cpi-explorer`), four `authorization_created` (`metascrub`, `noisewell`, `au-insolvency-tracker`,
+`au-build-approvals`). Reported `ON HOLD — not cycled: 8 … (7d)`. Nothing cycled, nothing spent.
+Holds run to `2026-09-03`.
+
+Unlike yesterday, today **does** carry the control the evidence wanted: two brand-new hostnames were
+minted in the same zone on 08-26 — `overpressure` (game) and `cuepoint` (tool) — and **both hold
+approved certificates**. `overpressure` went from repo creation to `approved` inside the same
+evening. Same zone, same registered domain, same CNAME shape, same day: new hostnames issue; these
+eight do not. That is Cause 8's signature, now reproduced 12 days after the 08-15 control triple.
+
+(The other two names in the 08-26 issuance row are `au-flights` and `au-pollution`, dated 2026-06-26
+and 2026-06-23 — 90-day renewals landing on schedule, not new properties.)
+
+### Budget measured a twenty-first day (2026-08-27): 22 / 50
+
+4 · 2 · 1 · 1 · 2 · 8 · 4 across 08-20…08-26. **Twenty-eight spare** — the twenty-first consecutive
+day the budget is not the constraint. Renewals are visibly the bulk of it: of the 22, only
+`au-air-episodes`, `peelback`, `overpressure` and `cuepoint` are new properties.
+
+### Fleet checks that came back clean (2026-08-27)
+
+- **No factory shipped a stalled certificate.** Both of the day's new properties — `overpressure`
+  (game, 08-26) and `cuepoint` (tool, 08-26) — are live, `approved` and enforced. The 08-02 poll fix
+  is intact in the game and tool factories; the site factory shipped no property (its output was the
+  `au-grants` licence hold), so it is untested today rather than regressed.
+- **Cause 10 did not repeat.** PR #18 carried `registry.json`, both index files and the build log
+  together. What failed was the clone, not the commit — see Cause 12.
+- **Prune ran** (after the fix) and left alone the same four benign records as every day since
+  08-13: `conflictmap`, `lab`, `pagewell`, `www`, all serving our own content. No deletions, no
+  grace-window entries.
+- **Registry drift:** none. No URL corrections; no `registry.json` was rewritten by the sweep.
+- **Cause 11's retry:** no flakes anywhere in either run.
+- **The no-certificate list holds no surprises:** the eight held, plus `au-worksafe` and `huntress`
+  (path-hosted) and `provenova` (external apex, 404 by design). 209 of 220 hold a certificate.
+- **Catalog 220** (site 79 · game 71 · tool 70), plus 1 dormant — below the ~300 escalation line and
+  the ~373 structural ceiling.
+
+**Still open, still the operator's call:** the GitHub Support escalation. Twenty-one days. The
+reproduction is now stronger than it was — the 08-15 control triple, plus 08-26's `overpressure` and
+`cuepoint` issuing normally in the same zone while the eight stay frozen.
