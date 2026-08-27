@@ -1,6 +1,24 @@
 {
-  "last_updated": "2026-08-26",
+  "last_updated": "2026-08-27",
   "tools": [
+    {
+      "name": "Unflatten",
+      "slug": "unflatten",
+      "icon": "layers",
+      "category": "images",
+      "description": "Give a flat photograph depth: a looping 3D clip, a 16-bit depth map and a real lens blur, all worked out on your own machine.",
+      "url": "https://unflatten.benrichardson.dev",
+      "repo": "https://github.com/ben-gy/unflatten",
+      "tags": [
+        "images",
+        "3d",
+        "depth",
+        "video",
+        "on-device-ai"
+      ],
+      "type": "tool",
+      "date": "2026-08-27"
+    },
     {
       "name": "Cuepoint",
       "slug": "cuepoint",
