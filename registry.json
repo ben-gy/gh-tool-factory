@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-08-26",
+  "last_updated": "2026-08-27",
   "tools": [
     {
       "name": "evalspill",
@@ -1719,6 +1719,29 @@
       "status": "deployed",
       "url": "https://cuepoint.benrichardson.dev",
       "repo_url": "https://github.com/ben-gy/cuepoint"
+    },
+    {
+      "name": "unflatten",
+      "repo": "ben-gy/unflatten",
+      "date": "2026-08-27",
+      "description": "Estimates depth in a flat photograph on your own machine, then moves a camera through it — a looping 3D parallax clip, plus a 16-bit depth map, a depth-graded lens blur and a red/cyan still.",
+      "category": "images",
+      "stack": "vanilla-ts",
+      "browser_apis": [
+        "@huggingface/transformers 4.2.0 — Depth Anything V2 small, fp16 on WebGPU and int8 on ONNX-WASM; the raw predicted_depth tensor is used, never the 8-bit image the pipeline also returns",
+        "WebGPU — the fast inference tier, probed for shader-f16 before fp16 is requested (the library only enforces that check for dtype 'fp16' exactly)",
+        "ONNX Runtime Web — single-threaded permanently, because a static host cannot send COOP/COEP; binaries self-hosted from /ort/ rather than jsDelivr",
+        "WebGL2 — a first-party displaced-sheet renderer with no three.js: off-axis frustum shear (exactly affine in inverse depth, so no projection matrix), a Vogel-disk depth-of-field gather, and a Dubois anaglyph",
+        "Web Workers (module) — one for the model, one for the render+encode loop with an OffscreenCanvas",
+        "OffscreenCanvas",
+        "WebCodecs VideoEncoder via mediabunny 1.55.3 — H.264 MP4, VP9/WebM fallback, with a bounded codec probe because the library's own probe can fail to settle",
+        "CompressionStream('deflate') — the zlib stream in a first-party 16-bit greyscale PNG writer",
+        "createImageBitmap with imageOrientation and resize — EXIF-correct decode bounded to MAX_TEXTURE_SIZE",
+        "Web Share (files), navigator.wakeLock, Cache API"
+      ],
+      "status": "deployed",
+      "url": "https://unflatten.benrichardson.dev",
+      "repo_url": "https://github.com/ben-gy/unflatten"
     }
   ]
 }

@@ -1,5 +1,21 @@
 === Tools ===
 
+Unflatten
+  https://unflatten.benrichardson.dev
+  A photograph is a flat sheet of colour, and to move a camera through one you need to know how far
+  away everything in it is — which was never recorded. Unflatten works it out with Depth Anything V2
+  running on your own machine, turns the picture into a sheet with hills and valleys, and moves a
+  camera across it, so near things slide further than far ones and the photograph looks solid. The
+  hard part is not the depth, it is knowing when to stop: move too far and you are asking to see what
+  was hidden behind the foreground, which nothing in the file knows, so the sheet stretches and
+  invents pixels. Unflatten measures the sharpest depth edges in your own photograph and caps the
+  camera's travel accordingly — a hard-edged portrait gets a fraction of the movement a soft
+  landscape does, with no setting to guess at — then shows you the number and, if you ask, paints the
+  invented pixels red. You leave with a looping MP4, a true 16-bit depth map rather than the banded
+  8-bit one a canvas can make, a depth-graded lens blur with a focal plane you can drag, and a
+  red/cyan 3D still. The photographs people most want to animate are of relatives who have died, so
+  nothing is uploaded, there is no account, and nothing counts how many you make.
+
 Cuepoint
   https://cuepoint.benrichardson.dev
   You have three hours of dashcam footage and an insurer wants the ten seconds around the impact.
